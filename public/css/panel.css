@@ -1,0 +1,90 @@
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+/* Generic menu styles */
+.menu {
+    background-color: #333;
+}
+
+.menu a {
+    color: white;
+}
+
+.menu a:hover {
+    background-color: #777;
+}
+
+/* Scroll menu styles */
+.scrollmenu {
+    
+    overflow: auto;
+    white-space: nowrap;
+    /*display: none;*/
+}
+  
+.scrollmenu a {
+    display: inline-block;
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
+}
+  
+
+/* Sidebar menu styles */
+.sidebar {
+    display: none;
+    height: 100vh;
+    width: 20rem !important;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar ul > li {
+    
+}
+
+.sidebar ul > li:hover {
+    background-color: #777;
+}
+
+
+
+
+
+
+/* Responsiveness */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {  }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .scrollmenu {
+        display: none;
+    }
+
+    .sidebar {
+        display: block;
+    }
+ }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {  }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  }
