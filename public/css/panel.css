@@ -42,28 +42,20 @@
   
 
 /* Sidebar menu styles */
-.sidebar {
+.side_panel{
     display: none;
-    height: 100vh;
-    width: 20rem !important;
+    width: 20rem;
 }
 
-.sidebar ul {
+.side_panel ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-.sidebar ul > li {
-    
-}
-
-.sidebar ul > li:hover {
+.side_panel ul > li:hover {
     background-color: #777;
 }
-
-
-
 
 
 
@@ -78,9 +70,10 @@
         display: none;
     }
 
-    .sidebar {
+    .side_panel {
         display: block;
     }
+
  }
 
 /* Large devices (desktops, 992px and up) */

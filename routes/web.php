@@ -18,10 +18,17 @@
 Auth::routes();
 
 Route::get('/', function () {
-
-    $user = Auth::User();
-    return view('home', ['user' => $user]);
+    return redirect('home');
 });
+
+Route::get('/home', function () {
+    #$user = Auth::User();
+    #return view('home', ['user' => $user]);
+
+    return redirect('profile');
+})->name('home');
+
+
 
 Route::get('/profile', function(){
     return redirect('/profile/show');
@@ -55,14 +62,15 @@ Route::post('/profile/change/name', function () {
     return App::call('App\Http\Controllers\ProfileController@updateName');
 });
 
+
+
 Route::get('/developers', function () {
-    
     return redirect('/developers/clients/show');
 });
 
 Route::get('/developers/clients/show', function () {
     return App::call('App\Http\Controllers\DevelopersController@showClients');
-});
+})->name('clients');
 
 Route::get('/developers/clients/create', function () {
     return App::call('App\Http\Controllers\DevelopersController@showNewClientForm');
@@ -70,4 +78,12 @@ Route::get('/developers/clients/create', function () {
 
 Route::post('/developers/clients/create', function () {
     return App::call('App\Http\Controllers\DevelopersController@createClient');
+});
+
+Route::post('/developers/clients/delete', function () {
+    return App::call('App\Http\Controllers\DevelopersController@deleteClient');
+});
+
+Route::get('/developers/clients/restore', function () {
+    return App::call('App\Http\Controllers\DevelopersController@showRestoreClientForm');
 });

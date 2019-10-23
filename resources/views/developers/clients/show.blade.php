@@ -11,6 +11,11 @@
         <a href="/developers/clients/create" class="btn btn-info" onclick="return confirm('Sure you want to make an app?');">
             I want to make an app!
         </a>
+
+        <a href="/developers/clients/restore" class="btn btn-secondary">
+            <i class="material-icons align-middle">report</i>
+            Restore my app
+        </a>
     </div>
 
     <ul class="list-group">
@@ -61,9 +66,15 @@
                             </div>
 
                             <div class="mt-5">
-                                <button type="button" class="btn btn-danger" onclick="return confirm('Sure you want to delete this app?');">
-                                    <i class="material-icons">delete_forever</i>
-                                </button>
+                                <form action="/developers/clients/delete" method="POST">
+                                    @csrf
+                                    <!--@method('DELETE')-->
+                                    <input type="hidden" name="id" value="{{$client['id']}}">
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Sure you want to delete this app?');">
+                                        <i class="material-icons">delete_forever</i>
+                                    </button>
+                                </form>
+                                
                             </div>
                             
                         </div>

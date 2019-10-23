@@ -34,7 +34,11 @@ class AuthServiceProvider extends ServiceProvider
             'broker_d' => 'Can delete information from Broker service',
         ]);
 
+        //Passport::ignoreCsrfToken(true);
+
         Passport::routes();
+
+        
 
     }
 }
