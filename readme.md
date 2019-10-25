@@ -29,7 +29,7 @@
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Accounts Service 2, please send 
-an e-mail to Alby Hern·ndez [me@achetronic.com]. All security vulnerabilities will 
+an e-mail to Alby Hern√°ndez [me@achetronic.com]. All security vulnerabilities will 
 be promptly addressed.
 
 ## License
