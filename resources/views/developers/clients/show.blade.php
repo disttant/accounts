@@ -1,6 +1,6 @@
 @extends('layouts.panel')
 
-@section('contentt')
+@section('content')
 
     <div class="mb-5">
         <h4 class="my-1">Developers</h4>

@@ -1,9 +1,15 @@
-@extends('layouts.centered')
+@extends('layouts.allwonder')
 
-@section('contentt')
+@section('content')
 
-    <div class="card">
-        <div class="card-header">{{ __('Register') }}</div>
+    <div class="card pb-5 container shadow-sm">
+
+        <div class="card-header bg-transparent border-0 p-4">
+            <img src="{{asset('img/512px.png')}}" class="align-middle mr-4" style="height: 3rem; width: 3rem;" >
+            <h1 class="font-weight-light d-inline align-middle">
+                {{ __('Register') }}
+            </h1>
+        </div>
 
         <div class="card-body">
             <form method="POST" action="{{ route('register') }}">
@@ -24,7 +30,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                     <div class="col-md-6">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -64,6 +70,10 @@
                         <button type="submit" class="btn btn-primary">
                             {{ __('Register') }}
                         </button>
+                        
+                    </div>
+                    <div class="col-md-6 offset-md-4 mt-3">
+                        <small>Creating an account means you are accepting our TOS and Privacy policy</small>
                     </div>
                 </div>
             </form>

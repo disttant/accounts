@@ -1,0 +1,7 @@
+#allwonder-wrapper {
+    background: url( {{ asset('img/bg.jpg') }} "./img/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid blue;
+}
