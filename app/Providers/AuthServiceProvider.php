@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        # Definition of scopes
+        # Defining the scopes for OAuth
         Passport::tokensCan([
             'broker_r' => 'Can read information from Broker service',
             'broker_w' => 'Can add information to Broker service',
@@ -36,7 +36,13 @@ class AuthServiceProvider extends ServiceProvider
 
         //Passport::ignoreCsrfToken(true);
 
+        # Registering the routes for OAuth
         Passport::routes();
+
+        # Setting life time for tokens
+        Passport::tokensExpireIn(now()->addDays(1));
+        Passport::refreshTokensExpireIn(now()->addDays(30));
+        Passport::personalAccessTokensExpireIn(now()->addMonths(6));
 
         
 

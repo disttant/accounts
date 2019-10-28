@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| Internal Routes [ THEY MUST NOT BE EXPOSED TO INTERNET ]
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
@@ -14,6 +14,17 @@ use Illuminate\Http\Request;
 */
 
 
-/*Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
+
+/* *
+ * 
+ * Endpoints related to Oauth 2 jobs
+ * 
+ * */
+
+# Check if an access token is valid
+Route::get('/oauth/access_token/validate', function (Request $request) {
+    return response()->json([
+        'status'    => 'valid',
+        'message'   => 'Authenticated'
+    ]);
+})->middleware('auth:api');
