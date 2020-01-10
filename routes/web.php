@@ -30,60 +30,79 @@ Route::get('/home', function () {
 
 
 
-Route::get('/profile', function(){
-    return redirect('/profile/show');
-})->name('profile');
+/* 
+ *
+ *  Routes for profiles forms and actions
+ * 
+ */
+Route::prefix('profile')->middleware(['auth'])->group(function () {
 
-Route::get('/profile/show', 'ProfileController@show');
+    Route::get('/', function(){
+        return redirect('/profile/show');
+    })->name('profile');
 
-Route::get('/profile/change/{field}', function ($field) {
+    Route::get('/show', 'ProfileController@show');
 
-    $changableFields = ['name', 'password'];
-    $field = Route::current()->field;
+    Route::get('/change/{field}', function ($field) {
 
-    # Check if the field is acceptable
-    if( in_array($field, $changableFields ) ){
-        return App::call('App\Http\Controllers\ProfileController@showChangeForm', ['field' => $field]);
-    }
+        $changableFields = ['name', 'password'];
+        $field = Route::current()->field;
 
-    # The field is not acceptable, redirect
-    return redirect('profile');
+        # Check if the field is acceptable
+        if( in_array($field, $changableFields ) ){
+            return App::call('App\Http\Controllers\ProfileController@showChangeForm', ['field' => $field]);
+        }
+
+        # The field is not acceptable, redirect
+        return redirect('profile');
+    });
+
+    Route::post('/change/password', function () {
+
+        # Check if the field is acceptable
+        return App::call('App\Http\Controllers\ProfileController@updatePassword');
+    });
+
+    Route::post('/change/name', function () {
+
+        # Check if the field is acceptable
+        return App::call('App\Http\Controllers\ProfileController@updateName');
+    });
+
 });
 
-Route::post('/profile/change/password', function () {
 
-    # Check if the field is acceptable
-    return App::call('App\Http\Controllers\ProfileController@updatePassword');
+
+/* 
+ *
+ *  Routes for developers forms and actions
+ * 
+ */
+Route::prefix('developers')->middleware(['auth', 'developer.checker'])->group(function () {
+
+    Route::get('/', function () {
+        return redirect('/developers/clients/show');
+    });
+
+    Route::get('/clients/show', function () {
+        return App::call('App\Http\Controllers\DevelopersController@showClients');
+    })->name('clients');
+    
+    Route::get('/clients/create', function () {
+        return App::call('App\Http\Controllers\DevelopersController@showNewClientForm');
+    });
+    
+    Route::post('/clients/create', function () {
+        return App::call('App\Http\Controllers\DevelopersController@createClient');
+    });
+    
+    Route::post('/clients/delete', function () {
+        return App::call('App\Http\Controllers\DevelopersController@deleteClient');
+    });
+    
+    Route::get('/clients/restore', function () {
+        return App::call('App\Http\Controllers\DevelopersController@showRestoreClientForm');
+    });
+
 });
 
-Route::post('/profile/change/name', function () {
-
-    # Check if the field is acceptable
-    return App::call('App\Http\Controllers\ProfileController@updateName');
-});
-
-
-
-Route::get('/developers', function () {
-    return redirect('/developers/clients/show');
-});
-
-Route::get('/developers/clients/show', function () {
-    return App::call('App\Http\Controllers\DevelopersController@showClients');
-})->name('clients');
-
-Route::get('/developers/clients/create', function () {
-    return App::call('App\Http\Controllers\DevelopersController@showNewClientForm');
-});
-
-Route::post('/developers/clients/create', function () {
-    return App::call('App\Http\Controllers\DevelopersController@createClient');
-});
-
-Route::post('/developers/clients/delete', function () {
-    return App::call('App\Http\Controllers\DevelopersController@deleteClient');
-});
-
-Route::get('/developers/clients/restore', function () {
-    return App::call('App\Http\Controllers\DevelopersController@showRestoreClientForm');
-});

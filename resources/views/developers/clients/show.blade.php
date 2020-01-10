@@ -4,7 +4,7 @@
 
     <div class="mb-5">
         <h4 class="my-1">Developers</h4>
-        <small>I'm a god and want to build an app</small>
+        <small>Show you are a god and build an app</small>
     </div>
 
     <div class="my-4">
@@ -22,16 +22,14 @@
 
         @if ( count($clients) === 0 )
             <div class="alert alert-warning">
-                No clients have been created by the moment. 
-                If you would like to create an app, 
-                click in the botton and start the process.
+                Click the botton and start the process.
             </div>
         @endif
 
 
         @foreach ($clients as $client)
 
-            <a href="#" class="list-group-item list-group-item-action">
+            <div class="list-group-item list-group-item-action">
                 <div class="d-flex p-2 align-items-stretch">
                     <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                         <div class="d-flex flex-column mb-3 flex-grow-1 ">
@@ -85,7 +83,7 @@
                         </div>
                     -->
                 </div>
-            </a>
+            </div>
 
         @endforeach
 

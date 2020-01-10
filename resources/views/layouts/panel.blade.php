@@ -9,7 +9,7 @@
 
 
 @section('app')
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm border border-bottom" style="background-color: #eeeeee !important;">
+    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm border border-bottom" style="background-color: #eeeeee !important;">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('img/512px.png') }}" style="width: 2rem; height: 2rem;">
@@ -41,14 +41,13 @@
                         <li class="nav-item dropdown">
 
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <i class="material-icons align-middle">face</i>
-                                {{ ucwords(Auth::user()->name, '-') }} 
+                                {{ strtolower(Auth::user()->email) }} 
                                 <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('profile') }}">
-                                    Profile
+                                    Account
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -73,11 +72,19 @@
     <main class="p-0">
         @php
             $menuItems = [
-                'My profile' => '/profile',
-                'Developers' => '/developers',
+                'Account' => '/profile',
                 'Contact' => '#'    
             ];
+
+            if ( request()->user()->developer == true ){
+                $menuItems['Developers'] = '/developers';
+            }
+
+            //echo request()->user()->developer_verified_at;
+
         @endphp
+
+        
 
         <div class="menu scrollmenu">
             @foreach ( $menuItems as $item => $uri)
@@ -90,7 +97,9 @@
             <div class="align-self-stretch py-4 shadow menu side_panel ">
                 <ul>
                     @foreach ( $menuItems as $item => $uri)
-                    <li class="pl-5 py-2"><a href="{{$uri}}">{{$item}}</a></li>
+                        <li class="pl-5 py-2">
+                            <a href="{{$uri}}" class="text-decoration-none ">{{$item}}</a>
+                        </li>
                     @endforeach
                 </ul>
             </div>

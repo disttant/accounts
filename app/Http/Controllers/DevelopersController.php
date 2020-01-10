@@ -22,7 +22,7 @@ class DevelopersController extends Controller
      */
     public function __construct( Request $request )
     {
-        $this->middleware('auth');
+
     }
 
     /**

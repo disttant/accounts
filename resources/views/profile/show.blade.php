@@ -3,8 +3,19 @@
 @section('content')
 
     <div class="mb-5">
-        <h4 class="my-1">My account</h4>
-        <small>( Last update: {{ $profile->updated_at }} )</small>
+        <h4 class="my-1">Account</h4>
+        <small>Tell us a bit about you, sweetie </small>
+    </div>
+
+    <div class="my-4">
+        @if ( $profile->developer === 1 )
+            <span class="badge badge-info">Developer account</span>
+        @else
+            <a href="/developers/apply" class="btn btn-info" onclick="return confirm('Sure you want to go to the dark side?');">
+                I want to be developer!
+            </a>
+        @endif
+        
     </div>
 
     <ul class="list-group">

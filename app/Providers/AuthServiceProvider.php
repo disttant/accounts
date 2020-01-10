@@ -29,12 +29,15 @@ class AuthServiceProvider extends ServiceProvider
 
         # Defining the scopes for OAuth
         Passport::tokensCan([
-            'broker_r' => 'Can read information from Broker service',
-            'broker_w' => 'Can add information to Broker service',
-            'broker_d' => 'Can delete information from Broker service',
+            'adaptative_r' => 'Can read information from Adaptative service',
+            'adaptative_w' => 'Can add information to Adaptative service',
+            'adaptative_d' => 'Can delete information from Adaptative service',
         ]);
 
         //Passport::ignoreCsrfToken(true);
+
+        # Enabling implicit grant flow
+        Passport::enableImplicitGrant();
 
         # Registering the routes for OAuth
         Passport::routes();
