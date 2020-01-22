@@ -75,7 +75,22 @@ Route::prefix('profile')->middleware(['auth'])->group(function () {
 
 /* 
  *
- *  Routes for developers forms and actions
+ *  Routes for developers only forms and actions
+ * 
+ */
+Route::prefix('developers')->middleware(['auth'])->group(function () {
+
+    Route::get('/apply', function () {
+        return App::call('App\Http\Controllers\DevelopersController@applyForm');
+    });
+
+});
+
+
+
+/* 
+ *
+ *  Routes for developers only forms and actions
  * 
  */
 Route::prefix('developers')->middleware(['auth', 'developer.checker'])->group(function () {

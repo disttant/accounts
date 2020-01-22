@@ -30,6 +30,21 @@ class DevelopersController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function applyForm( Request $request )
+    {
+        /*$newRequest = Request::create('/oauth/clients', 'GET');
+
+        $clients = json_decode( Route::dispatch($newRequest)->getContent(), true );*/
+
+        return view('developers/apply');
+        
+    }
+
+    /**
+     * Show the list of the clients for the current user
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function showClients( Request $request )
     {
         $newRequest = Request::create('/oauth/clients', 'GET');
