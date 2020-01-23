@@ -81,7 +81,13 @@ Route::prefix('profile')->middleware(['auth'])->group(function () {
 Route::prefix('developers')->middleware(['auth'])->group(function () {
 
     Route::get('/apply', function () {
-        return App::call('App\Http\Controllers\DevelopersController@applyForm');
+        return App::call('App\Http\Controllers\DevelopersController@showDeveloperApplyForm');
+    });
+
+    Route::post('/apply', function () {
+
+        return App::call('App\Http\Controllers\DevelopersController@createDeveloper');
+
     });
 
 });

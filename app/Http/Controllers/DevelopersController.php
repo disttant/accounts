@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
-//use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Validator;
+use App\Developer as Developer;
 //use \GuzzleHttp\Client;
 
 
@@ -30,14 +31,61 @@ class DevelopersController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function applyForm( Request $request )
+    public function showDeveloperApplyForm( Request $request )
     {
-        /*$newRequest = Request::create('/oauth/clients', 'GET');
-
-        $clients = json_decode( Route::dispatch($newRequest)->getContent(), true );*/
 
         return view('developers/apply');
         
+    }
+
+    /**
+     * Process the form data and creates a new developer in the database
+     *
+     */
+    public function createDeveloper( Request $request )
+    {
+
+        # Validate the form
+        $validator = Validator::make($request->all(), [
+            'name'      => 'required|string|max:100',
+            'document'  => 'required|alpha_num|unique:developers,document|max:20',
+            'email'     => 'required|email|unique:developers,email|max:100',
+            'phone'     => 'required|unique:developers,phone|max:20',
+            'summary'   => 'required|string|max:200'
+        ]);
+
+        # Check if some input failed
+        if ($validator->fails()) {
+            return redirect('developers/apply')
+                        ->withErrors('Some field is malformed or already exists into the system')
+                        ->withInput();
+        }
+
+        # Save the developer in the database
+        $createDeveloper = Developer::Create(
+            Auth::id(),
+            $request->input('name'), 
+            $request->input('document'),
+            $request->input('email'),
+            $request->input('phone'),
+            $request->input('summary')
+        );
+
+        if ( $createDeveloper == null ){
+            return redirect('developers/apply')
+                    ->withErrors( 'You have already sent a request.' )
+                    ->withInput();
+        }
+
+        if ( $createDeveloper == false ){
+            return redirect('developers/apply')
+                    ->withErrors( 'We could not save the request. Try again later.' )
+                    ->withInput();
+        }
+
+        # Try to save the data into DB
+        return 'Se guardó el desarrollador';
+
     }
 
     /**

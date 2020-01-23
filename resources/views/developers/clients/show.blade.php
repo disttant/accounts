@@ -8,13 +8,12 @@
     </div>
 
     <div class="my-4">
-        <a href="/developers/clients/create" class="btn btn-info" onclick="return confirm('Sure you want to make an app?');">
+        <a href="/developers/clients/create" class="btn btn-secondary" onclick="return confirm('Sure you want to make an app?');">
             I want to make an app!
         </a>
 
         <a href="/developers/clients/restore" class="btn btn-secondary">
-            <i class="material-icons align-middle">report</i>
-            Restore my app
+            Restore an app
         </a>
     </div>
 
@@ -46,11 +45,6 @@
                             <div class="my-2">
                                 <div class="font-weight-bold">
                                     Credentials
-                                    @if ( $client['revoked'] === false )
-                                        <span class="badge badge-pill badge-success">Active</span>
-                                    @else
-                                        <span class="badge badge-pill badge-danger">Revoked</span>
-                                    @endif
                                 </div>
                                 <div>ID: {{$client['id']}}</div>
                                 <div>Secret: {{$client['secret']}}</div>

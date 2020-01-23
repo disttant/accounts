@@ -8,13 +8,12 @@
     </div>
 
     <div class="my-4">
-        @if ( $profile->developer === 1 )
-            <span class="badge badge-info">Developer account</span>
-        @else
-            <a href="/developers/apply" class="btn btn-info" onclick="return confirm('Sure you want to go to the dark side?');">
+
+        @unless ( $profile->developer === 1 )
+            <a href="/developers/apply" class="btn btn-secondary" onclick="return confirm('Sure you want to go to the dark side?');">
                 I want to be developer!
             </a>
-        @endif
+        @endunless
         
     </div>
 
@@ -69,9 +68,31 @@
                         <div class="font-weight-bold">Verified email</div>
                         <div class="my-1">
                             @if ( !is_null($profile->email_verified_at) )
+                                <span>Verified</span>
                                 <i class="material-icons align-middle">verified_user</i>
                             @else 
+                                <span>Pending</span>
                                 <i class="material-icons md-dark md-inactive align-middle">report</i>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <!--<i class="material-icons align-middle">keyboard_arrow_right</i>-->
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex p-2 align-items-stretch">
+                <div class="d-flex flex-grow-1 justify-content-between align-items-center">
+                    <div class="d-flex flex-column mb-3 flex-grow-1">
+                        <div class="font-weight-bold">Account type</div>
+                        <div class="my-1">
+                            @if ( $profile->developer === 1 )
+                                <span>Developer account</span>
+                            @else
+                                <span>User account</span>
                             @endif
                         </div>
                     </div>

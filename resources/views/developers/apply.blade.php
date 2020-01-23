@@ -8,13 +8,13 @@
     </div>
 
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
 
     <div class="container-fluid alert alert-warning text-justify">
@@ -72,13 +72,13 @@
                         </div>
 
                         <div class="pt-4 pb-2">
-                            <label for="TheName" class="font-weight-bold text-secondary">Entire Name</label>
+                            <label for="TheName" class="font-weight-bold">Name</label>
                             <input name="name" type="text" class="form-control" id="TheName" placeholder="Your name / Your business name" required>
                         </div>
 
                         <div class="pt-4 pb-4">
-                            <label for="TheID" class="font-weight-bold text-secondary">Official ID</label>
-                            <input name="id" type="text" class="form-control" id="TheID" placeholder="Your ID / Your business ID" required>
+                            <label for="TheID" class="font-weight-bold">Document ID</label>
+                            <input name="document" type="text" class="form-control" id="TheID" placeholder="Your ID / Your business ID" required>
                         </div>
 
                         <div class="mt-5">
@@ -91,13 +91,14 @@
                         </div>
 
                         <div class="pt-4 pb-2">
-                            <label for="TheEmail" class="font-weight-bold text-secondary">Email</label>
+                            <label for="TheEmail" class="font-weight-bold">Email</label>
                             <input name="email" type="text" class="form-control" id="TheEmail" placeholder="How to contact your team" required>
                         </div>
 
                         <div class="pt-4 pb-4">
-                            <label for="ThePhone" class="font-weight-bold text-secondary">Phone number</label>
+                            <label for="ThePhone" class="font-weight-bold">Phone number</label>
                             <input name="phone" type="text" class="form-control" id="ThePhone" placeholder="How to contact your team" required>
+                            <small class="text-muted">International format, like: +00555555</small>
                         </div>
 
                         <div class="mt-5">
@@ -110,7 +111,7 @@
                         </div>
 
                         <div class="pt-4 pb-4">
-                            <label for="TheSummary" class="font-weight-bold text-secondary">Summary</label>
+                            <label for="TheSummary" class="font-weight-bold">Summary</label>
                             <textarea class="form-control" name="summary" id="TheSummary" placeholder="What kind of apps you want to develop" required></textarea>
                         </div>
 
@@ -118,7 +119,7 @@
 
 
                     </div>
-                    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you accept our TOS and Privacy Policy?');">Send my request</button>
+                    <button type="submit" class="btn btn-secondary" onclick="return confirm('Are you sure you accept our TOS and Privacy Policy?');">Send my request</button>
                     <small class="form-text text-muted">Clicking the button means you accept our TOS and Privacy Policy</small>
                 </form>
             </div>

@@ -27,7 +27,7 @@
                         <input name="name" type="text" class="form-control" id="TheInput" placeholder="Sad void..." value="{{ $value }}" required>
                         <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                     </div>
-                    <button type="submit" class="btn btn-primary">Change</button>
+                    <button type="submit" class="btn btn-secondary">Change</button>
                 </form>
             </div>
         </li>

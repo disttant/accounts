@@ -106,7 +106,12 @@
 
             <div class="w-100 p-4 text-break">
                 @yield('content')
+
+                <div class="d-flex justify-content-center my-5 text-muted">
+                    &copy; ALKE Systems
+                </div>
             </div>
+
         </div>
     </main>
 
