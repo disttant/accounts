@@ -89,10 +89,10 @@
                     <div class="d-flex flex-column mb-3 flex-grow-1">
                         <div class="font-weight-bold">Account type</div>
                         <div class="my-1">
-                            @if ( $profile->developer === 1 )
-                                <span>Developer account</span>
+                            @if ( Auth::user()->hasRole('developer') == true )
+                                <span>Developer</span>
                             @else
-                                <span>User account</span>
+                                <span>User</span>
                             @endif
                         </div>
                     </div>

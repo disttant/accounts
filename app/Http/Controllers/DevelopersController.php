@@ -33,6 +33,8 @@ class DevelopersController extends Controller
      */
     public function showDeveloperApplyForm( Request $request )
     {
+        # Set authorized roles for this actions
+        Auth::user()->authorizeRoles(['admin', 'user']);
 
         return view('developers/apply');
         
@@ -44,6 +46,9 @@ class DevelopersController extends Controller
      */
     public function createDeveloper( Request $request )
     {
+
+        # Set authorized roles for this actions
+        Auth::user()->authorizeRoles(['admin', 'user']);
 
         # Validate the form
         $validator = Validator::make($request->all(), [
@@ -95,6 +100,9 @@ class DevelopersController extends Controller
      */
     public function showClients( Request $request )
     {
+        # Set authorized roles for this actions
+        Auth::user()->authorizeRoles(['admin', 'developer']);
+
         $newRequest = Request::create('/oauth/clients', 'GET');
 
         $clients = json_decode( Route::dispatch($newRequest)->getContent(), true );
@@ -110,6 +118,9 @@ class DevelopersController extends Controller
      */
     public function showNewClientForm( Request $request )
     {
+        # Set authorized roles for this actions
+        Auth::user()->authorizeRoles(['admin', 'developer']);
+
         return view('developers/clients/create');
         
     }
@@ -127,6 +138,8 @@ class DevelopersController extends Controller
         #return request()->getHost();
         #return URL::current();
 
+        # Set authorized roles for this actions
+        Auth::user()->authorizeRoles(['admin', 'developer']);
 
         # Validate the form
         $data = $request->validate([
@@ -158,7 +171,9 @@ class DevelopersController extends Controller
      */
     public function deleteClient( Request $request )
     {
-        
+        # Set authorized roles for this actions
+        Auth::user()->authorizeRoles(['admin', 'developer']);
+
         # Validate the form
         $data = $request->validate([
             'id'      => ['required', 'numeric']
@@ -185,6 +200,9 @@ class DevelopersController extends Controller
      */
     public function showRestoreClientForm( Request $request )
     {
+        # Set authorized roles for this actions
+        Auth::user()->authorizeRoles(['admin', 'developer']);
+        
         return view('developers/clients/restore');
     }
 }
