@@ -94,6 +94,7 @@
                             @else
                                 <span>User</span>
                             @endif
+
                         </div>
                     </div>
                 </div>

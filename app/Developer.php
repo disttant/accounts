@@ -112,6 +112,44 @@ class Developer extends Model
 
     /* *
      *
+     *  Retrieves a developer profile
+     *
+     * */
+    public static function GetProfile(int $id )
+    {
+        if ( is_null($id) || empty($id) )
+            return [];
+
+        return self::where('id', $id)->first();
+
+    }
+
+
+
+    /* *
+     *
+     *  Remove a developer profile
+     *
+     * */
+    public static function RemoveOne(int $id )
+    {
+        if ( is_null($id) || empty($id) )
+            return false;
+
+        $deletion = self::where('id', $id)->delete();
+
+        if ( $deletion == false ){
+            return false;
+        }
+
+        return true;
+
+    }
+
+
+
+    /* *
+     *
      *  Deletes a device from the given user
      *
      * */
@@ -167,6 +205,7 @@ class Developer extends Model
      * Retrieves N messages for a given user-device pair
      *
      * */
+
     /*public static function GetMessages(string $user_id = null, string $device = null, $limit = 1)
     {
         if ( is_null($user_id) || empty($user_id) )
