@@ -8,12 +8,8 @@
     </div>
 
     <div class="my-4">
-        <a href="/developers/clients/create" class="btn btn-secondary" onclick="return confirm('Sure you want to make an app?');">
+        <a href="{{ url('developers/clients/create') }}" class="btn btn-secondary">
             I want to make an app!
-        </a>
-
-        <a href="/developers/clients/restore" class="btn btn-secondary">
-            Restore an app
         </a>
     </div>
 
@@ -34,34 +30,34 @@
                         <div class="d-flex flex-column mb-3 flex-grow-1 ">
                             <div class="my-2">
                                 <div class="font-weight-bold">Application name</div>
-                                <div>{{$client['name']}}</div>
+                                <div>{{ $client['name'] }}</div>
                             </div>
 
                             <div class="my-2">
                                 <div class="font-weight-bold">Data destination</div>
-                                <div>{{$client['redirect']}}</div>
+                                <div>{{ $client['redirect'] }}</div>
                             </div>
 
                             <div class="my-2">
                                 <div class="font-weight-bold">
                                     Credentials
                                 </div>
-                                <div>ID: {{$client['id']}}</div>
-                                <div>Secret: {{$client['secret']}}</div>
+                                <div>ID: {{ $client['id'] }}</div>
+                                <div>Secret: {{ $client['secret'] }}</div>
                             </div>
 
                             <div class="mt-2">
                                 <div>
                                     <small class="font-weight-bold">Creation</small>
                                 </div>
-                                <div><small>{{$client['created_at']}}</small></div>
+                                <div><small>{{ $client['created_at'] }}</small></div>
                             </div>
 
                             <div class="mt-5">
-                                <form action="/developers/clients/delete" method="POST">
+                                <form action="{{ url('developers/clients/delete') }}" method="POST">
                                     @csrf
                                     <!--@method('DELETE')-->
-                                    <input type="hidden" name="id" value="{{$client['id']}}">
+                                    <input type="hidden" name="id" value="{{ $client['id'] }}">
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Sure you want to delete this app?');">
                                         <i class="material-icons">delete_forever</i>
                                     </button>
@@ -71,11 +67,6 @@
                             
                         </div>
                     </div>
-                    <!--
-                        <div class="d-flex justify-content-between align-items-center">
-                            <i class="material-icons align-middle">keyboard_arrow_right</i>
-                        </div>
-                    -->
                 </div>
             </div>
 

@@ -8,24 +8,19 @@
     </div>
 
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
-
-    <div class="container-fluid alert alert-warning">
-        Remember the TOS and the Privacy Policy you accepted
-        to be a developer and be a good boy
-    </div>
 
     <ul class="list-group">
         <li class="list-group-item py-4">
             <div class="d-flex flex-column mb-3 flex-grow-1">
-                <form action="/developers/clients/create" method="post">
+                <form action="{{ url('developers/clients/create') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <div class="pt-4 pb-4">

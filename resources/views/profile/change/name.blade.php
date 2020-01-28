@@ -8,19 +8,19 @@
     </div>
 
     @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
 
     <ul class="list-group">
         <li class="list-group-item py-4">
             <div class="d-flex flex-column mb-3 flex-grow-1">
-                <form action="/profile/change/name" method="post">
+                <form action="{{ url('profile/change/name') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="TheInput" class="font-weight-bold">Write your entire name</label>

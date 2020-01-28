@@ -62,18 +62,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Global "To" Address
+    | Global "admin" Address
     |--------------------------------------------------------------------------
     |
-    | You may wish for all e-mails sent by your application to be sent to
-    | the same address. Here, you may specify an address that is
-    | used globally for all e-mails that are sent by your application.
+    | Here, you may specify an address for emails sent to the admin of your app
     |
     */
 
-    'to' => [
-        'address' => env('MAIL_TO_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_TO_NAME', 'Example'),
+    'admin' => [
+        'address' => env('MAIL_ADMIN_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_ADMIN_NAME', 'Example'),
     ],
 
     /*

@@ -76,37 +76,38 @@
 
 
     <main class="p-0">
-        @php
-            $menuItems = [
-                'Account' => '/profile',
-                'Contact' => '#'    
-            ];
-
-            if ( request()->user()->developer == true ){
-                $menuItems['Developers'] = '/developers';
-            }
-
-            //echo request()->user()->developer_verified_at;
-
-        @endphp
-
         
-
         <div class="menu scrollmenu">
-            @foreach ( $menuItems as $item => $uri)
-                <a href="{{$uri}}">{{$item}}</a>
-            @endforeach
+            
+
+            <a href="/profile">Profile</a>
+            
+            @if ( Auth::user()->hasAnyRole(['admin', 'developer']) == true )
+                <a href="/developers">Developers</a>
+            @endif
+
+            <a href="#">Contact</a>
+
         </div>
 
         <div class="d-flex flex-row justify-content-start align-items-stretch" style="min-height: 100vh !important;">
 
             <div class="align-self-stretch py-4 shadow menu side_panel ">
                 <ul>
-                    @foreach ( $menuItems as $item => $uri)
+                    <li class="pl-5 py-2">
+                        <a href="/profile" class="text-decoration-none ">Profile</a>
+                    </li>
+                    
+                    @if ( Auth::user()->hasAnyRole(['admin', 'developer']) == true )
                         <li class="pl-5 py-2">
-                            <a href="{{$uri}}" class="text-decoration-none ">{{$item}}</a>
+                            <a href="/developers" class="text-decoration-none ">Developers</a>
                         </li>
-                    @endforeach
+                    @endif
+
+                    <li class="pl-5 py-2">
+                        <a href="#" class="text-decoration-none ">Contact</a>
+                    </li>
+
                 </ul>
             </div>
 

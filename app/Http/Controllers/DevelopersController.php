@@ -29,6 +29,8 @@ class DevelopersController extends Controller
 
     }
 
+
+
     /**
      * Show the list of the clients for the current user
      *
@@ -43,13 +45,14 @@ class DevelopersController extends Controller
         
     }
 
+
+
     /**
      * Process the form data and creates a new developer in the database
      *
      */
     public function createDeveloper( Request $request )
     {
-
         # Set authorized roles for this actions
         Auth::user()->authorizeRoles(['admin', 'user']);
 
@@ -92,12 +95,13 @@ class DevelopersController extends Controller
         }
 
         # Send an email to the administration email
-        Mail::to( 'thealkesystems@gmail.com' )->send(new DeveloperApplication( $createDeveloper ) );
+        Mail::to( config('mail.admin.address') )->send(new DeveloperApplication( $createDeveloper ) );
 
         # Try to save the data into DB
         return 'Se guardó el desarrollador';
-
     }
+
+
 
     /**
      * Show the list of the clients for the current user
@@ -114,8 +118,9 @@ class DevelopersController extends Controller
         $clients = json_decode( Route::dispatch($newRequest)->getContent(), true );
 
         return view('developers/clients/show', [ 'clients' => $clients ]);
-        
     }
+
+
 
     /**
      * Show the form for adding new clients
@@ -128,8 +133,9 @@ class DevelopersController extends Controller
         Auth::user()->authorizeRoles(['admin', 'developer']);
 
         return view('developers/clients/create');
-        
     }
+
+
 
     /**
      * Process the form data and creates a new client
@@ -138,7 +144,6 @@ class DevelopersController extends Controller
      */
     public function createClient( Request $request )
     {
-        
         #return $request->root();
         #return request()->getHttpHost();
         #return request()->getHost();
@@ -170,6 +175,8 @@ class DevelopersController extends Controller
         return redirect($request->root() . '/developers/clients/show');
     }
 
+
+
     /**
      * Process the form data and deletes a client
      *
@@ -199,16 +206,6 @@ class DevelopersController extends Controller
         return redirect($request->root() . '/developers/clients/show');
     }
 
-    /**
-     * Show the form for restoring clients
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function showRestoreClientForm( Request $request )
-    {
-        # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer']);
-        
-        return view('developers/clients/restore');
-    }
+
+
 }

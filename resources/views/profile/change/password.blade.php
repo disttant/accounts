@@ -20,7 +20,7 @@
     <ul class="list-group">
         <li class="list-group-item py-4">
             <div class="d-flex flex-column mb-3 flex-grow-1">
-                <form action="/profile/change/password" method="post">
+                <form action="{{ url('profile/change/password') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <div class="pt-4 pb-5">

@@ -58,7 +58,7 @@
     <ul class="list-group">
         <li class="list-group-item py-4">
             <div class="d-flex flex-column mb-3 flex-grow-1">
-                <form action="/developers/apply" method="post">
+                <form action="{{ url('developers/apply') }}" method="post">
                     @csrf
                     <div class="form-group">
 

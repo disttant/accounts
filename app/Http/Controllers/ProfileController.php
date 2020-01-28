@@ -15,8 +15,10 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+
     }
+
+
 
     /**
      * Show the profile of the user.
@@ -25,12 +27,13 @@ class ProfileController extends Controller
      */
     public function show()
     {
-
         # Set authorized roles for this actions
         Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
 
-        return view('profile/show', ['profile' => Auth::user()] );
+        return view('profile/show');
     }
+
+
 
     /**
      * Show the Changing form in the profile of the user.
@@ -44,6 +47,8 @@ class ProfileController extends Controller
 
         return view('profile/change/'.$field, ['field' => $field, 'value' => Auth::user()->$field] );
     }
+
+
 
     /**
      * Show the Changing form in the profile of the user.
@@ -75,6 +80,8 @@ class ProfileController extends Controller
         return redirect('profile');
     }
 
+
+
     /**
      * Show the Changing form in the profile of the user.
      *
@@ -99,4 +106,6 @@ class ProfileController extends Controller
         return redirect('profile');
     }
 
+
+    
 }

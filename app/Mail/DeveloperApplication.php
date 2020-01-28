@@ -37,8 +37,6 @@ class DeveloperApplication extends Mailable
             ->view('mail.admin.developers.application', [
 
                 'developer_id'   => $this->_developerId,
-
-                //'message_body' => $this->_messageBody,  
                   
             ]); 
     }
