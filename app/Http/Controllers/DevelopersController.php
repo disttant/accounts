@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Developer as Developer;
+use App\Mail\DeveloperApplication;
+
 use Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
-use App\Developer as Developer;
+use Illuminate\Support\Facades\Mail;
 //use \GuzzleHttp\Client;
 
 
@@ -87,6 +90,9 @@ class DevelopersController extends Controller
                     ->withErrors( 'We could not save the request. Try again later.' )
                     ->withInput();
         }
+
+        # Send an email to the administration email
+        Mail::to( 'thealkesystems@gmail.com' )->send(new DeveloperApplication( $createDeveloper ) );
 
         # Try to save the data into DB
         return 'Se guardó el desarrollador';

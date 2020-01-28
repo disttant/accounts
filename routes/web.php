@@ -29,14 +29,19 @@ Route::get('/', function () {
 })->name('home');*/
 
 Route::get('/test', function () {
-
     /*
     foreach ( Auth::user()->roles()->orderBy('name')->get() as $result ){
         echo $result->name ;
     }
     */
 
+    //Mail::to( config('mail.from.address') )->send(new DeveloperApplication());
 });
+
+/*Route::get('mailable', function () {
+    //$invoice = App\Invoice::find(1);
+    return new App\Mail\DeveloperApplication('caca de la vaca');
+});*/
 
 
 
@@ -146,19 +151,19 @@ Route::prefix('developers')->middleware(['auth', 'developer.checker'])->group(fu
  */
 Route::prefix('admin')->middleware(['auth'])->group(function () {
 
-    Route::get('/developers/application/{id}', function ($developer_id) {
+    Route::get('/developers/application/{developer_id}', function ($developer_id) {
 
         # Show the application view for confirming that developer
         return App::call('App\Http\Controllers\AdminController@showDeveloperApplicationForm', ['developer_id' => $developer_id]);
 
-    })->where('id', '[0-9]+');
+    })->where('developer_id', '[0-9]+')->name('admin.developers.application');
 
     Route::post('/developers/application/{developer_id}', function ($developer_id) {
 
         # Show the application view for confirming that developer
         return App::call('App\Http\Controllers\AdminController@ProcessDeveloperApplication', ['developer_id' => $developer_id]);
 
-    })->where('id', '[0-9]+');
+    })->where('developer_id', '[0-9]+');
 
 
 

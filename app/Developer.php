@@ -59,7 +59,11 @@ class Developer extends Model
 
     /* *
      *
-     *  Creates a new developer in the system
+     * Creates a new developer in the system
+     * 
+     * @return  false (if the user could not be created)
+     *          null (if the user already exists)
+     *          int (new row ID, if the user was created)
      *
      * */
     public static function Create(int $user_id, string $name, string $document, string $email, string $phone, string $summary)
@@ -104,7 +108,8 @@ class Developer extends Model
         if ( $developer->save() === false )
             return false;
 
-        return true;
+        # Return the ID of the new row
+        return $developer->attributes['id'];
 
     }
 
@@ -143,7 +148,6 @@ class Developer extends Model
         }
 
         return true;
-
     }
 
 

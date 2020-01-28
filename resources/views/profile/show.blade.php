@@ -10,7 +10,7 @@
     <div class="my-4">
 
         @unless ( $profile->developer === 1 )
-            <a href="/developers/apply" class="btn btn-secondary" onclick="return confirm('Sure you want to go to the dark side?');">
+            <a href="/developers/apply" class="btn btn-secondary">
                 I want to be developer!
             </a>
         @endunless
@@ -69,10 +69,8 @@
                         <div class="my-1">
                             @if ( !is_null($profile->email_verified_at) )
                                 <span>Verified</span>
-                                <i class="material-icons align-middle">verified_user</i>
                             @else 
                                 <span>Pending</span>
-                                <i class="material-icons md-dark md-inactive align-middle">report</i>
                             @endif
                         </div>
                     </div>
@@ -89,11 +87,12 @@
                     <div class="d-flex flex-column mb-3 flex-grow-1">
                         <div class="font-weight-bold">Account type</div>
                         <div class="my-1">
-                            @if ( Auth::user()->hasRole('developer') == true )
-                                <span>Developer</span>
-                            @else
-                                <span>User</span>
-                            @endif
+
+                            @forelse (Auth::user()->roles()->get() as $role)
+                                <div class="d-inline">{{ $role->description }}, </div>
+                            @empty
+                                <p>No roles for this user</p>
+                            @endforelse
 
                         </div>
                     </div>
