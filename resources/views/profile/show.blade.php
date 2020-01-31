@@ -89,7 +89,9 @@
                         <div class="my-1">
 
                             @forelse (Auth::user()->roles()->get() as $role)
-                                <div class="d-inline">{{ $role->description }}, </div>
+                                <div class="d-inline">
+                                    {{ $role->description }}@if( !$loop->last ), @endif
+                                </div>
                             @empty
                                 <p>No roles for this user</p>
                             @endforelse

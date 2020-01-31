@@ -12,7 +12,7 @@ class MailController extends Controller
 {
 
 
-    public static function SendFromWeb( Request $request )
+    /*public static function SendFromWeb( Request $request )
     {
         //$value = config('app.timezone');
 
@@ -24,9 +24,9 @@ class MailController extends Controller
         ]);
 
         if ( $validator->fails() ) {
-            /*return redirect()
+            return redirect()
                 ->route('admin.apartments.creation')
-                ->withErrors('Some field is malformed');*/
+                ->withErrors('Some field is malformed');
             return 'algo falló en el validador';
         }
 
@@ -43,6 +43,6 @@ class MailController extends Controller
         return 'enviado correctamente';
 
 
-    }
+    }*/
 
 }

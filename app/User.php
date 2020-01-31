@@ -122,7 +122,7 @@ class User extends Authenticatable implements MustVerifyEmail
         if ( is_null($id) || empty($id) )
             return [];
 
-        return self::where('id', $id)->first();
+        return self::where('id', $id )->first();
 
     }
 

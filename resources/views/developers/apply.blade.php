@@ -58,6 +58,7 @@
     <ul class="list-group">
         <li class="list-group-item py-4">
             <div class="d-flex flex-column mb-3 flex-grow-1">
+
                 <form action="{{ url('developers/apply') }}" method="post">
                     @csrf
                     <div class="form-group">
@@ -72,13 +73,13 @@
                         </div>
 
                         <div class="pt-4 pb-2">
-                            <label for="TheName" class="font-weight-bold">Name</label>
-                            <input name="name" type="text" class="form-control" id="TheName" placeholder="Your name / Your business name" required>
+                            <label class="font-weight-bold">Name</label>
+                            <input name="name" type="text" maxlength="100" class="form-control" placeholder="Yours / Your business name" required>
                         </div>
 
                         <div class="pt-4 pb-4">
-                            <label for="TheID" class="font-weight-bold">Document ID</label>
-                            <input name="document" type="text" class="form-control" id="TheID" placeholder="Your ID / Your business ID" required>
+                            <label class="font-weight-bold">Card ID</label>
+                            <input name="document" type="text" maxlength="20" class="form-control" placeholder="Yours / Your business ID" required>
                         </div>
 
                         <div class="mt-5">
@@ -91,14 +92,14 @@
                         </div>
 
                         <div class="pt-4 pb-2">
-                            <label for="TheEmail" class="font-weight-bold">Email</label>
-                            <input name="email" type="text" class="form-control" id="TheEmail" placeholder="How to contact your team" required>
+                            <label class="font-weight-bold">Email</label>
+                            <input name="email" type="text" maxlength="100" class="form-control" placeholder="Email to contact your team" required>
                         </div>
 
                         <div class="pt-4 pb-4">
-                            <label for="ThePhone" class="font-weight-bold">Phone number</label>
-                            <input name="phone" type="text" class="form-control" id="ThePhone" placeholder="How to contact your team" required>
-                            <small class="text-muted">International format, like: +00555555</small>
+                            <label class="font-weight-bold">Phone</label>
+                            <input name="phone" type="text" maxlength="20" class="form-control" placeholder="A phone to call your team" required>
+                            <small class="text-muted">Be global: +00555555...</small>
                         </div>
 
                         <div class="mt-5">
@@ -111,12 +112,9 @@
                         </div>
 
                         <div class="pt-4 pb-4">
-                            <label for="TheSummary" class="font-weight-bold">Summary</label>
-                            <textarea class="form-control" name="summary" id="TheSummary" placeholder="What kind of apps you want to develop" required></textarea>
+                            <label class="font-weight-bold">Summary</label>
+                            <textarea maxlength="200" rows="5" class="form-control" name="summary" placeholder="What kind of apps you want to develop" required></textarea>
                         </div>
-
-                        
-
 
                     </div>
                     <button type="submit" class="btn btn-secondary" onclick="return confirm('Are you sure you accept our TOS and Privacy Policy?');">Send my request</button>

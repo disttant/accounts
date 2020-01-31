@@ -38,7 +38,7 @@ Route::get('/test', function () {
     //Mail::to( config('mail.from.address') )->send(new DeveloperApplication());
 
     # Testing a mail view
-    //return new App\Mail\DeveloperApplication('caca de la vaca');
+    //return new App\Mail\DevelopersApplicationResponse;
 });
 
 

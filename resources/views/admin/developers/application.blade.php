@@ -77,7 +77,7 @@
         <li class="list-group-item py-4">
             <div class="d-flex flex-column mb-3 flex-grow-1">
             
-                @if ( Auth::user()->hasRole('developer') == false )
+                @if ( $profile['user']->hasRole('developer') == false )
                     <form method="post">
                         @csrf
                         <div class="form-group">
@@ -89,8 +89,8 @@
                             </div>
 
                             <div class="pt-4 pb-4">
-                                <label for="TheMessage" class="font-weight-bold">Message</label>
-                                <textarea class="form-control" name="message" id="TheMessage" placeholder="Message for the developer"></textarea>
+                                <label class="font-weight-bold">Message</label>
+                                <textarea maxlength="500" class="form-control" name="message" placeholder="Message for the developer"></textarea>
                             </div>
                             
                         </div>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Developer as Developer;
-use App\Mail\DeveloperApplication;
 
 use Route;
 use Illuminate\Http\Request;
@@ -13,6 +12,8 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 //use \GuzzleHttp\Client;
+
+use App\Mail\DevelopersApplicationRequest;
 
 
 
@@ -95,7 +96,7 @@ class DevelopersController extends Controller
         }
 
         # Send an email to the administration email
-        Mail::to( config('mail.admin.address') )->send(new DeveloperApplication( $createDeveloper ) );
+        Mail::to( config('mail.admin.address') )->send(new DevelopersApplicationRequest ( $createDeveloper ) );
 
         # Try to save the data into DB
         return 'Se guardó el desarrollador';

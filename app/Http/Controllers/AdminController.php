@@ -8,11 +8,14 @@ use App\Developer as Developer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\DevelopersApplicationResponse;
+
+
 
 class AdminController extends Controller
 {
-
-
 
     /**
      * Process the form data and creates a new developer in the database
@@ -23,10 +26,12 @@ class AdminController extends Controller
         # Set authorized roles for this actions
         Auth::user()->authorizeRoles(['admin']);
 
-        # Get all the user data
+        # Get all the developer data
         $profile['developer'] = Developer::GetProfile( $developer_id );
 
         if ( @count($profile['developer']) > 0 ){
+
+            # Get all the user data
             $profile['user'] = User::GetProfile( $profile['developer']->user_id );
 
             return view('admin/developers/application', ['profile' => $profile]);
@@ -49,7 +54,7 @@ class AdminController extends Controller
 
         # Validate the form
         $validator = Validator::make($request->all(), [
-            'message'     => 'required|string',
+            'message'     => 'required|string|max:500',
         ]);
 
         # Check if some input failed
@@ -70,6 +75,8 @@ class AdminController extends Controller
             }
 
             # Send the user an email giving information
+            Mail::to( User::GetProfile(Developer::GetProfile($developer_id)->user_id)->email )
+                ->send(new DevelopersApplicationResponse ( false, $request->message ) );
 
         }
 
@@ -83,8 +90,9 @@ class AdminController extends Controller
                         ->withInput();
             }
 
-
             # Send the user an email giving information
+            Mail::to( User::GetProfile(Developer::GetProfile($developer_id)->user_id)->email )
+                ->send(new DevelopersApplicationResponse ( true, $request->message ) );
 
         }
 

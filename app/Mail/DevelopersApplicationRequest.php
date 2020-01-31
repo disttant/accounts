@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class DeveloperApplication extends Mailable
+class DevelopersApplicationRequest extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -34,7 +34,7 @@ class DeveloperApplication extends Mailable
         return $this
             ->from( config('mail.from.address') )
             ->subject('[Accounts] Admin action required')
-            ->view('mail.admin.developers.application', [
+            ->view('mail.admin.developers.application.request', [
 
                 'developer_id'   => $this->_developerId,
                   
