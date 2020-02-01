@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="mb-5">
-        <h4 class="my-1">Account</h4>
+        <h4 class="my-1">Profile</h4>
         <small>Tell us a bit about you, sweetie </small>
     </div>
 
@@ -24,7 +24,7 @@
                 <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                     <div class="d-flex flex-column mb-3 flex-grow-1">
                         <div class="font-weight-bold">Name</div>
-                        <div class="">{{ Auth::user()->name }}</div>
+                        <div>{{ Auth::user()->name }}</div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
@@ -38,7 +38,7 @@
                 <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                     <div class="d-flex flex-column mb-3 flex-grow-1">
                         <div class="font-weight-bold">Password</div>
-                        <div class="">*****</div>
+                        <div>*****</div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
@@ -52,7 +52,7 @@
                 <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                     <div class="d-flex flex-column mb-3 flex-grow-1">
                         <div class="font-weight-bold">Email</div>
-                        <div class="">{{ Auth::user()->email }}</div>
+                        <div>{{ Auth::user()->email }}</div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">

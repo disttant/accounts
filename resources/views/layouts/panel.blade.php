@@ -9,15 +9,15 @@
 
 
 @section('app')
-    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm border border-bottom" style="background-color: #eeeeee !important;">
+    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm border-0" style="background-color: white !important; ">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('img/512px.png') }}" style="width: 2rem; height: 2rem;">
-                <span>{{ config('app.name') }}</span>
+                <img src="{{ asset('img/512px.png') }}" class="align-middle" style="width: 2rem; height: 2rem;">
+                <span class="mx-2 align-middle">{{ config('app.name') }}</span>
 
                 @if ( Auth::user()->hasRole('admin') == true )
                     <span class="badge badge-danger">
-                        <i class="material-icons md-18">lock_open</i>
+                        <i class="material-icons md-18 align-middle">lock_open</i>
                     </span>
                 @endif
             </a>
@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    
+                     
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -52,9 +52,6 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('profile') }}">
-                                    Account
-                                </a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -66,6 +63,7 @@
                                     @csrf
                                 </form>
                             </div>
+                            
                         </li>
                     @endguest
                 </ul>
@@ -77,42 +75,50 @@
 
     <main class="p-0">
         
+        {{-- Top menu --}}
         <div class="menu scrollmenu">
-            
 
-            <a href="/profile">Profile</a>
+            <a href="{{ url('profile') }}">Profile</a>
             
             @if ( Auth::user()->hasAnyRole(['admin', 'developer']) == true )
-                <a href="/developers">Developers</a>
+                <a href="{{ url('developers') }}">Developers</a>
             @endif
 
-            <a href="#">Contact</a>
-
+            <a href="{{ url('contact') }}">Contact</a>
         </div>
 
+        {{-- Side menu --}}
         <div class="d-flex flex-row justify-content-start align-items-stretch" style="min-height: 100vh !important;">
 
-            <div class="align-self-stretch py-4 shadow menu side_panel ">
-                <ul>
-                    <li class="pl-5 py-2">
-                        <a href="/profile" class="text-decoration-none ">Profile</a>
-                    </li>
-                    
-                    @if ( Auth::user()->hasAnyRole(['admin', 'developer']) == true )
-                        <li class="pl-5 py-2">
-                            <a href="/developers" class="text-decoration-none ">Developers</a>
-                        </li>
-                    @endif
+            <div class="align-self-stretch py-4 shadow menu side_panel">
 
-                    <li class="pl-5 py-2">
-                        <a href="#" class="text-decoration-none ">Contact</a>
-                    </li>
+                <div class="d-flex flex-column">
+                    <a href="{{ url('profile') }}" class="pl-5 py-2 text-decoration-none rounded-right">
+                        <i class="material-icons align-middle mr-2">face</i>
+                        <span class="align-middle">Profile</span>
+                    </a>
+                </div>
+                
+                @if ( Auth::user()->hasAnyRole(['admin', 'developer']) == true )
+                    <div class="d-flex flex-column">
+                        <a href="{{ url('developers') }}" class="pl-5 py-2 text-decoration-none rounded-right">
+                            <i class="material-icons align-middle mr-2">build</i>
+                            <span class="align-middle">Developers</span> 
+                        </a>
+                    </div>
+                @endif
 
-                </ul>
+                <div class="d-flex flex-column">
+                    <a href="{{ url('contact') }}" class="pl-5 py-2 text-decoration-none rounded-right">
+                        <i class="material-icons align-middle mr-2">question_answer</i>
+                        <span class="align-middle">Contact</span>
+                    </a>
+                </div>
+
             </div>
 
-            <div class="w-100 p-4 text-break">
-                @yield('content')
+            <div class="w-100 p-4 text-break" style="background-color: #eeeeee;">
+                @yield('content') 
 
                 <div class="d-flex justify-content-center my-5 text-muted">
                     &copy; ALKE Systems

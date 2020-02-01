@@ -1,6 +1,6 @@
 /* Generic menu styles */
 .menu {
-    background-color: #333;
+    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
 }
 
 .menu a {
@@ -8,12 +8,12 @@
 }
 
 .menu a:hover {
-    background-color: #777;
+    background-color: #333;
+    
 }
 
 /* Scroll menu styles */
 .scrollmenu {
-    
     overflow: auto;
     white-space: nowrap;
     /*display: none;*/
@@ -33,16 +33,6 @@
     width: 20rem;
 }
 
-.side_panel ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.side_panel ul > li:hover {
-    background-color: #777;
-}
-
 
 
 /* Responsiveness */
@@ -58,9 +48,10 @@
 
     .side_panel {
         display: block;
+        z-index: 1010;
     }
 
- }
+}
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {  }
