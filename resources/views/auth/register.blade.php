@@ -73,7 +73,10 @@
                         
                     </div>
                     <div class="col-md-6 offset-md-4 mt-3">
-                        <small>Creating an account means you are accepting our TOS and Privacy policy</small>
+                        <small>
+                            Creating an account means you are accepting our <a href="{{ url('contracts/tos') }}" target="_blank">TOS</a> 
+                            and <a href="{{ url('contracts/privacy') }}" target="_blank">Privacy policy</a>
+                        </small>
                     </div>
                 </div>
             </form>

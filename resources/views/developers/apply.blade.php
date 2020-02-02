@@ -8,12 +8,18 @@
     </div>
 
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
+        <div class="p-2 alert alert-danger">
+            <ul style="list-style-type:none;">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
+        </div>
+    @endif
+
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
         </div>
     @endif
 
@@ -32,7 +38,8 @@
         </p>
 
         <strong>
-            <a href="{{ url('contracts') }}" class="text-light text-decoration-none">Read TOS and privacy policy</a>
+            Read the <a href="{{ url('contracts/tos') }}" target="_blank" class="text-light text-decoration-none">TOS</a>
+            and our <a href="{{ url('contracts/privacy') }}" target="_blank" class="text-light text-decoration-none">privacy policy</a>
         </strong>
     </div>
 

@@ -17,6 +17,12 @@
         </div>
     @endif
 
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <div class="container-fluid alert alert-warning text-justify">
         <p>
             Before accepting, be sure what you are doing. The user must have verified its account

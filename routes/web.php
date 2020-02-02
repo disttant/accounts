@@ -48,6 +48,25 @@ Route::get('/test', function () {
  *  Routes for profiles forms and actions
  * 
  */
+Route::prefix('contracts')->group(function () {
+
+    Route::get('/tos', function(){
+        return view('contracts/tos');
+    })->name('tos');
+
+    Route::get('/privacy', function(){
+        return view('contracts/privacy');
+    })->name('privacy');
+
+});
+
+
+
+/* 
+ *
+ *  Routes for profiles forms and actions
+ * 
+ */
 Route::prefix('profile')->middleware(['auth'])->group(function () {
 
     Route::get('/', function(){

@@ -42,7 +42,7 @@
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
 
-        <!-- Bugfixed for Google Material Icons -->
+        <!-- Bugfixes for Google Material Icons -->
         <style>
             /* Rules for sizing the icon. */
             .material-icons.md-18 { font-size: 18px; }

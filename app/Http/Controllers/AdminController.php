@@ -60,7 +60,7 @@ class AdminController extends Controller
         # Check if some input failed
         if ($validator->fails()) {
             return back()
-                    ->withErrors('The message is malformed')
+                    ->withErrors('The message is malformed (max 500 chars)')
                     ->withInput();
         }
 
@@ -95,6 +95,9 @@ class AdminController extends Controller
                 ->send(new DevelopersApplicationResponse ( true, $request->message ) );
 
         }
+
+        # Inform the user that request has been saved
+        return back()->with('status', 'Your decition has been processed successfully');
 
     }
 

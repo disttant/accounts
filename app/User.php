@@ -66,7 +66,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * 
      * 
      */
-    public function authorizeRoles($roles)
+    public function authorizeRoles( $roles )
     {
         abort_unless($this->hasAnyRole($roles), 401);
         return true;
@@ -79,7 +79,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * 
      * 
      */
-    public function hasAnyRole($roles)
+    public function hasAnyRole( $roles )
     {
         if (is_array($roles)) {
             foreach ($roles as $role) {
@@ -102,7 +102,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * 
      * 
      */
-    public function hasRole($role)
+    public function hasRole( $role )
     {
         if ($this->roles()->where('name', $role)->first()) {
             return true;
@@ -117,7 +117,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *  Retrieves a user profile
      *
      * */
-    public static function GetProfile(int $id )
+    public static function GetProfile( int $id )
     {
         if ( is_null($id) || empty($id) )
             return [];

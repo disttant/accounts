@@ -98,8 +98,9 @@ class DevelopersController extends Controller
         # Send an email to the administration email
         Mail::to( config('mail.admin.address') )->send(new DevelopersApplicationRequest ( $createDeveloper ) );
 
-        # Try to save the data into DB
-        return 'Se guardó el desarrollador';
+        # Inform the user that request has been saved
+        return redirect('developers/apply')
+                    ->with('status', 'Your request has been send and will be checked by our team. You will recieve an email soon.');
     }
 
 

@@ -20,45 +20,6 @@ class Developer extends Model
 
     /* *
      *
-     *  List all available devices of the given user
-     *
-     * */
-    /*public static function List(string $user_id = null)
-    {
-        if ( is_null($user_id) || empty($user_id) )
-            return [];
-
-        return Device::select('name', 'type', 'description')
-            ->where('user_id', $user_id)
-            ->get();
-    }*/
-
-
-
-    /* *
-     *
-     *  List all not related devices of the given user
-     *
-     * */
-    /*public static function Free(string $user_id = null)
-    {
-        if ( is_null($user_id) || empty($user_id) )
-            return [];
-
-        return Device::select('name', 'type', 'description')
-            ->where('user_id', $user_id)
-            ->whereNotIn('id', 
-                Relation::select('device_id')
-                    ->whereColumn('device_id', 'devices.id')
-                    ->where('user_id', $user_id)
-            )
-            ->get();
-    }*/
-
-
-
-    /* *
-     *
      * Creates a new developer in the system
      * 
      * @return  false (if the user could not be created)
@@ -66,7 +27,7 @@ class Developer extends Model
      *          int (new row ID, if the user was created)
      *
      * */
-    public static function Create(int $user_id, string $name, string $document, string $email, string $phone, string $summary)
+    public static function Create( int $user_id, string $name, string $document, string $email, string $phone, string $summary )
     {
         if ( is_null($user_id) || empty($user_id) )
             return false;
@@ -120,7 +81,7 @@ class Developer extends Model
      *  Retrieves a developer profile
      *
      * */
-    public static function GetProfile(int $id )
+    public static function GetProfile( int $id )
     {
         if ( is_null($id) || empty($id) )
             return [];
@@ -136,7 +97,7 @@ class Developer extends Model
      *  Remove a developer profile
      *
      * */
-    public static function RemoveOne(int $id )
+    public static function RemoveOne( int $id )
     {
         if ( is_null($id) || empty($id) )
             return false;

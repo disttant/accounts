@@ -9,7 +9,12 @@
 
 
 @section('app')
-    <div id="allwonder-wrapper" class="d-flex align-items-center justify-content-center" >
-        @yield('content')
+    <div id="allwonder-wrapper" class="d-flex flex-column align-items-center justify-content-center p-2" >
+
+        <div class="container p-0">
+            @yield('content')
+        </div>
+
     </div>
+    
 @endsection
