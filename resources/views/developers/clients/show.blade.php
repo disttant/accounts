@@ -8,8 +8,8 @@
     </div>
 
     <div class="my-4">
-        <a href="{{ url('developers/clients/create') }}" class="btn btn-secondary">
-            I want to make an app!
+        <a href="{{ url('developers/clients/create') }}" class="btn btn-primary">
+            Create an app!
         </a>
     </div>
 
@@ -42,24 +42,32 @@
                                 <div class="font-weight-bold">
                                     Credentials
                                 </div>
-                                <div>ID: {{ $client['id'] }}</div>
-                                <div>Secret: {{ $client['secret'] }}</div>
-                            </div>
 
-                            <div class="mt-2">
-                                <div>
-                                    <small class="font-weight-bold">Creation</small>
+                                <div class="d-flex align-content-center">
+                                    <div class="p-0 py-2 flex-shrink-1 my-auto">
+                                        <i class="material-icons align-middle text-muted">security</i>
+                                    </div>
+                                    <div class="p-0 py-2 px-3 w-100 align-self-center">
+                                        {{ $client['id'] }}
+                                    </div>
                                 </div>
-                                <div><small>{{ $client['created_at'] }}</small></div>
+                                <div class="d-flex align-content-center">
+                                    <div class="p-0 py-2 flex-shrink-1 my-auto">
+                                        <i class="material-icons align-middle text-muted">vpn_key</i>
+                                    </div>
+                                    <div class="p-0 py-2 px-3 w-100 align-self-center">
+                                        {{ $client['secret'] }}
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="mt-5">
+                            <div class="mt-3">
                                 <form action="{{ url('developers/clients/delete') }}" method="POST">
                                     @csrf
                                     <!--@method('DELETE')-->
                                     <input type="hidden" name="id" value="{{ $client['id'] }}">
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Sure you want to delete this app?');">
-                                        <i class="material-icons">delete_forever</i>
+                                        <i class="material-icons align-middle">delete_forever</i>
                                     </button>
                                 </form>
                                 

@@ -24,18 +24,16 @@
                     @csrf
                     <div class="form-group">
                         <div class="pt-4 pb-4">
-                            <label for="TheName" class="font-weight-bold">Name</label>
-                            <input name="name" type="text" class="form-control" id="TheName" placeholder="Fancy name for your app" required>
+                            <input name="name" type="text" class="form-control" placeholder="App name" required>
                         </div>
 
                         <div class="pb-4">
-                            <label for="TheRedirect" class="font-weight-bold">Destination URI</label>
-                            <input name="redirect" type="text" class="form-control" id="TheRedirect" placeholder="http://valid.url/gimme/data" required>
-                            <small class="form-text text-muted">A valid URI where we will send some data</small>
+                            <input name="redirect" type="text" class="form-control" placeholder="http://valid.url/gimme/data" required>
+                            <small class="form-text text-muted">Valid URI where we will send you some sensitive data</small>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-secondary" onclick="return confirm('Are you sure?');">Create my new app!</button>
-                    <small class="form-text text-muted">Clicking the button means you accept our terms and conditions</small>
+                    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">Create my new app!</button>
+                    <small class="mt-4 form-text text-muted">Clicking the button means you accept our terms and conditions</small>
                 </form>
             </div>
         </li>

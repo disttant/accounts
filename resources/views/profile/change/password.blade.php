@@ -4,6 +4,7 @@
 
     <div class="mb-5">
         <h4 class="my-1">Change your {{$field}}</h4>
+        <small>Use upper and lower letters, numbers and symbols</small>
     </div>
 
     @if ($errors->any())

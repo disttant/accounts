@@ -95,12 +95,12 @@
                             
                         </div>
 
-                        <button type="submit" name="accept" class="btn btn-secondary" onclick="return confirm('Are you sure you accept this application?');" >
+                        <button type="submit" name="accept" class="btn btn-primary" onclick="return confirm('Are you sure you accept this application?');" >
                             <!-- @if ( is_null ($profile['developer']->email_verified_at) ) disabled @endif-->
                             Accept
                         </button>
 
-                        <button type="submit" name="decline" class="btn btn-secondary" onclick="return confirm('Are you sure you reject this application?');">Decline</button>
+                        <button type="submit" name="decline" class="btn btn-primary" onclick="return confirm('Are you sure you reject this application?');">Decline</button>
 
                     </form>
                 @else

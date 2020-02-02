@@ -10,7 +10,7 @@
     <div class="my-4">
 
         @unless ( Auth::user()->hasAnyRole(['developer']) == true )
-            <a href="{{ url('developers/apply') }}" class="btn btn-secondary">
+            <a href="{{ url('developers/apply') }}" class="btn btn-primary">
                 I want to be developer!
             </a>
         @endunless

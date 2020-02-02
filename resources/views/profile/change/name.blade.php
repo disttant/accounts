@@ -4,8 +4,9 @@
 
     <div class="mb-5">
         <h4 class="my-1">Change your name</h4>
+        <small>Your entire name and surnames</small>
     </div>
-
+    
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

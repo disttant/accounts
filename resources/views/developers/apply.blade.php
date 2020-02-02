@@ -23,36 +23,17 @@
             You should read this in advance. 
             We are very happy with external people developing for our platform 
             but we would like to keep this safe for everyone. 
-            Think that we are developing systems that are into customers' house.
-            For that, we control some aspects around our services. Some of them 
-            are written in the list below. Detecting anyone breaking the contract 
-            means the revokation of permissions and cancelation of the account so, 
+            Think that we are creating systems that manage sensitive data.
+            For that, we control some aspects around our services. Detecting anyone 
+            breaking the contract means the revokation of permissions and cancelation of the account so, 
             please, read the entire contract. Although we are not responsible for 
             the use the users do of our services, we will do everything in our power 
-            to make everyone respects the terms os service.
+            to make everyone respects the terms of service and the privacy policy.
         </p>
 
         <strong>
-            List of some rules <a href="#" class="text-muted">(TOS and privacy policy)</a>
+            <a href="{{ url('contracts') }}" class="text-light text-decoration-none">Read TOS and privacy policy</a>
         </strong>
-        <ul>
-            <li>No illegal content (no pedo, no killing, no abuse, no other illegal content)</li>
-            <li>
-                Our services are made for everyone so control yourself and make a good job when developing. 
-                We have filters to avoid flood or spam in our services but we ask you to be polite and make the things right. 
-            </li>
-            <li>
-                Remember thar user data are not yours so treat data carefully and remember that we store them, not you. This 
-                means we are a user-first company and the user will always be informed about who is accessing its data and how. 
-            </li>
-            <li>
-                There is a form where users can report apps in our services. If some user report an application, 
-                depending on the reason of the report we could revoke permissions for that app temporary or even forever.
-                Each report will be reviewed handly. In the other hand, there is another form where developers can complain 
-                or ask us to review the case and activate the account again if the report was unfair.
-            </li>
-
-        </ul>
     </div>
 
     <ul class="list-group">
@@ -67,18 +48,13 @@
                             <span class="my-5 h5">
                                 Entity
                             </span>
-                            <p class="small">
-                                Who is going to develop
-                            </p>
                         </div>
 
                         <div class="pt-4 pb-2">
-                            <label class="font-weight-bold">Name</label>
-                            <input name="name" type="text" maxlength="100" class="form-control" placeholder="Yours / Your business name" required>
+                            <input name="name" type="text" maxlength="100" class="form-control" placeholder="Yours / Your business name" required autofocus>
                         </div>
 
                         <div class="pt-4 pb-4">
-                            <label class="font-weight-bold">Card ID</label>
                             <input name="document" type="text" maxlength="20" class="form-control" placeholder="Yours / Your business ID" required>
                         </div>
 
@@ -86,39 +62,30 @@
                             <span class="my-5 h5">
                                 Contact
                             </span>
-                            <p class="small">
-                                How to contact the developers
-                            </p>
                         </div>
 
                         <div class="pt-4 pb-2">
-                            <label class="font-weight-bold">Email</label>
                             <input name="email" type="text" maxlength="100" class="form-control" placeholder="Email to contact your team" required>
                         </div>
 
                         <div class="pt-4 pb-4">
-                            <label class="font-weight-bold">Phone</label>
                             <input name="phone" type="text" maxlength="20" class="form-control" placeholder="A phone to call your team" required>
                             <small class="text-muted">Be global: +00555555...</small>
                         </div>
 
                         <div class="mt-5">
                             <span class="my-5 h5">
-                                Extra
+                                Other things
                             </span>
-                            <p class="small">
-                                Some data we like to read
-                            </p>
                         </div>
 
                         <div class="pt-4 pb-4">
-                            <label class="font-weight-bold">Summary</label>
                             <textarea maxlength="200" rows="5" class="form-control" name="summary" placeholder="What kind of apps you want to develop" required></textarea>
                         </div>
 
                     </div>
-                    <button type="submit" class="btn btn-secondary" onclick="return confirm('Are you sure you accept our TOS and Privacy Policy?');">Send my request</button>
-                    <small class="form-text text-muted">Clicking the button means you accept our TOS and Privacy Policy</small>
+                    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you accept our TOS and Privacy Policy?');">Send my request</button>
+                    <small class="mt-4 form-text text-muted">Clicking the button means you accept our TOS and Privacy Policy</small>
                 </form>
             </div>
         </li>
