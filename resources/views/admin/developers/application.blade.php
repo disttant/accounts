@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="mb-5">
-        <h4 class="my-1">Developer application confirmation</h4>
-        <small>Be smart and make the world better</small>
+        <h4 class="my-1">{{ __('Developer application confirmation') }}</h4>
+        <small>{{ __('Be smart and make the world better') }}</small>
     </div>
 
     @if ($errors->any())
@@ -25,53 +25,52 @@
 
     <div class="container-fluid alert alert-warning text-justify">
         <p>
-            Before accepting, be sure what you are doing. The user must have verified its account
-            and must NOT have fake data in the personal account.
+            {{ __('Before accepting, be sure what you are doing.') }}
         </p>
 
-        <strong>User Profile</strong>
+        <strong>{{ __('User profile') }}</strong>
 
         <ul>
             <li>
-                <strong>Created:</strong> {{ $profile['user']->created_at }}
+                <strong>{{ __('Created') }}:</strong> {{ $profile['user']->created_at }}
             </li>
             <li>
-                <strong>Name:</strong> {{ $profile['user']->name }}
+                <strong>{{ __('Name') }}:</strong> {{ $profile['user']->name }}
             </li>
             <li>
-                <strong>Email:</strong> {{ $profile['user']->email }}
+                <strong>{{ __('Email') }}:</strong> {{ $profile['user']->email }}
             </li>
             <li>
-                <strong>Email verified:</strong> 
+                <strong>{{ __('Verified') }}:</strong> 
                 @if ( is_null ($profile['developer']->email_verified_at) )
-                    Not verified
+                    <span class="text-info">{{ __('Not verified') }}</span>
                 @else
-                    Verified
+                    {{ __('Verified') }}
                 @endif
             </li>
             
         </ul>
         
 
-        <strong>Developer Profile</strong>
+        <strong>{{ __('Developer profile') }}</strong>
         <ul>
             <li>
-                <strong>Sent:</strong> {{ $profile['developer']->created_at }}
+                <strong>{{ __('Sent') }}:</strong> {{ $profile['developer']->created_at }}
             </li>
             <li>
-                <strong>Name:</strong> {{ $profile['developer']->name }}
+                <strong>{{ __('Name') }}:</strong> {{ $profile['developer']->name }}
             </li>
             <li>
-                <strong>Document:</strong> {{ $profile['developer']->document }}
+                <strong>{{ __('Document') }}:</strong> {{ $profile['developer']->document }}
             </li>
             <li>
-                <strong>Email:</strong> {{ $profile['developer']->email }}
+                <strong>{{ __('Email') }}:</strong> {{ $profile['developer']->email }}
             </li>
             <li>
-                <strong>Phone:</strong> {{ $profile['developer']->phone }}
+                <strong>{{ __('Phone') }}:</strong> {{ $profile['developer']->phone }}
             </li>
             <li>
-                <strong>Summary:</strong> {{ $profile['developer']->summary }}
+                <strong>{{ __('Summary') }}:</strong> {{ $profile['developer']->summary }}
             </li>
             
         </ul>
@@ -90,27 +89,32 @@
 
                             <div class="mt-3 mb-3">
                                 <span class="my-5 h5">
-                                    Accept or decline this application?
+                                    {{ __('Accept or decline this application?') }}
                                 </span>
                             </div>
 
                             <div class="pt-4 pb-4">
-                                <label class="font-weight-bold">Message</label>
-                                <textarea maxlength="500" class="form-control" name="message" placeholder="Message for the developer"></textarea>
+                                <label class="font-weight-bold">{{ __('Message') }}</label>
+                                <textarea maxlength="500" class="form-control" name="message" placeholder="{{ __('Message for the developer') }}"></textarea>
                             </div>
                             
                         </div>
 
-                        <button type="submit" name="accept" class="btn btn-primary" onclick="return confirm('Are you sure you accept this application?');" >
-                            <!-- @if ( is_null ($profile['developer']->email_verified_at) ) disabled @endif-->
-                            Accept
-                        </button>
+                        {{-- Button only appears on verified users --}}
+                        @if ( !is_null ($profile['developer']->email_verified_at) )
+                            <button type="submit" name="accept" class="btn btn-primary" onclick="return confirm(' {{ __("Are you sure you accept this application?") }} ');" >
+                                {{ __('Accept') }}
+                            </button>
+                        @endif
+                        
 
-                        <button type="submit" name="decline" class="btn btn-primary" onclick="return confirm('Are you sure you reject this application?');">Decline</button>
+                        <button type="submit" name="decline" class="btn btn-primary" onclick="return confirm(' {{ __("Are you sure you reject this application?") }}');">
+                            {{ __('Decline') }}
+                        </button>
 
                     </form>
                 @else
-                    This user has already been verified as developer
+                    {{ __('This user has already been accepted as developer') }}
                 @endif
             </div>
         </li>

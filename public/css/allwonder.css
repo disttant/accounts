@@ -1,12 +1,14 @@
 #allwonder-wrapper {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 @media (max-width: 576px) { 
 
     #allwonder-wrapper .card {
-        height: 100vh !important;
-        width: 100vw !important;
+        min-height: 100vh !important;
+        min-width: 100vw !important;
+        margin: 0 !important;
+        box-shadow: none !important;
     }
 
 }

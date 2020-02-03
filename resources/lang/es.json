@@ -1,0 +1,70 @@
+{
+    "Login"                                                                  : "Acceso",
+    "Register"                                                               : "Registro",
+    "Forgot Your Password?"                                                  : "¿Olvidó su contraseña?",
+    "No account?"                                                            : "¿No tiene una cuenta?",
+    "Create one"                                                             : "Crear una",
+    "Remember Me"                                                            : "Recordarme",
+    "Creating an account means you are accepting our"                        : "Crear una cuenta significa que aceptas nuestros",
+    "Terms of Service"                                                       : "Términos de Servicio",
+    "and"                                                                    : "y",
+    "Privacy Policy"                                                         : "Política de Privacidad",
+    "Verify Your Email Address"                                              : "Verificar tu cuenta de correo electrónico",
+    "A fresh verification link has been sent to your email address."         : "Un nuevo enlace de verificación ha sido enviado a tu correo electrónico",
+    "Before proceeding, please check your email for a verification link."    : "Antes de continuar, revisa tu correo buscando el enlace de verificación",
+    "click here to request another"                                          : "Haz click aquí para que te enviemos otro",
+    "Please confirm your password before continuing."                        : "Por favor, confirma la contraseña para continuar.",
+    "Reset Password"                                                         : "Restablecer Contraseña",
+    "Send me a reset link"                                                   : "Enviar restablecimiento",
+    "Authorize"                                                              : "Autorizar",
+    "is requesting permission to access your account."                       : "está solicitando permiso para acceder a tu cuenta",
+    "This application will be able to"                                       : "Esta aplicación será capaz de",
+    "Read information from Adaptative service"                               : "Leer información del servicio Adaptative",
+    "Publish information to Adaptative service"                              : "Publicar información al servicio Adaptative",
+    "Delete information from Adaptative service"                             : "Eliminar información del servicio Adaptative",
+
+
+
+    "Name"                          : "Nombre",
+    "Email"                         : "Correo electrónico",
+    "Password"                      : "Contraseña",
+    "Confirm Password"              : "Confirmar contraseña",
+    
+
+
+    "Sign in"                       : "Entrar",
+    "Sign up"                       : "Registrarse",
+    "Cancel"                        : "Cancelar",
+
+
+
+    "Developer application confirmation"                   : "Confirmación de solicitud de desarrollador",
+    "Be smart and make the world better"                   : "Se inteligente y haz el mundo mejor",
+    "User profile"                                         : "Perfil de usuario",
+    "Developer profile"                                    : "Perfil de desarrollador",
+    "Accept or decline this application?"                  : "¿Aceptar o rechazar esta solicitud?",
+    "Are you sure you accept this application?"            : "¿Está seguro de aceptar la solicitud?",
+    "Are you sure you reject this application?"            : "¿Está seguro de rechazar la solicitud?",
+    "Message for the developer"                            : "Mensaje para el desarrollador",
+    "Message"                                              : "Mensaje",
+    "Before accepting, be sure what you are doing."        : "Antes de aceptar, asegúrate de lo que estás haciendo. El usuario debe haber verificado su cuenta y no debe tener datos falsos en su cuenta personal",
+    "This user has already been accepted as developer"     : "Este usuario ya ha sido aceptado como desarrollador",
+
+
+
+    "Document"                                             : "Documento",
+    "Phone"                                                : "Teléfono",
+    "Summary"                                              : "Resumen",
+    "Created"                                              : "Creado",
+    "Sent"                                                 : "Enviado",
+    "Verified"                                             : "Verificado",
+    "Not verified"                                         : "No verificado",
+
+
+
+    "Accept"                                               : "Aceptar",
+    "Decline"                                              : "Rechazar"
+    
+    
+    
+}

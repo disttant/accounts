@@ -22,14 +22,10 @@
                 @csrf
 
                 <div class="form-group row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">
-                        <!--<i class="material-icons">email</i>-->
-                        {{ __('Email address') }}
-                        @php # {{ __('E-Mail Address') }} @endphp
-                    </label>
+                    <div class="col-md-4 col-form-label text-md-right"></div>
 
                     <div class="col-md-6">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('Email') }}">
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
