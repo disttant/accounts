@@ -45,7 +45,7 @@
     "Creating an account means you are accepting our"                        : "Crear una cuenta significa que aceptas nuestros",
     "Terms of Service"                                                       : "Términos de Servicio",
     "Privacy Policy"                                                         : "Política de Privacidad",
-    "Verify Your account"                                                    : "Verifica tu cuenta",
+    "Verify your account"                                                    : "Verifica tu cuenta",
     "A fresh verification link has been sent to your email address."         : "Un nuevo enlace de verificación ha sido enviado a tu correo electrónico",
     "Before proceeding, please check your email for a verification link."    : "Antes de continuar, revisa tu correo buscando el enlace de verificación",
     "click here to request another"                                          : "Haz click aquí para que te enviemos otro",
@@ -105,6 +105,8 @@
     "Developer could not be removed"                                         : "El desarrollador no pudo ser eliminado",
     "You have already sent a request."                                       : "Ya has enviado una solicitud",
     "We could not save the request. Try again later."                        : "No pudimos guardar la solicitud, Inténtalo de nuevo más tarde.",
-    "Your request has been sent and will be checked by our team."            : "Tu solicitud ha sido enviada y será revisada por nuestro equipo."
+    "Your request has been sent and will be checked by our team."            : "Tu solicitud ha sido enviada y será revisada por nuestro equipo.",
+    "Please click the button below to verify your account."                  : "Por favor, haz click en el siguiente botón para verificar tu cuenta.",
+    "If you did not create an account, no further action is required."       : "Si tú no creaste una cuenta, no se requiere ninguna acción."
     
 }

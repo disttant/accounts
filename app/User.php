@@ -5,10 +5,15 @@ namespace App;
 use App\Role as Role;
 use App\RoleUser as RoleUser;
 
+use App\Notifications\CustomResetPassword;
+use App\Notifications\CustomVerifyEmail;
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -46,6 +51,32 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomResetPassword($token));
+    }
+
+
+
+    /**
+     * Send the email verification notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new CustomVerifyEmail);
+    }
 
 
 
