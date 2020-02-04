@@ -37,7 +37,8 @@ class AdminController extends Controller
             return view('admin/developers/application', ['profile' => $profile]);
         }
 
-        return 'hola papi <3';  //////////////////////////////////////////////////////////////////////////
+        # Developer not found
+        return abort(404);
 
     }
 
@@ -60,7 +61,7 @@ class AdminController extends Controller
         # Check if some input failed
         if ($validator->fails()) {
             return back()
-                    ->withErrors('The message is malformed (max 500 chars)')
+                    ->withErrors( $validator )
                     ->withInput();
         }
 
@@ -70,7 +71,7 @@ class AdminController extends Controller
             # Delete developer info from database
             if( Developer::RemoveOne( $developer_id ) == false ){
                 return back()
-                        ->withErrors('Error removing the developer from the system')
+                        ->withErrors('Developer could not be removed')
                         ->withInput();
             }
 
@@ -86,7 +87,7 @@ class AdminController extends Controller
             # Add a new role for that user
             if( User::SetRole('developer', Developer::GetProfile($developer_id)->user_id ) == false ){
                 return back()
-                        ->withErrors('Error setting the developer role to the user')
+                        ->withErrors( __('User could not switch to developer') )
                         ->withInput();
             }
 
@@ -97,7 +98,7 @@ class AdminController extends Controller
         }
 
         # Inform the user that request has been saved
-        return back()->with('status', 'Your decition has been processed successfully');
+        return back()->with('status', __('Application has been processed successfully') );
 
     }
 

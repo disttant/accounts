@@ -3,15 +3,15 @@
 @section('content')
 
     <div class="mb-5">
-        <h4 class="my-1">Profile</h4>
-        <small>Tell us a bit about you, sweetie </small>
+        <h4 class="my-1">{{ __('Profile') }}</h4>
+        <small>{{ __('Tell us a bit about you, sweetie')}}</small>
     </div>
 
     <div class="my-4">
 
         @unless ( Auth::user()->hasAnyRole(['developer']) == true )
             <a href="{{ url('developers/apply') }}" class="btn btn-primary">
-                I want to be developer!
+                {{ __('I want to be developer!') }}
             </a>
         @endunless
         
@@ -23,7 +23,7 @@
             <div class="d-flex p-2 align-items-stretch">
                 <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                     <div class="d-flex flex-column mb-3 flex-grow-1">
-                        <div class="font-weight-bold">Name</div>
+                        <div class="font-weight-bold">{{ __('Name') }}</div>
                         <div>{{ Auth::user()->name }}</div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
             <div class="d-flex p-2 align-items-stretch">
                 <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                     <div class="d-flex flex-column mb-3 flex-grow-1">
-                        <div class="font-weight-bold">Password</div>
+                        <div class="font-weight-bold">{{ __('Password') }}</div>
                         <div>*****</div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
             <div class="d-flex p-2 align-items-stretch">
                 <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                     <div class="d-flex flex-column mb-3 flex-grow-1">
-                        <div class="font-weight-bold">Email</div>
+                        <div class="font-weight-bold">{{ __('Email') }}</div>
                         <div>{{ Auth::user()->email }}</div>
                     </div>
                 </div>
@@ -65,12 +65,12 @@
             <div class="d-flex p-2 align-items-stretch">
                 <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                     <div class="d-flex flex-column mb-3 flex-grow-1">
-                        <div class="font-weight-bold">Verified email</div>
+                        <div class="font-weight-bold">{{ __('Verified') }}</div>
                         <div class="my-1">
                             @if ( !is_null(Auth::user()->email_verified_at) )
-                                <span>Verified</span>
+                                <span>{{ __('Verified') }}</span>
                             @else 
-                                <span>Pending</span>
+                                <span>{{ __('Not verified') }}</span>
                             @endif
                         </div>
                     </div>
@@ -85,7 +85,7 @@
             <div class="d-flex p-2 align-items-stretch">
                 <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                     <div class="d-flex flex-column mb-3 flex-grow-1">
-                        <div class="font-weight-bold">Account type</div>
+                        <div class="font-weight-bold">{{ __('Account type') }}</div>
                         <div class="my-1">
 
                             @forelse (Auth::user()->roles()->get() as $role)
@@ -93,7 +93,7 @@
                                     {{ $role->description }}@if( !$loop->last ), @endif
                                 </div>
                             @empty
-                                <p>No roles for this user</p>
+                                <p>{{ __('No roles for this user') }}</p>
                             @endforelse
 
                         </div>

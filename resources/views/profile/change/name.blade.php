@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="mb-5">
-        <h4 class="my-1">Change your name</h4>
-        <small>Your entire name and surnames</small>
+        <h4 class="my-1">{{ __('Change your name') }}</h4>
+        <small>{{ __('Your entire name and surnames') }}</small>
     </div>
     
     @if ($errors->any())
@@ -23,11 +23,9 @@
                 <form action="{{ url('profile/change/name') }}" method="post">
                     @csrf
                     <div class="form-group">
-                        <!--<label for="TheInput" class="font-weight-bold">Write your entire name</label>-->
-                        <input name="name" type="text" class="form-control" id="TheInput" placeholder="Entire name" value="{{ $value }}" required>
-                        <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                        <input name="name" type="text" class="form-control" placeholder="{{ __('Entire name') }}" value="{{ $value }}" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Change</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Accept') }}</button>
                 </form>
             </div>
         </li>

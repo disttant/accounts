@@ -16,9 +16,7 @@
                 <span class="mx-2 align-middle">{{ config('app.name') }}</span>
 
                 @if ( Auth::user()->hasRole('admin') == true )
-                    <span class="badge badge-danger">
-                        <i class="material-icons md-18 align-middle">lock_open</i>
-                    </span>
+                    <i class="material-icons md-18 align-middle">lock_open</i>
                 @endif
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -78,13 +76,13 @@
         {{-- Top menu --}}
         <div class="menu scrollmenu">
 
-            <a href="{{ url('profile') }}">Profile</a>
+            <a href="{{ url('profile') }}">{{ __('Profile') }}</a>
             
             @if ( Auth::user()->hasAnyRole(['admin', 'developer']) == true )
-                <a href="{{ url('developers') }}">Developers</a>
+                <a href="{{ url('developers') }}">{{ __('Developers') }}</a>
             @endif
 
-            <a href="{{ url('contact') }}">Contact</a>
+            <a href="{{ url('contact') }}">{{ __('Contact') }}</a>
         </div>
 
         {{-- Side menu --}}
@@ -93,25 +91,25 @@
             <div class="align-self-stretch py-4 shadow menu side_panel">
 
                 <div class="d-flex flex-column">
-                    <a href="{{ url('profile') }}" class="pl-5 py-2 text-decoration-none rounded-right">
+                    <a href="{{ url('profile') }}" class="pl-5 py-2 text-decoration-none">
                         <i class="material-icons align-middle mr-2">face</i>
-                        <span class="align-middle">Profile</span>
+                        <span class="align-middle">{{ __('Profile') }}</span>
                     </a>
                 </div>
                 
                 @if ( Auth::user()->hasAnyRole(['admin', 'developer']) == true )
                     <div class="d-flex flex-column">
-                        <a href="{{ url('developers') }}" class="pl-5 py-2 text-decoration-none rounded-right">
+                        <a href="{{ url('developers') }}" class="pl-5 py-2 text-decoration-none">
                             <i class="material-icons align-middle mr-2">build</i>
-                            <span class="align-middle">Developers</span> 
+                            <span class="align-middle">{{ __('Developers') }}</span> 
                         </a>
                     </div>
                 @endif
 
                 <div class="d-flex flex-column">
-                    <a href="{{ url('contact') }}" class="pl-5 py-2 text-decoration-none rounded-right">
+                    <a href="{{ url('contact') }}" class="pl-5 py-2 text-decoration-none">
                         <i class="material-icons align-middle mr-2">question_answer</i>
-                        <span class="align-middle">Contact</span>
+                        <span class="align-middle">{{ __('Contact') }}</span>
                     </a>
                 </div>
 

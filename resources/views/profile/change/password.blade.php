@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="mb-5">
-        <h4 class="my-1">Change your {{$field}}</h4>
-        <small>Use upper and lower letters, numbers and symbols</small>
+        <h4 class="my-1">{{ __('Change your password') }}</h4>
+        <small>{{ __('Use upper and lower letters, numbers and symbols') }}</small>
     </div>
 
     @if ($errors->any())
@@ -26,19 +26,19 @@
 
                     <div class="form-group">
                         <div class="mt-4">
-                            <input name="old_password" type="text" class="form-control" placeholder="Old password" required>
+                            <input name="old_password" type="text" class="form-control" placeholder="{{ __('Old password') }}" required>
                         </div>
 
                         <div class="mt-5">
-                            <input name="password" type="text" class="form-control" placeholder="New password" required>
+                            <input name="password" type="text" class="form-control" placeholder="{{ __('New password') }}" required>
                         </div>
 
                         <div class="my-4">
-                            <input name="password_confirmation" type="text" class="form-control" placeholder="New password (again)" required>
+                            <input name="password_confirmation" type="text" class="form-control" placeholder="{{ __('New password (again)') }}" required>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Change</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Accept') }}</button>
 
                 </form>
             </div>

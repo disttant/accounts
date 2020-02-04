@@ -7,7 +7,7 @@
         <div class="card-header bg-transparent border-0 p-4">
             <img src="{{asset('img/512px.png')}}" class="align-middle mr-4" style="height: 3rem; width: 3rem;" >
             <h1 class="font-weight-light d-inline align-middle">
-                {{ __('Verify Your Email Address') }}
+                {{ __('Verify Your account') }}
             </h1>
         </div>
 

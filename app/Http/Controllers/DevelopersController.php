@@ -69,7 +69,7 @@ class DevelopersController extends Controller
         # Check if some input failed
         if ($validator->fails()) {
             return redirect('developers/apply')
-                        ->withErrors('Some field is malformed or already exists into the system')
+                        ->withErrors( $validator )
                         ->withInput();
         }
 
@@ -85,13 +85,13 @@ class DevelopersController extends Controller
 
         if ( $createDeveloper == null ){
             return redirect('developers/apply')
-                    ->withErrors( 'You have already sent a request.' )
+                    ->withErrors( __('You have already sent a request.') )
                     ->withInput();
         }
 
         if ( $createDeveloper == false ){
             return redirect('developers/apply')
-                    ->withErrors( 'We could not save the request. Try again later.' )
+                    ->withErrors( __('We could not save the request. Try again later.') )
                     ->withInput();
         }
 
@@ -100,7 +100,7 @@ class DevelopersController extends Controller
 
         # Inform the user that request has been saved
         return redirect('developers/apply')
-                    ->with('status', 'Your request has been send and will be checked by our team. You will recieve an email soon.');
+                    ->with('status', __('Your request has been sent and will be checked by our team.') );
     }
 
 

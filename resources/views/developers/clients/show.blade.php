@@ -3,13 +3,13 @@
 @section('content')
 
     <div class="mb-5">
-        <h4 class="my-1">Developers</h4>
-        <small>Show you are a god and build an app</small>
+        <h4 class="my-1">{{ __('Developers') }}</h4>
+        <small>{{ __('Show you are a god and build an app') }}</small>
     </div>
 
     <div class="my-4">
         <a href="{{ url('developers/clients/create') }}" class="btn btn-primary">
-            Create an app!
+            {{ __('Create an app!') }}
         </a>
     </div>
 
@@ -17,7 +17,7 @@
 
         @if ( count($clients) === 0 )
             <div class="alert alert-warning">
-                Click the botton and start the process.
+                {{ __('Click the botton and start the process.') }}
             </div>
         @endif
 
@@ -29,18 +29,18 @@
                     <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                         <div class="d-flex flex-column mb-3 flex-grow-1 ">
                             <div class="my-2">
-                                <div class="font-weight-bold">Application name</div>
+                                <div class="font-weight-bold">{{ __('Application name') }}</div>
                                 <div>{{ $client['name'] }}</div>
                             </div>
 
                             <div class="my-2">
-                                <div class="font-weight-bold">Data destination</div>
+                                <div class="font-weight-bold">{{ __('Data destination')  }}</div>
                                 <div>{{ $client['redirect'] }}</div>
                             </div>
 
                             <div class="my-2">
                                 <div class="font-weight-bold">
-                                    Credentials
+                                    {{ __('Credentials') }}
                                 </div>
 
                                 <div class="d-flex align-content-center">
@@ -66,7 +66,7 @@
                                     @csrf
                                     <!--@method('DELETE')-->
                                     <input type="hidden" name="id" value="{{ $client['id'] }}">
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Sure you want to delete this app?');">
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('{{ __("Sure you want to delete this app?") }}');">
                                         <i class="material-icons align-middle">delete_forever</i>
                                     </button>
                                 </form>

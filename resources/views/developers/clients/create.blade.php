@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="mb-5">
-        <h4 class="my-1">Create new app</h4>
-        <small>Be strong and make the world better</small>
+        <h4 class="my-1">{{ __('Create new app') }}</h4>
+        <small>{{ __('Be strong and make the world better') }}</small>
     </div>
 
     @if ($errors->any())
@@ -24,16 +24,16 @@
                     @csrf
                     <div class="form-group">
                         <div class="pt-4 pb-4">
-                            <input name="name" type="text" class="form-control" placeholder="App name" required>
+                            <input name="name" type="text" class="form-control" placeholder="{{ __('Application name')}}" required>
                         </div>
 
                         <div class="pb-4">
                             <input name="redirect" type="text" class="form-control" placeholder="http://valid.url/gimme/data" required>
-                            <small class="form-text text-muted">Valid URI where we will send you some sensitive data</small>
+                            <small class="form-text text-muted">{{ __('Valid URL where we will send some sensitive data')}}</small>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">Create my new app!</button>
-                    <small class="mt-4 form-text text-muted">Clicking the button means you accept our terms and conditions</small>
+                    <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
+                    <small class="mt-4 form-text text-muted">{{ __('Clicking the button means you accept our TOS and Privacy Policy') }}</small>
                 </form>
             </div>
         </li>

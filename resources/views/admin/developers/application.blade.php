@@ -26,6 +26,8 @@
     <div class="container-fluid alert alert-warning text-justify">
         <p>
             {{ __('Before accepting, be sure what you are doing.') }}
+            {{ __('The user must have verified its account.') }}
+            {{ __('Check profile looking for fake data. Allow only honest people.') }}
         </p>
 
         <strong>{{ __('User profile') }}</strong>
