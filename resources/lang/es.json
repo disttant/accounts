@@ -1,5 +1,11 @@
 {
 
+    "Read information from Adaptative service"                                   : "Leer información del servicio Adaptative",
+    "Publish information to Adaptative service"                                  : "Publicar información al servicio Adaptative",
+    "Delete information from Adaptative service"                                 : "Eliminar información del servicio Adaptative",
+
+
+
     "Authorize"                     : "Autorizar",
     "Login"                         : "Acceder",
     "Register"                      : "Registrar",
@@ -8,6 +14,8 @@
 
     "Create one"                    : "Crear una",
     "Remember Me"                   : "Recordarme",
+    "Reset Password"                : "Restablecer Contraseña",
+    "No account?"                   : "¿No tiene una cuenta?",
 
     "Name"                          : "Nombre",
     "Email"                         : "Correo electrónico",
@@ -20,29 +28,35 @@
     "Verified"                      : "Verificado",
     "Not verified"                  : "No verificado",
     "Pending"                       : "Pendiente",
-    "Accept"                        : "Aceptar",
-    "Decline"                       : "Rechazar",
-    "Entity"                        : "Entidad",
-    "Contact"                       : "Contacto",
-    "Create"                        : "Crear",
-    "Profile"                       : "Perfil",
-    "Sign in"                       : "Entrar",
-    "Sign up"                       : "Registrarse",
-    "Cancel"                        : "Cancelar",
-    "Logout"                        : "Desconectarse",
     "Message"                       : "Mensaje",
     "Old password"                  : "Antigua contraseña",
     "New password"                  : "Nueva contraseña",
     "New password (again)"          : "Nueva contraseña (de nuevo)",
-    "Developers"                    : "Desarrolladores",
-    "and"                           : "y",
-    "Other things"                  : "Otras cosas",
     "Entire name"                   : "Nombre completo",
     "Account type"                  : "Tipo de cuenta",
     "Credentials"                   : "Credenciales",
     "Verification"                  : "Verificación",
-    "Reset Password"                : "Restablecer Contraseña",
-    "No account?"                   : "¿No tiene una cuenta?",
+    "Other things"                  : "Otras cosas",
+
+    "Profile"                       : "Perfil",
+    "Contact"                       : "Contacto",
+    "Entity"                        : "Entidad",
+
+    "Accept"                        : "Aceptar",
+    "Decline"                       : "Rechazar",
+    "Create"                        : "Crear",
+    "Sign in"                       : "Entrar",
+    "Sign up"                       : "Registrarse",
+    "Cancel"                        : "Cancelar",
+    "Logout"                        : "Desconectarse",
+    
+    "Developers"                    : "Desarrolladores",
+    "and"                           : "y",
+    
+    "Hello!"                        : "¡Hola!",
+    "Regards"                       : "Saludos",
+    "Approved"                      : "Aprobada",
+    "Declined"                      : "Rechazada",
 
 
 
@@ -58,9 +72,6 @@
     "Send me a reset link"                                                       : "Enviar restablecimiento",
     "is requesting permission to access your account."                           : "está solicitando permiso para acceder a tu cuenta",
     "This application will be able to"                                           : "Esta aplicación será capaz de",
-    "Read information from Adaptative service"                                   : "Leer información del servicio Adaptative",
-    "Publish information to Adaptative service"                                  : "Publicar información al servicio Adaptative",
-    "Delete information from Adaptative service"                                 : "Eliminar información del servicio Adaptative",
     "Developer application confirmation"                                         : "Confirmación de solicitud de desarrollador",
     "Be smart and make the world better"                                         : "Se inteligente y haz el mundo mejor",
     "User profile"                                                               : "Perfil de usuario",
@@ -118,7 +129,22 @@
     "You received this email because we received a password reset request."      : "Recibiste este correo porque recibimos una solicitud para restablecer la contraseña",
     "This password reset link will expire in :count minutes."                    : "Este enlace para restablecer la contraseña expirará en :count minutes",
     "If you did not request a password reset, no further action is required."    : "Si no solicitaste un restablecimiento de contraseña, no se requiere ninguna acción",
-    "Regards"                                                                    : "Saludos",
-    "Hello!"                                                                     : "¡Hola!"
+    "You asked us for being developer and this is a hand made process."          : "Nos pediste ser desarrollador y éste es un proceso hecho a mano.",
+    "We inspect each request in order to keep our high quality standards."       : "Inspeccionamos cada solicitud para mantener nuestros altos estándares de calidad.",
+    "As a developer, you accepted our TOS and our Privacy Policy,"               : "Como desarrollador, aceptaste nuestos Términos de Servicio y nuestra Política de Privacidad,",
+    "and sent us some data that can not be changed because of the verification." : "y nos enviaste algunos datos que no pueden ser cambiados debido a la verificación.",
+    "Your developing application has been: :result"                              : "Tu solicitud de desarrollo ha sido: :result",
+    "As we said before, there is a person behing each developing application"    : "Como dijimos anteriormente, hay una persona detrás de cada solicitud de desarrollador",
+    "so we check all requests by hand."                                          : "así que revisamos todas las peticiones a mano",
+    "Because we love your effort, asked our team to send you a message"          : "Porque nos encanta tu esfuerzo, pedimos a nuestro equipo que te enviase un mensaje",
+    "giving information about the status of the application and why."            : "dando información sobre el estado de la solicitud y por qué.",
+    "So the following words are just for you:"                                   : "Así que las siguientes palabras son sólo para ti:",
+    "Thank you for using our services!"                                          : "¡Gracias por usar nuestros servicios!",
+    "Developer application"                                                      : "Solicitud de desarrollador",
+    "A user has applied to be a developer into the platform."                    : "Un usuario ha solicitado ser desarrollador en la plataforma.",
+    "Please, click the link below to enter and see the information about it."    : "Por favor, haz click en el enlace siguiente y mira la información sobre ello.",
+    "For security reasons, it is not possible to show it into this email."       : "Por razones de seguridad, no es posible mostrarla en este correo.",
+    "Make a decition"                                                            : "Toma una decisión",
+    "Be careful and make a good decition."                                       : "Ten cuidado y toma una buena decisión."
     
 }

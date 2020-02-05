@@ -10,10 +10,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
-//use \GuzzleHttp\Client;
 
-use App\Mail\DevelopersApplicationRequest;
+use Notification;
+use App\Notifications\DeveloperApplicacionRequest as DeveloperApplicacionRequest;
+
+//use Illuminate\Support\Facades\Mail;
+//use App\Mail\DevelopersApplicationRequest;
+
+//use \GuzzleHttp\Client;
 
 
 
@@ -96,7 +100,8 @@ class DevelopersController extends Controller
         }
 
         # Send an email to the administration email
-        Mail::to( config('mail.admin.address') )->send(new DevelopersApplicationRequest ( $createDeveloper ) );
+        Notification::route('mail', config('mail.admin.address') )
+            ->notify(new DeveloperApplicacionRequest($createDeveloper));
 
         # Inform the user that request has been saved
         return redirect('developers/apply')
@@ -146,10 +151,6 @@ class DevelopersController extends Controller
      */
     public function createClient( Request $request )
     {
-        #return $request->root();
-        #return request()->getHttpHost();
-        #return request()->getHost();
-        #return URL::current();
 
         # Set authorized roles for this actions
         Auth::user()->authorizeRoles(['admin', 'developer']);
@@ -169,10 +170,6 @@ class DevelopersController extends Controller
 
         # let the framework handle the request
         $response = app()->handle($newRequest);
-        
-        #$response->getStatusCode();
-        #$response->getContent();
-        #$clients = json_decode( $response->getContent(), true );
 
         return redirect($request->root() . '/developers/clients/show');
     }
@@ -201,9 +198,6 @@ class DevelopersController extends Controller
 
         # let the framework handle the request
         $response = app()->handle($newRequest);
-        
-        #$response->getStatusCode();
-        #$response->getContent();
 
         return redirect($request->root() . '/developers/clients/show');
     }

@@ -7,6 +7,7 @@ use App\RoleUser as RoleUser;
 
 use App\Notifications\CustomResetPassword;
 use App\Notifications\CustomVerifyEmail;
+use App\Notifications\DeveloperApplicacionResult;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -70,12 +71,23 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Send the email verification notification.
      *
-     * @param  string  $token
      * @return void
      */
     public function sendEmailVerificationNotification()
     {
         $this->notify(new CustomVerifyEmail);
+    }
+
+
+
+    /**
+     * Send the notification about the developer applicacion result.
+     *
+     * @return void
+     */
+    public function sendDeveloperApplicacionResultNotification( $result, $message )
+    {
+        $this->notify(new DeveloperApplicacionResult( $result, $message ) );
     }
 
 

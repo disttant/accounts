@@ -34,6 +34,8 @@ Route::get('/home', function () {
 
 Route::get('/test', function () {
 
+    //return App::call('App\Http\Controllers\TestController@test');
+
     # Sending an email
     //Mail::to( config('mail.from.address') )->send(new DeveloperApplication());
 
@@ -44,7 +46,13 @@ Route::get('/test', function () {
     #http://accounts.dalher.net/oauth/authorize?redirect_uri=http://google.es/gimme&client_id=1&scope=adaptative_r%20adaptative_w%20adaptative_d&response_type=token&state=pxsnrnj48l9dvfhaomb525ahhxt8w4kn
     return view('vendor/passport/authorize', []);
     */
-                
+
+    # Testing notification view
+    //return (new App\Notifications\TestNotification())->toMail(Auth::user());
+
+    # Send a notification
+    //App\User::sendTestNotification();
+    //Notification::send( Auth::user(), new TestNotification() );
 });
 
 

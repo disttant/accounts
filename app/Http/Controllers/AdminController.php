@@ -8,9 +8,9 @@ use App\Developer as Developer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
 
-use App\Mail\DevelopersApplicationResponse;
+//use Illuminate\Support\Facades\Mail;
+//use App\Mail\DevelopersApplicationResponse;
 
 
 
@@ -39,7 +39,6 @@ class AdminController extends Controller
 
         # Developer not found
         return abort(404);
-
     }
 
 
@@ -65,41 +64,45 @@ class AdminController extends Controller
                     ->withInput();
         }
 
+        # Save the user_id assotiated to this developer
+        $user_id = Developer::GetProfile($developer_id)->user_id;
+
         # Process the application
         if ($request->has('decline')) {
             
             # Delete developer info from database
             if( Developer::RemoveOne( $developer_id ) == false ){
                 return back()
-                        ->withErrors('Developer could not be removed')
+                        ->withErrors(__('Developer could not be removed'))
                         ->withInput();
             }
 
-            # Send the user an email giving information
-            Mail::to( User::GetProfile(Developer::GetProfile($developer_id)->user_id)->email )
-                ->send(new DevelopersApplicationResponse ( false, $request->message ) );
-
+            # Set the approval status
+            $applicationResult = __('Declined');
         }
 
         # Process the application
         if ($request->has('accept')) {
             
             # Add a new role for that user
-            if( User::SetRole('developer', Developer::GetProfile($developer_id)->user_id ) == false ){
+            if( User::SetRole('developer', $user_id ) == false ){
                 return back()
                         ->withErrors( __('User could not switch to developer') )
                         ->withInput();
             }
 
-            # Send the user an email giving information
-            Mail::to( User::GetProfile(Developer::GetProfile($developer_id)->user_id)->email )
-                ->send(new DevelopersApplicationResponse ( true, $request->message ) );
-
+            # Set the approval status
+            $applicationResult = __('Approved');
         }
+
+        # Send the user an email giving information
+        User::GetProfile($user_id)
+            ->sendDeveloperApplicacionResultNotification( $applicationResult, $request->message );
 
         # Inform the user that request has been saved
         return back()->with('status', __('Application has been processed successfully') );
-
     }
+
+
 
 }
