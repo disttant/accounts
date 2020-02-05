@@ -7,7 +7,7 @@
         <div class="card-header bg-transparent border-0 p-4">
             <img src="{{asset('img/512px.png')}}" class="align-middle mr-4" style="height: 3rem; width: 3rem;" >
             <h1 class="font-weight-light d-inline align-middle">
-                {{ __('Confirm Password') }}
+                {{ __('Reset') }}
             </h1>
         </div>
 
@@ -21,7 +21,7 @@
                     <div class="col-md-4 col-form-label text-md-right"></div>
 
                     <div class="col-md-6">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}">
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">

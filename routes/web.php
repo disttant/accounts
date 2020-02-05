@@ -44,6 +44,7 @@ Route::get('/test', function () {
     #http://accounts.dalher.net/oauth/authorize?redirect_uri=http://google.es/gimme&client_id=1&scope=adaptative_r%20adaptative_w%20adaptative_d&response_type=token&state=pxsnrnj48l9dvfhaomb525ahhxt8w4kn
     return view('vendor/passport/authorize', []);
     */
+                
 });
 
 

@@ -84,7 +84,7 @@ img {
 /* Layout */
 
 .wrapper {
-    background-color: #f8fafc;
+    background-color: #fff;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -105,24 +105,40 @@ img {
 /* Header */
 
 .header {
-    padding: 25px 0;
     text-align: center;
+    /*background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);*/
+}
+
+.inner-header {
+    margin: 0 auto;
+    padding: 25px;
+    width: 570px;
+    text-align: left;
+    border-bottom: 1px solid #edeff2;
+}
+
+.inner-header div {
+    display: inline-block;
+}
+
+.header img {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 1rem 0 0;
 }
 
 .header a {
-    color: #bbbfc3;
-    font-size: 19px;
-    font-weight: bold;
+    color: #000;
+    font-size: 2rem;
+    /*font-weight: bold;*/
     text-decoration: none;
-    text-shadow: 0 1px 0 white;
 }
+
 
 /* Body */
 
 .body {
     background-color: #ffffff;
-    border-bottom: 1px solid #edeff2;
-    border-top: 1px solid #edeff2;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -222,11 +238,14 @@ img {
 
 .button-blue,
 .button-primary {
-    background-color: #3490dc;
+    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+    padding: 0.5rem;
+
+    /*background-color: #3490dc;
     border-top: 10px solid #3490dc;
     border-right: 18px solid #3490dc;
     border-bottom: 10px solid #3490dc;
-    border-left: 18px solid #3490dc;
+    border-left: 18px solid #3490dc;*/
 }
 
 .button-green,

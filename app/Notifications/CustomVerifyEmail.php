@@ -48,6 +48,7 @@ class CustomVerifyEmail extends Notification
 
         return (new MailMessage)
             ->subject( __('Verify your account') )
+            ->greeting( __('Hello!') )
             ->line( __('Please click the button below to verify your account.') )
             ->action( __('Verify your account'), $verificationUrl)
             ->line( __('If you did not create an account, no further action is required.') );
