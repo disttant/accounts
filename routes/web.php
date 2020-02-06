@@ -31,46 +31,26 @@ Route::get('/home', function () {
     return redirect('/');
 });
 
-
 Route::get('/test', function () {
 
-    //return App::call('App\Http\Controllers\TestController@test');
-
-    # Sending an email
-    //Mail::to( config('mail.from.address') )->send(new DeveloperApplication());
-
-    # Testing a mail view
-    //return new App\Mail\DevelopersApplicationResponse;
-
-    /*
-    #http://accounts.dalher.net/oauth/authorize?redirect_uri=http://google.es/gimme&client_id=1&scope=adaptative_r%20adaptative_w%20adaptative_d&response_type=token&state=pxsnrnj48l9dvfhaomb525ahhxt8w4kn
-    return view('vendor/passport/authorize', []);
-    */
-
-    # Testing notification view
-    //return (new App\Notifications\TestNotification())->toMail(Auth::user());
-
-    # Send a notification
-    //App\User::sendTestNotification();
-    //Notification::send( Auth::user(), new TestNotification() );
 });
 
 
 
 /* 
  *
- *  Routes for profiles forms and actions
+ *  Routes for public contracts
  * 
  */
 Route::prefix('contracts')->group(function () {
 
     Route::get('/tos', function(){
         return view('contracts/tos');
-    })->name('tos');
+    });
 
     Route::get('/privacy', function(){
         return view('contracts/privacy');
-    })->name('privacy');
+    });
 
 });
 
@@ -84,8 +64,8 @@ Route::prefix('contracts')->group(function () {
 Route::prefix('profile')->middleware(['auth'])->group(function () {
 
     Route::get('/', function(){
-        return redirect('/profile/show');
-    })->name('profile');
+        return redirect('profile/show');
+    });
 
     Route::get('/show', 'ProfileController@show');
 
@@ -100,18 +80,14 @@ Route::prefix('profile')->middleware(['auth'])->group(function () {
         }
 
         # The field is not acceptable, redirect
-        return redirect('profile');
+        return redirect('profile/show');
     });
 
     Route::post('/change/password', function () {
-
-        # Check if the field is acceptable
         return App::call('App\Http\Controllers\ProfileController@updatePassword');
     });
 
     Route::post('/change/name', function () {
-
-        # Check if the field is acceptable
         return App::call('App\Http\Controllers\ProfileController@updateName');
     });
 
@@ -125,7 +101,6 @@ Route::prefix('profile')->middleware(['auth'])->group(function () {
  * 
  */
 Route::prefix('developers')->middleware(['auth'])->group(function () {
-    ## ->middleware(['auth', 'verified'])
 
     Route::get('/', function () {
         return redirect('/developers/clients/show');
@@ -141,7 +116,7 @@ Route::prefix('developers')->middleware(['auth'])->group(function () {
 
     Route::get('/clients/show', function () {
         return App::call('App\Http\Controllers\DevelopersController@showClients');
-    })->name('clients');
+    });
     
     Route::get('/clients/create', function () {
         return App::call('App\Http\Controllers\DevelopersController@showNewClientForm');
@@ -172,7 +147,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
     Route::get('/developers/application/{developer_id}', function ($developer_id) {
         return App::call('App\Http\Controllers\AdminController@showDeveloperApplicationForm', ['developer_id' => $developer_id]);
-    })->name('admin.developers.application');
+    });
 
     Route::post('/developers/application/{developer_id}', function ($developer_id) {
         return App::call('App\Http\Controllers\AdminController@ProcessDeveloperApplication', ['developer_id' => $developer_id]);

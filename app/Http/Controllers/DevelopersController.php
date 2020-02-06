@@ -62,20 +62,18 @@ class DevelopersController extends Controller
         Auth::user()->authorizeRoles(['admin', 'user']);
 
         # Validate the form
-        $validator = Validator::make($request->all(), [
-            'name'      => 'required|string|max:100',
-            'document'  => 'required|alpha_num|unique:developers,document|max:20',
-            'email'     => 'required|email|unique:developers,email|max:100',
-            'phone'     => 'required|unique:developers,phone|max:20',
-            'summary'   => 'required|string|max:200'
+        $validatedData = $request->validate([
+            'name'      => ['required', 'string', 'max:100'],
+            'document'  => ['required', 'alpha_num', 'unique:developers,document', 'max:20'],
+            'email'     => ['required', 'email', 'unique:developers,email', 'max:100'],
+            'phone'     => [
+                'required', 
+                'unique:developers,phone', 
+                'max:20', 
+                'regex:/^[\+]?[(]?[0-9]{1,3}[)]?[-\s\.]?[0-9]{2,3}([-\s\.]?[0-9]{2,3})+$/i'
+            ],
+            'summary'   => ['required', 'string', 'max:200'],
         ]);
-
-        # Check if some input failed
-        if ($validator->fails()) {
-            return redirect('developers/apply')
-                        ->withErrors( $validator )
-                        ->withInput();
-        }
 
         # Save the developer in the database
         $createDeveloper = Developer::Create(
@@ -157,7 +155,7 @@ class DevelopersController extends Controller
 
         # Validate the form
         $data = $request->validate([
-            'name'      => ['required', 'string'],
+            'name'      => ['required', 'string', 'max:255'],
             'redirect'  => ['required', 'url']
         ]);
 
@@ -192,7 +190,7 @@ class DevelopersController extends Controller
         ]);
 
         # Request the data
-        $newRequest = Request::create('/oauth/clients/'.$data['id'], 'delete',[
+        $newRequest = Request::create('/oauth/clients/'.$data['id'], 'delete', [
             '_token'    =>  $request->_token
         ]);
 

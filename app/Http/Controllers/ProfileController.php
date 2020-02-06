@@ -65,19 +65,19 @@ class ProfileController extends Controller
         # Validate the form
         $data = $request->validate([
             'old_password' => ['required', 'string'],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            'password'     => ['required', 'string', 'min:8', 'confirmed']
         ]);
         
         # Check if old password is right
         if ( !Hash::check($data['old_password'], $profile->password) ){
-            return redirect('profile');
+            return redirect('profile/show');
         }
 
         # Change and save new data
         $profile->password = Hash::make($data['password']);
         $profile->save();
 
-        return redirect('profile');
+        return redirect('profile/show');
     }
 
 
@@ -96,14 +96,14 @@ class ProfileController extends Controller
 
         # Validate the form
         $data = $request->validate([
-            'name' => ['required', 'string', 'min:8']
+            'name' => ['required', 'string', 'max:255']
         ]);
 
         # Change and save new data
         $profile->name = $data['name'];
         $profile->save();
 
-        return redirect('profile');
+        return redirect('profile/show');
     }
 
 
