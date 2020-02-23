@@ -23,7 +23,7 @@ class OauthClientsTableSeeder extends Seeder
         $client->redirect                     = 'http://adaptative.alke.systems/?g=gimme';
         $client->personal_access_client       = false;
         $client->password_client              = false;
-        $client->revoken                      = false;
+        $client->revoked                      = false;
         $client->save();
 
     }
