@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         $role = new User();
         $role->name      = 'admin';
         $role->email     = 'admin@alkesystems.es';
-        $role->password  = '$2y$10$aROeZxqiW09Kqx0iX2oMI.Y4aEQVOFFRX22kZsr24cRYi2Ocr1/nC';
+        $role->password  = '$2y$10$wjYoKUVOLNAdvLc5m5a5f.JDT/YwrAbaLonvG7jnj83e2xMDfB.N2';
         $role->save();
     }
 }
