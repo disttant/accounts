@@ -66,8 +66,8 @@
                                     @csrf
                                     <!--@method('DELETE')-->
                                     <input type="hidden" name="id" value="{{ $client['id'] }}">
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('{{ __("Sure you want to delete this app?") }}');">
-                                        <i class="material-icons align-middle">delete_forever</i>
+                                    <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to delete this app?") }}');">
+                                        {{ __('Delete') }}
                                     </button>
                                 </form>
                                 

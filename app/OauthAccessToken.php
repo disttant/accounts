@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OauthClient extends Model
+class OauthAccessToken extends Model
 {
 
     /**
@@ -12,20 +12,19 @@ class OauthClient extends Model
      *
      * @var string
      */
-    protected $table = 'oauth_clients';
+    protected $table = 'oauth_access_tokens';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [ 
+    protected $fillable = [
+        'id',
         'user_id',
+        'client_id',
         'name',
-        'secret',
-        'redirect',
-        'personal_access_client',
-        'password_client',
+        'scopes',
         'revoked'
     ];
 

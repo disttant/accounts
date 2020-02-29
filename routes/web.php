@@ -97,6 +97,24 @@ Route::prefix('profile')->middleware(['auth'])->group(function () {
 
 /* 
  *
+ *  Routes for authorization forms and actions
+ * 
+ */
+Route::prefix('authorizations')->middleware(['auth'])->group(function () {
+
+    Route::get('/', function(){
+        return redirect('authorizations/show');
+    });
+
+    Route::get('/show', 'AuthorizationsController@showAuthorizedClients');
+
+});
+
+
+
+
+/* 
+ *
  *  Routes for developers only forms and actions
  * 
  */

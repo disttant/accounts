@@ -4,6 +4,9 @@ namespace App;
 
 use App\Role as Role;
 use App\RoleUser as RoleUser;
+//use App\OauthClient as OauthClient;
+use App\OauthAccessToken as OauthAccessToken;
+//use App\OauthRefreshToken as OauthRefreshToken;
 
 use App\Notifications\CustomResetPassword;
 use App\Notifications\CustomVerifyEmail;
@@ -13,6 +16,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -213,4 +218,28 @@ class User extends Authenticatable implements MustVerifyEmail
         return true;
 
     }
+
+
+
+    /* *
+     *
+     *  Get a list of user authorized oauth clients
+     *
+     * */
+    public static function getAuthorizedClients( int $userId )
+    {
+        return DB::table('oauth_access_tokens')
+                    ->join('oauth_clients', 'oauth_access_tokens.client_id', '=', 'oauth_clients.id')
+                    ->select('oauth_clients.id', 'oauth_clients.name')
+                    ->where('oauth_access_tokens.user_id' , $userId)
+                    ->where('oauth_clients.revoked', false)
+                    ->groupBy('oauth_clients.id')
+                    ->orderBy('oauth_clients.name')
+                    ->get();
+    }
+
+
+
+
+
 }
