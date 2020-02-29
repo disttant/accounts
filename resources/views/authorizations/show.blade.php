@@ -4,15 +4,18 @@
 
     <div class="mb-5">
         <h4 class="my-1">{{ __('Authorizations') }}</h4>
-        <small>{{ __('Do NOT authorize too much fake buddies, dude!')}}</small>
+        <small>{{ __('Be careful with the apps you allow access your data!') }}</small>
     </div>
 
-    <!--<div class="alert alert-warning" role="alert">
-        Here you can revoke permissions to third party applications
-        @php
-            //var_dump( Laravel\Passport\Passport::scopes() );
-        @endphp
-    </div>-->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <ul class="list-group">
 
@@ -28,14 +31,22 @@
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">
-                        <a href="{{ url('authorizations/revoke/' . $client->id) }}" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to revoke permissions to this application?") }}');">
-                            {{ __('Revoke') }}
-                        </a>
+
+                        <form action="{{ url('authorizations/revoke') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $client->id }}">
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to revoke all permissions for this application?") }}');">
+                                {{ __('Revoke') }}
+                            </button>
+                        </form>
+
                     </div>
                 </div>
             </div>
         @empty
-            <p>No authorizations given</p>
+            <div class="alert alert-warning">
+                {{ __('There are no authorized applications to access your data yet') }}
+            </div>
         @endforelse
 
     </ul>

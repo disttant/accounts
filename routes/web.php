@@ -108,6 +108,8 @@ Route::prefix('authorizations')->middleware(['auth'])->group(function () {
 
     Route::get('/show', 'AuthorizationsController@showAuthorizedClients');
 
+    Route::post('/revoke', 'AuthorizationsController@revokeAuthorizedClient');
+
 });
 
 

@@ -39,6 +39,8 @@
     "Other things"                  : "Otras cosas",
 
     "Profile"                       : "Perfil",
+    "Authorizations"                : "Autorizaciones",
+    "Developers"                    : "Desarrolladores",
     "Contact"                       : "Contacto",
     "Entity"                        : "Entidad",
 
@@ -49,8 +51,11 @@
     "Sign up"                       : "Registrarse",
     "Cancel"                        : "Cancelar",
     "Logout"                        : "Desconectarse",
+    "Revoke"                        : "Revocar",
+    "Delete"                        : "Eliminar",
+    "Remove"                        : "Eliminar",
     
-    "Developers"                    : "Desarrolladores",
+    
     "and"                           : "y",
     
     "Hello!"                        : "¡Hola!",
@@ -145,6 +150,10 @@
     "Please, click the link below to enter and see the information about it."    : "Por favor, haz click en el enlace siguiente y mira la información sobre ello.",
     "For security reasons, it is not possible to show it into this email."       : "Por razones de seguridad, no es posible mostrarla en este correo.",
     "Make a decition"                                                            : "Toma una decisión",
-    "Be careful and make a good decition."                                       : "Ten cuidado y toma una buena decisión."
+    "Be careful and make a good decition."                                       : "Ten cuidado y toma una buena decisión.",
+    "Something went wrong revoking all permissions to that application"          : "Se produjo un error al revocar todos los permisos de esa aplicación.",
+    "Be careful with the apps you allow access your data!"                       : "¡Ten cuidado con las aplicaciones que permites acceder a tus datos!",
+    "Sure you want to revoke all permissions for this application?"              : "¿Seguro que quieres revocar todos los permisos para esta aplicación?",
+    "There are no authorized applications to access your data yet"               : "Todavía no hay aplicaciones autorizadas para acceder a sus datos."
     
 }
