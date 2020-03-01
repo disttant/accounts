@@ -105,8 +105,8 @@ RUN touch /var/www/.env
 RUN cd /var/www && composer dump-autoload
 
 # Applying configurations
-RUN php /var/www/artisan key:generate
-RUN php /var/www/artisan passport:keys
+RUN php /var/www/artisan key:generate --force
+RUN php /var/www/artisan passport:keys --force
 RUN php /var/www/artisan config:cache
 #RUN php /var/www/artisan migrate --quiet --no-interaction
 #RUN php /var/www/artisan db:seed --quiet --no-interaction
