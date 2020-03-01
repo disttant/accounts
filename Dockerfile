@@ -134,6 +134,7 @@ RUN echo "/bin/bash" >> /init.sh
 RUN chown root:root /init.sh
 RUN chmod +x /init.sh
 EXPOSE 9000
-# CMD ["service", "php7.3-fpm", "start"]
+RUN ls -l /
+RUN cat /init.sh
 CMD /init.sh
 
