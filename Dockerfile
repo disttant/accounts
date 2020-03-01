@@ -3,7 +3,6 @@ FROM achetronic/laravel-php:1.0
 
 
 #### LARAVEL PRE-STEPS
-
 # Getting environment variables
 ENV APP_VENDOR=Company
 ENV APP_NAME=Product
@@ -102,12 +101,6 @@ RUN touch /var/www/.env
 # Setting the configurations values for Laravel
 RUN cd /var/www && composer dump-autoload
 
-# Applying configurations
-#RUN php /var/www/artisan key:generate --force
-#RUN php /var/www/artisan passport:keys --force
-#RUN php /var/www/artisan migrate --quiet --no-interaction
-#RUN php /var/www/artisan db:seed --quiet --no-interaction
-
 # Deleting system temporary packages
 RUN apt-get purge -y -qq --force-yes composer git zip unzip php7.3-zip > /dev/null
 
@@ -131,7 +124,5 @@ RUN echo "/bin/bash" >> /init.sh
 RUN chown root:root /init.sh
 RUN chmod +x /init.sh
 EXPOSE 9000
-RUN ls -l /
-RUN cat /init.sh
 CMD /init.sh
 
