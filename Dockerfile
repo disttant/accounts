@@ -90,7 +90,7 @@ RUN mkdir -p /var/www/database/seeds
 RUN mkdir -p /var/www/database/factories
 
 # Defining which packages Composer will install
-RUN cp /tmp/laravel/composer.lock /var/www/composer.lock
+#RUN cp /tmp/laravel/composer.lock /var/www/composer.lock
 RUN cp /tmp/laravel/composer.json /var/www/composer.json
 
 # Please, Composer, install them
@@ -108,8 +108,8 @@ RUN cd /var/www && composer dump-autoload
 RUN php /var/www/artisan key:generate --quiet --no-interaction
 RUN php /var/www/artisan passport:keys --quiet --no-interaction
 RUN php /var/www/artisan config:cache --quiet --no-interaction
-RUN php /var/www/artisan migrate --quiet --no-interaction
-RUN php /var/www/artisan db:seed --quiet --no-interaction
+#RUN php /var/www/artisan migrate --quiet --no-interaction
+#RUN php /var/www/artisan db:seed --quiet --no-interaction
 
 # Deleting system temporary packages
 RUN apt-get purge -y -qq --force-yes composer git zip unzip php7.3-zip > /dev/null
