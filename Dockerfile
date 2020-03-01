@@ -91,7 +91,7 @@ RUN mkdir -p /var/www/database/seeds
 RUN mkdir -p /var/www/database/factories
 
 # Defining which packages Composer will install
-#RUN cp /tmp/laravel/composer.lock /var/www/composer.lock
+RUN cp /tmp/laravel/composer.lock /var/www/composer.lock
 RUN cp /tmp/laravel/composer.json /var/www/composer.json
 
 # Please, Composer, install them
@@ -127,8 +127,13 @@ RUN find /var/www -type d -exec chmod 755 {} \;
 
 #### FINAL OPERATIONS
 #COPY docker-files/init.sh /init.sh
-#RUN chown root:root /init.sh
-#RUN chmod +x /init.sh
+RUN touch /init.sh
+RUN echo "#!/bin/bash" >> /init.sh
+RUN echo "service php7.3-fpm start" >> /init.sh
+RUN echo "/bin/bash" >> /init.sh
+RUN chown root:root /init.sh
+RUN chmod +x /init.sh
 EXPOSE 9000
-#CMD /init.sh
-CMD ["service", "php7.3-fpm", "start"]
+# CMD ["service", "php7.3-fpm", "start"]
+CMD /init.sh
+
