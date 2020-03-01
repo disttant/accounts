@@ -99,7 +99,7 @@ RUN composer install -d /var/www --no-dev --no-scripts
 # Moving Laravel to the right place
 RUN cp -r /tmp/laravel/* /var/www
 RUN rm -rf /tmp/laravel
-RUN touch /var/www/.env
+#RUN touch /var/www/.env
 
 # Setting the configurations values for Laravel
 RUN cd /var/www && composer dump-autoload
@@ -107,7 +107,7 @@ RUN cd /var/www && composer dump-autoload
 # Applying configurations
 #RUN php /var/www/artisan key:generate --force
 #RUN php /var/www/artisan passport:keys --force
-RUN php /var/www/artisan config:cache
+#RUN php /var/www/artisan config:cache
 #RUN php /var/www/artisan migrate --quiet --no-interaction
 #RUN php /var/www/artisan db:seed --quiet --no-interaction
 
