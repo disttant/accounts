@@ -105,7 +105,6 @@ RUN cd /var/www && composer dump-autoload
 # Applying configurations
 #RUN php /var/www/artisan key:generate --force
 #RUN php /var/www/artisan passport:keys --force
-#RUN php /var/www/artisan config:cache
 #RUN php /var/www/artisan migrate --quiet --no-interaction
 #RUN php /var/www/artisan db:seed --quiet --no-interaction
 
@@ -124,9 +123,10 @@ RUN find /var/www -type d -exec chmod 755 {} \;
 
 #### FINAL OPERATIONS
 #COPY docker-files/init.sh /init.sh
-RUN touch /init.sh
+RUN rm -rf /init.sh && touch /init.sh
 RUN echo "#!/bin/bash" >> /init.sh
 RUN echo "service php7.3-fpm start" >> /init.sh
+RUN echo "php /var/www/artisan config:cache" >> /init.sh
 RUN echo "/bin/bash" >> /init.sh
 RUN chown root:root /init.sh
 RUN chmod +x /init.sh
