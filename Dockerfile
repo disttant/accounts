@@ -115,7 +115,6 @@ RUN find /var/www -type d -exec chmod 755 {} \;
 
 
 #### FINAL OPERATIONS
-#COPY docker-files/init.sh /init.sh
 RUN rm -rf /init.sh && touch /init.sh
 RUN echo "#!/bin/bash" >> /init.sh
 RUN echo "service php7.3-fpm start" >> /init.sh
