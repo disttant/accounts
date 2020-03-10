@@ -82,24 +82,27 @@ RUN mkdir -p /tmp/laravel
 COPY . /tmp/laravel/
 
 # Create needed folders for composer autoloader optimization
-RUN mkdir -p /var/www/database
-RUN mkdir -p /var/www/database/seeds
-RUN mkdir -p /var/www/database/factories
+# RUN mkdir -p /var/www/database
+# RUN mkdir -p /var/www/database/seeds
+# RUN mkdir -p /var/www/database/factories
+RUN mkdir -p /app/database
+RUN mkdir -p /app/database/seeds
+RUN mkdir -p /app/database/factories
 
 # Defining which packages Composer will install
-RUN cp /tmp/laravel/composer.lock /var/www/composer.lock
-RUN cp /tmp/laravel/composer.json /var/www/composer.json
+RUN cp /tmp/laravel/composer.lock /app/composer.lock
+RUN cp /tmp/laravel/composer.json /app/composer.json
 
 # Please, Composer, install them
-RUN composer install -d /var/www --no-dev --no-scripts
+RUN composer install -d /app --no-dev --no-scripts
 
 # Moving Laravel to the right place
-RUN cp -r /tmp/laravel/* /var/www
+RUN cp -r /tmp/laravel/* /app
 RUN rm -rf /tmp/laravel
-RUN touch /var/www/.env
+RUN touch /app/.env
 
 # Setting the configurations values for Laravel
-RUN cd /var/www && composer dump-autoload
+RUN cd /app && composer dump-autoload
 
 # Deleting system temporary packages
 RUN apt-get purge -y -qq --force-yes composer git zip unzip php7.3-zip > /dev/null
@@ -108,9 +111,9 @@ RUN apt-get purge -y -qq --force-yes composer git zip unzip php7.3-zip > /dev/nu
 RUN apt-get -y -qq --force-yes autoremove > /dev/null
 
 # Changing permissions of the entire Laravel
-RUN chown www-data:www-data -R /var/www/
-RUN find /var/www -type f -exec chmod 644 {} \;
-RUN find /var/www -type d -exec chmod 755 {} \;
+RUN chown www-data:www-data -R /app
+RUN find /app -type f -exec chmod 644 {} \;
+RUN find /app -type d -exec chmod 755 {} \;
 
 
 
@@ -118,7 +121,8 @@ RUN find /var/www -type d -exec chmod 755 {} \;
 RUN rm -rf /init.sh && touch /init.sh
 RUN echo "#!/bin/bash" >> /init.sh
 RUN echo "service php7.3-fpm start" >> /init.sh
-RUN echo "php /var/www/artisan config:cache" >> /init.sh
+RUN echo "php /app/artisan config:cache" >> /init.sh
+RUN echo "cp -rs /app /var/www/" >> /init.sh
 RUN echo "/bin/bash" >> /init.sh
 RUN chown root:root /init.sh
 RUN chmod +x /init.sh
