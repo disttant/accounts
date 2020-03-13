@@ -35,8 +35,8 @@ ENV MAIL_FROM_NAME=Company
 ENV MAIL_FROM_ADDRESS=noreply@company.com
 ENV MAIL_ADMIN_NAME=Company
 ENV MAIL_ADMIN_ADDRESS=admin@company.es
-ENV PASSPORT_PRIVATE_KEY=-----BEGIN RSA PRIVATE KEY----- <private key here> -----END RSA PRIVATE KEY-----
-ENV PASSPORT_PUBLIC_KEY=-----BEGIN RSA PUBLIC KEY----- <public key here> -----END RSA PUBLIC KEY-----
+ENV PASSPORT_PRIVATE_KEY=base64:VNt8gej2A8sd28UwNv40focB3QOoH7JofjuAsrds98rasUeNY=
+ENV PASSPORT_PUBLIC_KEY=base64:VNt8gej2A8sd28UwNv40focB3QOoH7JofjuAsrds98rasUeNY=
 
 # Setting environment variables
 RUN export APP_VENDOR=$APP_VENDOR && \
