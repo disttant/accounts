@@ -42,6 +42,9 @@ class AuthServiceProvider extends ServiceProvider
         # Registering the routes for OAuth
         Passport::routes();
 
+        # Load OAuth keys from specific folder
+        # Passport::loadKeysFrom('/secret-keys/oauth');
+
         # Setting life time for tokens
         Passport::tokensExpireIn(now()->addDays(1));
         Passport::refreshTokensExpireIn(now()->addDays(30));
