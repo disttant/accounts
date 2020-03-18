@@ -5,15 +5,16 @@
     <div class="card pb-5 container shadow-sm">
 
         <div class="card-header bg-transparent border-0 py-5">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
+            <!--<div class="row">-->
+            <div class="d-flex flex-row">
+                <!--<div class="col-md-6 offset-md-3">-->
                     <h1 class="font-weight-light d-inline align-middle text-lowercase">
                         {{ config('app.vendor') }}
                     </h1>
                     <h1 class="font-weight-light d-inline align-middle text-lowercase text-secondary">
                         {{ __('Authorize') }}
                     </h1>
-                </div>
+                <!--</div>-->
             </div>
         </div>
 
