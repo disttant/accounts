@@ -22,9 +22,9 @@ class OauthClientsTableSeeder extends Seeder
         # Generate a client for the official webapp
         $client                               = new OauthClient();
         $client->user_id                      = '1';
-        $client->name                         = 'Farpres Webapp';
+        $client->name                         = 'Disttant Webapp';
         $client->secret                       = 'FC6Ft3IAZSKVjuBvSnrDc5fHkoMSalGRNe6j9qzc';
-        $client->redirect                     = 'http://webapp.farpres.com/?g=gimme';
+        $client->redirect                     = 'http://webapp.disttant.com/?g=gimme';
         $client->personal_access_client       = false;
         $client->password_client              = false;
         $client->revoked                      = false;
@@ -35,7 +35,7 @@ class OauthClientsTableSeeder extends Seeder
         # Generate a client for the official device: Adaptative Light One
         $client                               = new OauthClient();
         $client->user_id                      = '1';
-        $client->name                         = 'Farpres Light One';
+        $client->name                         = 'Disttant Light One';
         $client->secret                       = 'uGuiWmwXEah1gjjvJQj5QJ2Lk1sc3WzvgkWlrwcE';
         $client->redirect                     = 'http://localhost:9000';
         $client->personal_access_client       = false;
@@ -48,7 +48,7 @@ class OauthClientsTableSeeder extends Seeder
         # Generate a client for the official device: Adaptative Socket One
         $client                               = new OauthClient();
         $client->user_id                      = '1';
-        $client->name                         = 'Farpres Socket One';
+        $client->name                         = 'Disttant Socket One';
         $client->secret                       = 'GtrenVcDvqejPn3wGT9Pum9rwFycWB0JRG6H6V8Y';
         $client->redirect                     = 'http://localhost:9000';
         $client->personal_access_client       = false;
