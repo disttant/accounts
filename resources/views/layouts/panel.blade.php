@@ -14,7 +14,7 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 <!--<img src="{{ asset('img/512px.png') }}" class="align-middle" style="width: 2rem; height: 2rem;">-->
                 <span class="align-middle text-lowercase">{{ config('app.vendor') }}</span>
-                <span class="mx-2 align-middle">{{ config('app.name') }}</span>
+                <span class="mx-1 align-middle text-secondary text-lowercase">{{ config('app.name') }}</span>
 
                 @if ( Auth::user()->hasRole('admin') == true )
                     <i class="material-icons md-18 align-middle">lock_open</i>
