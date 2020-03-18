@@ -12,7 +12,8 @@
     <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm border-0" style="background-color: white !important; ">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('img/512px.png') }}" class="align-middle" style="width: 2rem; height: 2rem;">
+                <!--<img src="{{ asset('img/512px.png') }}" class="align-middle" style="width: 2rem; height: 2rem;">-->
+                <span class="align-middle text-lowercase">{{ config('app.vendor') }}</span>
                 <span class="mx-2 align-middle">{{ config('app.name') }}</span>
 
                 @if ( Auth::user()->hasRole('admin') == true )
@@ -128,7 +129,7 @@
                 @yield('content') 
 
                 <div class="d-flex justify-content-center my-5 text-muted">
-                    &copy; ALKE Systems
+                    &copy; {{ config('app.vendor') }}
                 </div>
             </div>
 

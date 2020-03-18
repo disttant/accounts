@@ -13,13 +13,13 @@
 		<div class="card mx-auto m-4 w-75" >
 			<!--<img src="..." class="card-img-top" alt="...">-->
 			<div class="card-body">
-				<img src="{{ asset('img/512px.png') }}" class="align-middle" alt="ALKE Systems" style="width: 5rem; height: 5rem;">
-				<h1 class="card-title d-inline align-middle font-weight-light">ALKE Systems</h1>
+				<img src="{{ asset('img/512px.png') }}" class="align-middle" alt="{{ config('app.vendor') }}" style="width: 5rem; height: 5rem;">
+				<h1 class="card-title d-inline align-middle font-weight-light">{{ config('app.vendor') }}</h1>
 
 				@yield('content')
 
 				<div class="d-flex justify-content-center small mt-5 text-muted">
-					&copy; ALKE Systems
+					&copy; {{ config('app.vendor') }}
 				</div>
 
 			</div>
