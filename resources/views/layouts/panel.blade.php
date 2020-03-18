@@ -85,7 +85,7 @@
                 <a href="{{ url('developers') }}">{{ __('Developers') }}</a>
             @endif
 
-            <a href="{{ url('contact') }}">{{ __('Contact') }}</a>
+            <!--<a href="{{ url('contact') }}">{{ __('Contact') }}</a>-->
         </div>
 
         {{-- Side menu --}}
@@ -116,12 +116,14 @@
                     </div>
                 @endif
 
+                <!--
                 <div class="d-flex flex-column">
                     <a href="{{ url('contact') }}" class="pl-5 py-2 text-decoration-none">
                         <i class="material-icons align-middle mr-2">question_answer</i>
                         <span class="align-middle">{{ __('Contact') }}</span>
                     </a>
                 </div>
+                -->
 
             </div>
 
