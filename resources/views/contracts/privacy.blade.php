@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="card pb-5 container shadow-sm">
+    <div class="card pb-2 container shadow-sm">
         
         <div class="card-header bg-transparent border-0 p-4">
             <img src="{{ asset('img/512px.png') }}" class="align-middle mr-2" style="width: 3rem; height: 3rem;">
