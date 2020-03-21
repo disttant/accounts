@@ -12,7 +12,7 @@
     <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm border-0" style="background-color: white !important; ">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <!--<img src="{{ asset('img/512px.png') }}" class="align-middle" style="width: 2rem; height: 2rem;">-->
+                <img src="{{ asset('img/512px.png') }}" class="align-middle" style="width: 2rem; height: 2rem;">
                 <span class="align-middle text-lowercase font-weight-light">{{ config('app.vendor') }}</span>
                 <span class="mx-1 align-middle text-secondary text-lowercase font-weight-light">{{ config('app.name') }}</span>
 

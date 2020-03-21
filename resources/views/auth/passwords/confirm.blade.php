@@ -7,6 +7,7 @@
         <div class="card-header bg-transparent border-0 py-5">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
+                    <img src="{{ asset('img/512px.png') }}" class="align-middle" style="width: 2rem; height: 2rem;">
                     <h1 class="font-weight-light d-inline align-middle text-lowercase">
                         {{ config('app.vendor') }}
                     </h1>

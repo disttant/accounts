@@ -18,7 +18,7 @@
 
         <div style="min-height: 100vh;" class="d-flex justify-content-center">
             <div class="d-flex align-items-center">
-                <img src="{{ asset('img/512px.png') }}" alt="ALKE Systems logo" style="height: 10rem; width: 10rem;">
+                <img src="{{ asset('img/512px.png') }}" style="height: 10rem; width: 10rem;">
             </div>
             <div class="d-flex align-items-center">
                 <div class="d-flex flex-column mb-3">
