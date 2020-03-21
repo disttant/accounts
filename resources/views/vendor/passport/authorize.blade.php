@@ -8,7 +8,7 @@
             <!--<div class="row">-->
             <div class="d-flex flex-row">
                 <!--<div class="col-md-6 offset-md-3">-->
-                    <img src="{{ asset('img/512px.png') }}" class="align-middle ml-3" style="width: 3rem; height: 3rem;">
+                    <img src="{{ asset('img/512px.png') }}" class="align-middle mr-2" style="width: 3rem; height: 3rem;">
                     <h1 class="font-weight-light d-inline align-middle text-lowercase">
                         {{ config('app.vendor') }}
                     </h1>
