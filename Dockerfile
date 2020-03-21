@@ -87,9 +87,7 @@ RUN mkdir -p /tmp/laravel
 COPY . /tmp/laravel/
 
 # Create needed folders for composer autoloader optimization
-# RUN mkdir -p /var/www/database
-# RUN mkdir -p /var/www/database/seeds
-# RUN mkdir -p /var/www/database/factories
+RUN mkdir -p /app/storage/passport
 RUN mkdir -p /app/database
 RUN mkdir -p /app/database/seeds
 RUN mkdir -p /app/database/factories
