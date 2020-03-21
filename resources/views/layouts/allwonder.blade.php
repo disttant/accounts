@@ -9,15 +9,17 @@
 
 
 @section('app')
-    <div id="allwonder-wrapper" class="d-flex flex-column align-items-center justify-content-center p-2" >
+    <div id="allwonder-wrapper" class="d-flex flex-column align-items-center justify-content-center" >
         <div class="container p-0">
-            <div class="card pb-5 container shadow-sm">
-                <div class="py-2 w-100 bg-fade"></div>
 
-                <div class="card-header bg-transparent border-0 p-5">
-                    <div class="row">
-                        <div class="col-md-6 offset-md-3 p-0">
-                            <img src="{{ asset('img/512px.png') }}" class="align-middle mr-2" style="width: 2rem; height: 2rem;">
+            <div class="m-0 py-1 bg-fade rounded-top"></div>
+
+            <div class="card p-3 py-5 container shadow-sm">
+
+                <div class="card-header bg-transparent m-0 p-0 py-5">
+                    <div class="row m-0">
+                        <div class="col-md-6 offset-md-3">
+                            <img src="{{ asset('img/512px.png') }}" class="align-middle mr-2" style="width: 3rem; height: 3rem;">
                             <h1 class="font-weight-light d-inline align-middle text-lowercase">
                                 {{ config('app.vendor') }}
                             </h1>
@@ -32,5 +34,5 @@
             </div>
         </div>
     </div>
-    
+
 @endsection
