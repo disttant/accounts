@@ -43,7 +43,7 @@ class AuthServiceProvider extends ServiceProvider
         Passport::routes();
 
         # Load OAuth keys from specific folder
-        Passport::loadKeysFrom( base_path('keys') );
+        Passport::loadKeysFrom( storage_path('passport') );
 
         # Setting life time for tokens
         Passport::tokensExpireIn(now()->addDays(1));
