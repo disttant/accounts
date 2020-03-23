@@ -1,8 +1,12 @@
 ## About Accounts
 
+## Framework info (Mar/2020)
+* Laravel 6
+* Laravel Passport 7.5
+* Laravel Auth
+
 
 ## Dependencies
-
 * PHP >= 7.2.0
 * BCMath PHP Extension
 * Ctype PHP Extension
@@ -12,8 +16,6 @@
 * PDO PHP Extension
 * Tokenizer PHP Extension
 * XML PHP Extension
-* Laravel Passport (Already included into this package)
-* Laravel Auth (Already included into this package)
 
 
 ## Preparing
@@ -22,7 +24,7 @@
 
 #### 1. The hard way
 
-0. Install Composer, Git
+0. Install PHP, PHP extensions, Composer, Git
 1. Clone the repository to a temporary folder
 2. Copy composer.json and composer.lock to the final location
 3. Go to that folder: 
@@ -51,28 +53,33 @@ find /final/location -type d -exec chmod 755 {} \;
 10. Configure the web server (like Nginx) to route all the requests 
 to public/index.php
 
-#### 2. The easy way
+
+
+#### 2. The easy way (testing mode)
+```
 0. Install Docker
-1. Clone the achetronic/laravel-service repository
+1. Clone the repository
+2. Build the image with the Dockerfile included
+3. Upload the image to a repository
+4. Use the image with Compose or Kubernetes
+   * Set all the environment variables Laravel uses
+     + APP_VENDOR
+     + APP_NAME
+     + [...]
+
+   * Set Passport keys as environment vars
+     + PASSPORT_PRIVATE_KEY
+     + PASSPORT_PUBLIC_KEY
+
+   * Mount /var/www in a volume
+   * Mount /var/www/storage into a volume
 ```
-git clone git@gitlab.com:achetronic/laravel-service.git
-```
-2. Place your .env into Dockerfile-config
-3. Execute: 
-```
-docker build --build-arg GIT_APPLICATION=https://your/project.git \
-             -t achetronic/accounts .
-```
-4. Rise up your container
-```
-docker run --rm \
-           -p 80:80 \
-           --name accounts \
-           -it \
-           --mount type=volume,src=storage,dst=/var/www/storage \
-           -d \
-           achetronic/accounts
-```
+
+Now, your container is listening on port 9000 (PHP_FPM)
+
+
+You just must configure an NGINX container in the way 
+Laravel documentation explains to use the app
 
 
 ## Security Vulnerabilities
