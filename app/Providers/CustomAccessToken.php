@@ -19,7 +19,7 @@ class CustomAccessToken extends PassportAccessToken {
             ->setExpiration($this->getExpiryDateTime()->getTimestamp())
             ->setSubject($this->getUserIdentifier())
             ->set('scopes', $this->getScopes())
-            ->set('roles', $this->getRoles()) // my custom claims
+            ->set('test', $this->getRoles()) // my custom claims
             ->sign(new Sha256(), new Key($privateKey->getKeyPath(), $privateKey->getPassPhrase()))
             ->getToken();
     }
@@ -28,8 +28,8 @@ class CustomAccessToken extends PassportAccessToken {
    // Just an example. 
     public function getRoles() {
         return [
-            'admin',
-            'super admin'
+            't1',
+            't2'
         ];
     }
 }

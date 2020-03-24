@@ -12,7 +12,7 @@ class CustomPassportServiceProvider extends \Laravel\Passport\PassportServicePro
             $this->app->make(\Laravel\Passport\Bridge\ClientRepository::class),
             $this->app->make(\App\Providers\CustomAccessTokenRepository::class), // AccessTokenRepository from step 2
             $this->app->make(\Laravel\Passport\Bridge\ScopeRepository::class),
-            $this->makeCryptKey('oauth-private.key'),
+            $this->makeCryptKey('private'),
             app('encrypter')->getKey()
         );
     }

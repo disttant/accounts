@@ -178,7 +178,6 @@ return [
         /*
          * Package Service Providers...
          */
-
         App\Providers\CustomPassportServiceProvider::class, // This!!
 
         /*
