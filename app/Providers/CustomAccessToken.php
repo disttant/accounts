@@ -2,16 +2,13 @@
 
 namespace App\Providers;
 
-class CustomAccessToken extends \Laravel\Passport\Bridge\AccessToken
-{
- 
-    /**
-     * Generate a JWT from the access token
-     *
-     * @param CryptKey $privateKey
-     *
-     * @return Token
-     */
+use Laravel\Passport\Bridge\AccessToken as PassportAccessToken;
+use Lcobucci\JWT\Builder;
+use Lcobucci\JWT\Signer\Key;
+use Lcobucci\JWT\Signer\Rsa\Sha256;
+use League\OAuth2\Server\CryptKey;
+
+class CustomAccessToken extends PassportAccessToken {
     public function convertToJWT(CryptKey $privateKey)
     {
         return (new Builder())
@@ -21,9 +18,18 @@ class CustomAccessToken extends \Laravel\Passport\Bridge\AccessToken
             ->setNotBefore(time())
             ->setExpiration($this->getExpiryDateTime()->getTimestamp())
             ->setSubject($this->getUserIdentifier())
-            ->set('custom_claim', 'https://www.sixphere.com')
+            ->set('scopes', $this->getScopes())
+            ->set('roles', $this->getRoles()) // my custom claims
             ->sign(new Sha256(), new Key($privateKey->getKeyPath(), $privateKey->getPassPhrase()))
             ->getToken();
     }
- 
+
+   // my custom claims for roles
+   // Just an example. 
+    public function getRoles() {
+        return [
+            'admin',
+            'super admin'
+        ];
+    }
 }

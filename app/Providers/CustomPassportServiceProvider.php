@@ -2,23 +2,19 @@
 
 namespace App\Providers;
 
+use League\OAuth2\Server\AuthorizationServer;
+
 class CustomPassportServiceProvider extends \Laravel\Passport\PassportServiceProvider
 {
- 
-    /**
-     * Interviene la instanciación del servidor de autenticación para cambiar el repositorio de tokens JWT
-     *
-     * @return \League\OAuth2\Server\AuthorizationServer
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
-     */
     public function makeAuthorizationServer()
     {
         return new AuthorizationServer(
-            $this->app->make(ClientRepository::class),
-            $this->app->make( \App\Auth\Bridge\CustomAccessTokenRepository::class),  // This!!
-            $this->app->make(ScopeRepository::class),
-            $this->makeCryptKey('private'),
+            $this->app->make(\Laravel\Passport\Bridge\ClientRepository::class),
+            $this->app->make(\App\Providers\CustomAccessTokenRepository::class), // AccessTokenRepository from step 2
+            $this->app->make(\Laravel\Passport\Bridge\ScopeRepository::class),
+            $this->makeCryptKey('oauth-private.key'),
             app('encrypter')->getKey()
         );
     }
+
 }
