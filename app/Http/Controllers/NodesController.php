@@ -125,7 +125,7 @@ class NodesController extends Controller
 
         # Check for errors
         if( $response->getStatusCode() >= 300 ){
-            return dd($response);
+            return (string) $response->getBody();
             return redirect('nodes/show')
                         ->withErrors([
                             'message' => __('Oops!, Data could not be changed')
