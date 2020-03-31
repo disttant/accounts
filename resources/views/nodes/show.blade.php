@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-3 border border-danger">
+                                <div class="d-flex flex-row mt-3 border border-danger">
                                     <div class="border border-info">
                                         <form action="{{ url('nodes/change/key') }}" method="POST">
                                             @csrf
