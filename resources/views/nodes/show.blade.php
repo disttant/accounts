@@ -14,8 +14,10 @@
     </div>
 
     <div class="my-4">
-        <div class="alert alert-light" role="alert">
-            A simple light alert—check it out! test blah blah
+        <div class="alert alert-light shadow-sm" role="alert">
+            {{ __('ATTENTION! The key of each node is like a master key.') }}
+            {{ __('Do NOT give it to others unless you trust them a lot.') }}
+            {{ __('If you need a new key, just press the button. Only you will have the new one.') }}
         </div>
     </div>
 
