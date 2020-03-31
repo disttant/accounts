@@ -28,50 +28,48 @@
                 <a href="#" class="list-group-item list-group-item-action">
                     <div class="d-flex p-2 align-items-stretch">
                         <div class="d-flex flex-grow-1 justify-content-between align-items-center">
-                            <div class="d-flex flex-column mb-3 flex-grow-1">
-                                <div class="font-weight-bold">Name</div>
-                                <div>{{ $node['name']}}</div>
-                                <div class="font-weight-bold">ID</div>
-                                <div>{{ $node['id']}}</div>
-                                <div class="font-weight-bold">Key</div>
-                                <div>{{ $node['key']}}</div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <i class="material-icons align-middle">keyboard_arrow_right</i>
-                        </div>
-                    </div>
-                    <div class="my-2">
-                        <div class="font-weight-bold">
-                            {{ __('Credentials') }}
-                        </div>
+                            <div class="d-flex flex-column mb-3 flex-grow-1 ">
 
-                        <div class="d-flex align-content-center">
-                            <div class="p-0 py-2 flex-shrink-1 my-auto">
-                                <i class="material-icons align-middle text-muted">security</i>
-                            </div>
-                            <div class="p-0 py-2 px-3 w-100 align-self-center">
-                                {{ $node['id'] }}
+                                <div class="my-2">
+                                    <div class="font-weight-bold">{{ __('Node name') }}</div>
+                                    <div>{{ $node['name'] }}</div>
+                                </div>
+
+                                <div class="my-2">
+                                    <div class="font-weight-bold">
+                                        {{ __('Credentials') }}
+                                    </div>
+
+                                    <div class="d-flex align-content-center">
+                                        <div class="p-0 py-2 flex-shrink-1 my-auto">
+                                            <i class="material-icons align-middle text-muted">security</i>
+                                        </div>
+                                        <div class="p-0 py-2 px-3 w-100 align-self-center">
+                                            {{ $node['id'] }}
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-content-center">
+                                        <div class="p-0 py-2 flex-shrink-1 my-auto">
+                                            <i class="material-icons align-middle text-muted">vpn_key</i>
+                                        </div>
+                                        <div class="p-0 py-2 px-3 w-100 align-self-center">
+                                            {{ $node['key'] }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <form action="{{ url('nodes/remove') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $node['id'] }}">
+                                        <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
+                                            {{ __('Delete') }}
+                                        </button>
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
-                        <div class="d-flex align-content-center">
-                            <div class="p-0 py-2 flex-shrink-1 my-auto">
-                                <i class="material-icons align-middle text-muted">vpn_key</i>
-                            </div>
-                            <div class="p-0 py-2 px-3 w-100 align-self-center">
-                                {{ $node['key'] }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <form action="{{ url('nodes/remove') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $node['id'] }}">
-                            <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
-                                {{ __('Delete') }}
-                            </button>
-                        </form>
-                        
                     </div>
                 </a>
             @endforeach
