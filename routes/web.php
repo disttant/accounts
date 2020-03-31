@@ -125,7 +125,13 @@ Route::prefix('nodes')->middleware(['auth'])->group(function () {
         return redirect('nodes/show');
     });
 
-    Route::get('/show', 'NodesController@Show');
+    Route::get('/show', 'NodesController@GetAllView');
+
+    Route::get('/create', 'NodesController@CreateOneView');
+
+    Route::post('/create', 'NodesController@CreateOne');
+
+    //Route::get('/change', 'NodesController@ChangeOne', []);
 
     Route::post('/remove', 'NodesController@RemoveOne');
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
 
 class NodesController extends Controller
 {
@@ -26,6 +27,55 @@ class NodesController extends Controller
                 'Accept'        => 'application/json'
              ]
         ]);
+    }
+
+
+    # #########################
+    # ACTIONS
+    # #########################
+
+    /* *
+     *
+     *  Create a new group
+     *
+     * */
+    public function CreateOne( Request $request )
+    {
+        # Check if the body is right
+        $validator = Validator::make($request->all(), [
+            'name' => [
+                'required',
+                'regex:/^[a-z0-9]{1,30}$/',
+            ]
+        ]);
+
+        # Check for errors on input data
+        if ($validator->fails()){
+            return redirect('nodes/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        # Generate a new node in the API
+        $response = $this->guzzle->post( '/internal/node', [
+            'body' => json_encode([
+                'name'    => $request->input('name'),
+                'user_id' => Auth::id(),
+                'key'     => Str::random(64)
+            ])
+        ]);
+
+        # Check for errors
+        if( $response->getStatusCode() >= 300 ){
+            return redirect('nodes/create')
+                        ->withErrors([
+                            'message' => __('Node could not be created')
+                        ])
+                        ->withInput();
+        }
+
+        # Success, go to list
+        return redirect('nodes/show');
     }
 
 
@@ -52,10 +102,27 @@ class NodesController extends Controller
 
 
 
+    # #########################
+    # VIEWS
+    # #########################
+
     /*
-     * Main view that shows the node list
+     * Show form to create a new node
      */
-    public function Show(){
+    public function CreateOneView(){
+
+        # Set authorized roles for this actions
+        Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
+
+        return view('nodes/create');
+    }
+
+
+
+    /*
+     * Show main view with the node list
+     */
+    public function GetAllView(){
 
         # Set authorized roles for this actions
         Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
@@ -64,8 +131,11 @@ class NodesController extends Controller
         $nodeList = self::GetAll();
 
         return view('nodes/show', ['nodeList' => $nodeList]);
-
     }
+
+
+
+    
 
 
 
