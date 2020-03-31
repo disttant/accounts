@@ -4,11 +4,11 @@
 
     <div class="mb-5">
         <h4 class="my-1">{{ __('Nodes') }}</h4>
-        <small>{{ __('Manage your houses')}}</small>
+        <small>{{ __('Manage your properties like a lord')}}</small>
     </div>
 
     <div class="my-4">
-        <a href="#" class="btn btn-primary">
+        <a href="{{ url('nodes/create') }}" class="btn btn-primary">
             {{ __('Create a node') }}
         </a>
     </div>
@@ -17,7 +17,7 @@
 
         <div class="my-4">
             <div class="alert alert-warning" role="alert">
-                {{ __('No properties added') }}
+                {{ __('No nodes added yet. Add one to start the magic.') }}
             </div>
         </div>
 

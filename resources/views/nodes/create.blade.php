@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
-                    <small class="mt-4 form-text text-muted">{{ __('Clicking the button will generate a key for this property') }}</small>
+                    <small class="mt-4 form-text text-muted">{{ __('Key will be generated automatically') }}</small>
                 </form>
             </div>
         </li>
