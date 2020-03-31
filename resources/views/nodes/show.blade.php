@@ -41,6 +41,28 @@
                             <i class="material-icons align-middle">keyboard_arrow_right</i>
                         </div>
                     </div>
+                    <div class="my-2">
+                        <div class="font-weight-bold">
+                            {{ __('Credentials') }}
+                        </div>
+
+                        <div class="d-flex align-content-center">
+                            <div class="p-0 py-2 flex-shrink-1 my-auto">
+                                <i class="material-icons align-middle text-muted">security</i>
+                            </div>
+                            <div class="p-0 py-2 px-3 w-100 align-self-center">
+                                {{ $node['id'] }}
+                            </div>
+                        </div>
+                        <div class="d-flex align-content-center">
+                            <div class="p-0 py-2 flex-shrink-1 my-auto">
+                                <i class="material-icons align-middle text-muted">vpn_key</i>
+                            </div>
+                            <div class="p-0 py-2 px-3 w-100 align-self-center">
+                                {{ $node['key'] }}
+                            </div>
+                        </div>
+                    </div>
                     <div class="mt-3">
                         <form action="{{ url('nodes/remove') }}" method="POST">
                             @csrf
