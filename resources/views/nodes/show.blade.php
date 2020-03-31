@@ -14,8 +14,9 @@
     </div>
 
     <div class="my-4">
-        <div class="alert alert-light shadow-sm" role="alert">
-            {{ __('ATTENTION! The key of each node is like a master key.') }}
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Attention!</h4>
+            {{ __('The key of each node is like a master key.') }}
             {{ __('Do NOT give it to others unless you trust them a lot.') }}
             {{ __('If you need a new key, just press the button. Only you will have the new one.') }}
         </div>
@@ -24,7 +25,7 @@
     @if ( count($nodeList['nodes']) === 0 )
 
         <div class="my-4">
-            <div class="alert alert-warning" role="alert">
+            <div class="alert alert-light" role="alert">
                 {{ __('No nodes added yet. Add one to start the magic.') }}
             </div>
         </div>
