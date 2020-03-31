@@ -133,7 +133,7 @@ Route::prefix('nodes')->middleware(['auth'])->group(function () {
 
     //Route::get('/change', 'NodesController@ChangeOne', []);
 
-    Route::post('/remove/{id}', 'NodesController@RemoveOne', ['id' => $id]);
+    Route::post('/remove/{id}', 'NodesController@RemoveOne');
 
 });
 
