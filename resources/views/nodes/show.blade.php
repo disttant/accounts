@@ -58,18 +58,18 @@
                                     </div>
                                 </div>
 
-                                <div class="d-flex flex-row mt-3 border border-danger">
-                                    <div class="border border-info">
+                                <div class="d-flex flex-row mt-3">
+                                    <div class="mr-2">
                                         <form action="{{ url('nodes/change/key') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $node['id'] }}">
                                             <input type="hidden" name="key" value="true">
-                                            <button type="submit" class="btn btn-primary align-middle" onclick="return confirm('{{ __("Sure you want to regenerate the key?") }}');">
-                                                <i class="material-icons align-middle md-18">refresh</i>
+                                            <button type="submit" class="btn btn-primary align-middle" onclick="return confirm('{{ __("Sure you want to change the key?") }}');">
+                                                {{ __('Change key') }}
                                             </button>
                                         </form>
                                     </div>
-                                    <div class="border border-info">
+                                    <div class="mr-2">
                                         <form action="{{ url('nodes/remove') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $node['id'] }}">
