@@ -13,6 +13,12 @@
         </a>
     </div>
 
+    <div class="my-4">
+        <div class="alert alert-light" role="alert">
+            A simple light alert—check it out! test blah blah
+        </div>
+    </div>
+
     @if ( count($nodeList['nodes']) === 0 )
 
         <div class="my-4">
