@@ -8,27 +8,31 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
-
-#use App\Notifications\TestNotification;
-
-#use App\User as User;
-#use App\Developer as Developer;
-
 class NodesController extends Controller
 {
     protected $_guzzle;
 
-    public function __Construct(){
-
-        $_guzzle = new \GuzzleHttp\Client([
-            'base_uri'    => config('nodes_api_uri'),
+    /*
+     * Init the connection to the Nodes API
+     * 
+     */
+    public function __construct()
+    {
+        $guzzle = new \GuzzleHttp\Client([
+            'base_uri'    => config('internals.nodes_api_uri') . '/internal',
             'http_errors' => false
         ]);
 
-        $this->_guzzle = $_guzzle;
+        $this->_guzzle = $guzzle;
     }
 
-    public static function GetAll()
+
+
+    /*
+     * Get a list of nodes for the current user
+     * 
+     */
+    public function GetAll()
     {
         # Ask for nodes to the API
         $response = $this->_guzzle->get( '/nodes/' . Auth::id() , [
@@ -47,6 +51,23 @@ class NodesController extends Controller
 
         # Return the results
         return $response->getBody();
+    }
+
+
+
+    /*
+     * Main view that shows the node list
+     */
+    public function Show(){
+
+        # Set authorized roles for this actions
+        Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
+
+        # Get nodes from the API
+        $nodeList = self::GetAll();
+
+        return view('nodes/show', ['nodeList' => $nodeList]);
+
     }
 
 
