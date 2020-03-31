@@ -36,7 +36,7 @@ class NodesController extends Controller
 
     /* *
      *
-     *  Create a new group
+     *  Create a new node
      *
      * */
     public function CreateOne( Request $request )
@@ -68,6 +68,31 @@ class NodesController extends Controller
         # Check for errors
         if( $response->getStatusCode() >= 300 ){
             return redirect('nodes/create')
+                        ->withErrors([
+                            'message' => __('Node could not be created')
+                        ])
+                        ->withInput();
+        }
+
+        # Success, go to list
+        return redirect('nodes/show');
+    }
+
+
+
+    /* *
+     *
+     *  Delete a node
+     *
+     * */
+    public function RemoveOne( $id )
+    {
+        # Generate a new node in the API
+        $response = $this->guzzle->delete( '/internal/node/'.$id.'/'.Auth::id() );
+
+        # Check for errors
+        if( $response->getStatusCode() >= 300 ){
+            return redirect('nodes/show')
                         ->withErrors([
                             'message' => __('Node could not be created')
                         ])
