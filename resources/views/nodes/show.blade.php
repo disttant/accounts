@@ -29,8 +29,12 @@
                     <div class="d-flex p-2 align-items-stretch">
                         <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                             <div class="d-flex flex-column mb-3 flex-grow-1">
-                                <div class="font-weight-bold">caca</div>
-                                <div>de la vaca</div>
+                                <div class="font-weight-bold">Name</div>
+                                <div>{{ $node->name}}</div>
+                                <div class="font-weight-bold">ID</div>
+                                <div>{{ $node->id}}</div>
+                                <div class="font-weight-bold">Key</div>
+                                <div>{{ $node->key}}</div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">

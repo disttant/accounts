@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Notification;
 
 class NodesController extends Controller
 {
-    protected $_guzzle;
+    protected $guzzle;
 
     /*
      * Init the connection to the Nodes API
@@ -18,12 +18,14 @@ class NodesController extends Controller
      */
     public function __construct()
     {
-        $guzzle = new \GuzzleHttp\Client([
+        $this->guzzle = new \GuzzleHttp\Client([
             'base_uri'    => config('internals.nodes_api_uri') . '/internal',
-            'http_errors' => false
+            'http_errors' => false,
+            'headers' => [ 
+                'Content-Type'  => 'application/json',
+                'Accept'        => 'application/json'
+             ]
         ]);
-
-        $this->_guzzle = $guzzle;
     }
 
 
@@ -35,12 +37,7 @@ class NodesController extends Controller
     public function GetAll()
     {
         # Ask for nodes to the API
-        $response = $this->_guzzle->get( '/nodes/' . Auth::id() , [
-            'headers' => [ 
-                'Content-Type'  => 'application/json',
-                'Accept'        => 'application/json'
-             ]
-        ]);
+        $response = $this->guzzle->get( '/nodes/' . Auth::id() );
 
         # Check for errors
         if( $response->getStatusCode() >= 300 ){
@@ -50,7 +47,7 @@ class NodesController extends Controller
         }
 
         # Return the results
-        return $response->getBody();
+        return json_decode((string) $res->getBody(), true);
     }
 
 
