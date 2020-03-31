@@ -94,7 +94,7 @@ class NodesController extends Controller
         if( $response->getStatusCode() >= 300 ){
             return redirect('nodes/show')
                         ->withErrors([
-                            'message' => __('Node could not be created')
+                            'message' => __('Node could not be deleted')
                         ])
                         ->withInput();
         }
