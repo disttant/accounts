@@ -14,14 +14,14 @@ class NodesController extends Controller
 
     /*
      * Init the connection to the Nodes API
-     * 
+     *
      */
     public function __construct()
     {
         $this->guzzle = new \GuzzleHttp\Client([
-            'base_uri'    => config('internals.nodes_api_uri') . '/internal',
+            'base_uri'    => config('internals.nodes_api_uri'),
             'http_errors' => false,
-            'headers' => [ 
+            'headers' => [
                 'Content-Type'  => 'application/json',
                 'Accept'        => 'application/json'
              ]
@@ -32,12 +32,12 @@ class NodesController extends Controller
 
     /*
      * Get a list of nodes for the current user
-     * 
+     *
      */
     public function GetAll()
     {
         # Ask for nodes to the API
-        $response = $this->guzzle->get( '/nodes/' . Auth::id() );
+        $response = $this->guzzle->get( '/internal/nodes/' . Auth::id() );
 
         # Check for errors
         if( $response->getStatusCode() >= 300 ){
@@ -47,7 +47,7 @@ class NodesController extends Controller
         }
 
         # Return the results
-        return json_decode((string) $res->getBody(), true);
+        return json_decode((string) $response->getBody(), true);
     }
 
 
