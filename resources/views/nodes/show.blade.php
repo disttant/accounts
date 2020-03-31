@@ -65,7 +65,7 @@
                                             <input type="hidden" name="id" value="{{ $node['id'] }}">
                                             <input type="hidden" name="key" value="true">
                                             <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to regenerate the key?") }}');">
-                                                <i class="material-icons align-middle text-muted">refresh</i>
+                                                <i class="material-icons align-middle">refresh</i>
                                             </button>
                                         </form>
                                     </div>

@@ -103,24 +103,24 @@ class NodesController extends Controller
         }
 
         # Build the request
-        $request = [
+        $guzzleRequest = [
             'id'      => $request->input('id'),
             'user_id' => Auth::id()
         ];
 
         # Request has a key?
         if( $request->has('key') ){
-            $request['key'] = Str::lower(Str::random(64));
+            $guzzleRequest['key'] = Str::lower(Str::random(64));
         }
 
         # Request has a name?
         if( $request->has('name') ){
-            $request['name'] = Str::lower($request->input('name'));
+            $guzzleRequest['name'] = Str::lower($request->input('name'));
         }
 
         # Generate a new node in the API
         $response = $this->guzzle->put( '/internal/node', [
-            'body' => json_encode($request)
+            'body' => json_encode($guzzleRequest)
         ]);
 
         # Check for errors
