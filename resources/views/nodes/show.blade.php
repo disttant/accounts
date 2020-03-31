@@ -64,8 +64,8 @@
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $node['id'] }}">
                                             <input type="hidden" name="key" value="true">
-                                            <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to regenerate the key?") }}');">
-                                                <i class="material-icons align-middle">refresh</i>
+                                            <button type="submit" class="btn btn-primary align-middle" onclick="return confirm('{{ __("Sure you want to regenerate the key?") }}');">
+                                                <i class="material-icons align-middle md-24">refresh</i>
                                             </button>
                                         </form>
                                     </div>
@@ -73,7 +73,7 @@
                                         <form action="{{ url('nodes/remove') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $node['id'] }}">
-                                            <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
+                                            <button type="submit" class="btn btn-primary align-middle" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
                                                 {{ __('Delete') }}
                                             </button>
                                         </form>
