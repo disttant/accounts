@@ -60,19 +60,20 @@
 
                                 <div class="mt-3 border border-danger">
                                     <div class="border border-info">
-                                        <form action="{{ url('nodes/remove') }}" method="POST">
+                                        <form action="{{ url('nodes/change/key') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $node['id'] }}">
-                                            <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
-                                                {{ __('Delete') }}
+                                            <input type="hidden" name="key" value="true">
+                                            <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to regenerate the key?") }}');">
+                                                <i class="material-icons align-middle text-muted">refresh</i>
                                             </button>
                                         </form>
                                     </div>
                                     <div class="border border-info">
-                                        <form action="{{ url('nodes/change/key') }}" method="POST">
+                                        <form action="{{ url('nodes/remove') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $node['id'] }}">
-                                            <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to change the key?") }}');">
+                                            <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
                                                 {{ __('Delete') }}
                                             </button>
                                         </form>

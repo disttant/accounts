@@ -131,7 +131,7 @@ Route::prefix('nodes')->middleware(['auth'])->group(function () {
 
     Route::post('/create', 'NodesController@CreateOne');
 
-    //Route::get('/change', 'NodesController@ChangeOne', []);
+    Route::post('/change/key', 'NodesController@ChangeOne');
 
     Route::post('/remove', 'NodesController@RemoveOne');
 

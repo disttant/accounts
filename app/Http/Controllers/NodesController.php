@@ -82,6 +82,61 @@ class NodesController extends Controller
 
     /* *
      *
+     *  Change some node field
+     *
+     * */
+    public function ChangeOne( Request $request )
+    {
+        # Check if the body is right
+        $validator = Validator::make($request->all(), [
+            'id' => [
+                'required',
+                'regex:/^[0-9]+$/',
+            ]
+        ]);
+
+        # Check for errors on input data
+        if ($validator->fails()){
+            return redirect('nodes/show')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        # Build the request
+        $request = [
+            'id'      => $request->input('id'),
+            'user_id' => Auth::id()
+        ];
+
+        # Request has a key?
+        if( $request->has('key') ){
+            $request['key'] = Str::lower(Str::random(64));
+        }
+
+        # Request has a name?
+        if( $request->has('name') ){
+            $request['name'] = Str::lower($request->input('name'));
+        }
+
+        # Generate a new node in the API
+        $response = $this->guzzle->put( '/internal/node', [
+            'body' => json_encode($request)
+        ]);
+
+        # Check for errors
+        if( $response->getStatusCode() >= 300 ){
+            return redirect('nodes/create')
+                        ->withErrors([
+                            'message' => __('Oops!, Data could not be changed')
+                        ])
+                        ->withInput();
+        }
+    }
+
+
+
+    /* *
+     *
      *  Delete a node
      *
      * */
