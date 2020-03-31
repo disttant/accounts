@@ -45,7 +45,7 @@ class NodesController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => [
                 'required',
-                'regex:/^[a-z0-9]{1,30}$/',
+                'regex:/^[a-zA-Z0-9]{1,30}$/',
             ]
         ]);
 
@@ -59,9 +59,9 @@ class NodesController extends Controller
         # Generate a new node in the API
         $response = $this->guzzle->post( '/internal/node', [
             'body' => json_encode([
-                'name'    => $request->input('name'),
+                'name'    => Str::lower($request->input('name')),
                 'user_id' => Auth::id(),
-                'key'     => Str::random(64)
+                'key'     => Str::lower(Str::random(64))
             ])
         ]);
 
