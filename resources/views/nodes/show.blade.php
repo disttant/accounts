@@ -25,7 +25,7 @@
 
         <ul class="list-group">
             @foreach ( $nodeList['nodes'] as $node )
-                <a href="#" class="list-group-item list-group-item-action">
+                <div class="list-group-item list-group-item-action">
                     <div class="d-flex p-2 align-items-stretch">
                         <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                             <div class="d-flex flex-column mb-3 flex-grow-1 ">
@@ -58,20 +58,31 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-3">
-                                    <form action="{{ url('nodes/remove') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{ $node['id'] }}">
-                                        <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
-                                            {{ __('Delete') }}
-                                        </button>
-                                    </form>
+                                <div class="mt-3 border border-danger">
+                                    <div class="border border-info">
+                                        <form action="{{ url('nodes/remove') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $node['id'] }}">
+                                            <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
+                                                {{ __('Delete') }}
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="border border-info">
+                                        <form action="{{ url('nodes/change/key') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $node['id'] }}">
+                                            <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to change the key?") }}');">
+                                                {{ __('Delete') }}
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             @endforeach
         </ul>
 
