@@ -80,6 +80,8 @@
             <a href="{{ url('profile') }}">{{ __('Profile') }}</a>
 
             <a href="{{ url('authorizations') }}">{{ __('Authorizations') }}</a>
+
+            <a href="{{ url('nodes') }}">{{ __('Nodes') }}</a>
             
             @if ( Auth::user()->hasAnyRole(['admin', 'developer']) == true )
                 <a href="{{ url('developers') }}">{{ __('Developers') }}</a>
@@ -104,6 +106,13 @@
                     <a href="{{ url('authorizations') }}" class="pl-5 py-2 text-decoration-none">
                         <i class="material-icons align-middle mr-2">lock_open</i>
                         <span class="align-middle">{{ __('Authorizations') }}</span>
+                    </a>
+                </div>
+
+                <div class="d-flex flex-column">
+                    <a href="{{ url('nodes') }}" class="pl-5 py-2 text-decoration-none">
+                        <i class="material-icons align-middle mr-2">home</i>
+                        <span class="align-middle">{{ __('Nodes') }}</span>
                     </a>
                 </div>
                 
