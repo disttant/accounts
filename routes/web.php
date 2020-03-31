@@ -114,6 +114,25 @@ Route::prefix('authorizations')->middleware(['auth'])->group(function () {
 
 
 
+/* 
+ *
+ *  Routes for personal-keys forms and actions
+ * 
+ */
+Route::prefix('nodes')->middleware(['auth'])->group(function () {
+
+    Route::get('/', function(){
+        return redirect('nodes/show');
+    });
+
+    Route::get('/show', 'NodesController@Show');
+
+    Route::post('/remove', 'NodesController@RemoveOne');
+
+});
+
+
+
 
 /* 
  *
@@ -175,23 +194,3 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
 });
 
-
-
-/* 
- *
- *  Routes for personal-keys forms and actions
- * 
- */
-Route::prefix('nodes')->middleware(['auth'])->group(function () {
-
-    Route::get('/', function(){
-        return redirect('nodes/show');
-    });
-
-    Route::get('/test', 'NodesController@GetAll');
-
-    Route::get('/show', 'NodesController@ShowAll');
-
-    Route::post('/remove', 'NodesController@RemoveOne');
-
-});
