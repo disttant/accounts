@@ -85,10 +85,25 @@ class NodesController extends Controller
      *  Delete a node
      *
      * */
-    public function RemoveOne( $id )
+    public function RemoveOne( Request $request )
     {
+        # Check if the body is right
+        $validator = Validator::make($request->all(), [
+            'id' => [
+                'required',
+                'regex:/^[0-9]+$/',
+            ]
+        ]);
+
+        # Check for errors on input data
+        if ($validator->fails()){
+            return redirect('nodes/show')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
         # Generate a new node in the API
-        $response = $this->guzzle->delete( '/internal/node/'.$id.'/'.Auth::id() );
+        $response = $this->guzzle->delete( '/internal/node/'.$request->input('id').'/'.Auth::id() );
 
         # Check for errors
         if( $response->getStatusCode() >= 300 ){

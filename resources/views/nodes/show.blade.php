@@ -41,6 +41,16 @@
                             <i class="material-icons align-middle">keyboard_arrow_right</i>
                         </div>
                     </div>
+                    <div class="mt-3">
+                        <form action="{{ url('nodes/remove') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $node['id'] }}">
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
+                                {{ __('Delete') }}
+                            </button>
+                        </form>
+                        
+                    </div>
                 </a>
             @endforeach
         </ul>
