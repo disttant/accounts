@@ -13,15 +13,6 @@
         </a>
     </div>
 
-    <div class="my-4">
-        <div class="alert alert-warning" role="alert">
-            <h4 class="alert-heading">Attention!</h4>
-            {{ __('The key of each node is like a master key.') }}
-            {{ __('Do NOT give it to others unless you trust them a lot.') }}
-            {{ __('If you need a new key, just press the button. Only you will have the new one.') }}
-        </div>
-    </div>
-
     @if ( count($nodeList['nodes']) === 0 )
 
         <div class="my-4">
