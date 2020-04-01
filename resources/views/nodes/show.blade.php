@@ -68,25 +68,45 @@
                                 </div>
 
                                 <div class="d-flex flex-row mt-3">
-                                    <div class="mr-2">
-                                        <form action="{{ url('nodes/change/key') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $node['id'] }}">
-                                            <input type="hidden" name="key" value="true">
-                                            <button type="submit" class="btn btn-primary align-middle" onclick="return confirm('{{ __("Sure you want to change the key?") }}');">
-                                                {{ __('Change key') }}
-                                            </button>
-                                        </form>
+
+                                    <!-- Actions menu -->
+                                    <div class="dropdown mr-2">
+                                        <button type="button" class="btn btn-primary" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ __('Actions') }}
+                                            <i class="material-icons md-18 align-middle">arrow_drop_down</i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item py-3 disabled" href="{{ url('nodes/manage/' . $node['id']) }}">
+                                                {{ __('Manage') }}
+                                            </a>
+
+                                            <div class="dropdown-item p-0">
+                                                <form action="{{ url('nodes/change/key') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $node['id'] }}">
+                                                    <input type="hidden" name="key" value="true">
+                                                    <button type="submit" class="px-4 py-3 m-0 bg-transparent border-0 w-100 text-left align-middle " onclick="return confirm('{{ __("Sure you want to change the key?") }}');">
+                                                        {{ __('Change key') }}
+                                                    </button>
+                                                </form>
+                                            </div>
+
+                                            <div class="dropdown-divider"></div>
+
+                                            <div class="dropdown-item p-0">
+                                                <form action="{{ url('nodes/remove') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $node['id'] }}">
+                                                    <button type="submit" class="px-4 py-3 m-0 bg-transparent border-0 w-100 text-left align-middle" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
+                                                        {{ __('Delete') }}
+                                                    </button>
+                                                </form>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="mr-2">
-                                        <form action="{{ url('nodes/remove') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $node['id'] }}">
-                                            <button type="submit" class="btn btn-primary align-middle" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
-                                                {{ __('Delete') }}
-                                            </button>
-                                        </form>
-                                    </div>
+                                    <!-- / Actions menu -->
+                                    
                                 </div>
 
                             </div>
