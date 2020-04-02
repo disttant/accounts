@@ -83,7 +83,7 @@
 
             <a href="{{ url('nodes') }}">{{ __('Nodes') }}</a>
 
-            <a href="{{ url('comoditos') }}">{{ __('Comoditos') }}</a>
+            <a href="{{ url('cards') }}">{{ __('cards') }}</a>
             
             @if ( Auth::user()->hasAnyRole(['admin', 'developer']) == true )
                 <a href="{{ url('developers') }}">{{ __('Developers') }}</a>
@@ -119,9 +119,9 @@
                 </div>
 
                 <div class="d-flex flex-column">
-                    <a href="{{ url('comoditos') }}" class="pl-5 py-2 text-decoration-none">
+                    <a href="{{ url('cards') }}" class="pl-5 py-2 text-decoration-none">
                         <i class="material-icons align-middle mr-2">vpn_key</i>
-                        <span class="align-middle">{{ __('Comoditos') }}</span>
+                        <span class="align-middle">{{ __('Cards') }}</span>
                     </a>
                 </div>
                 

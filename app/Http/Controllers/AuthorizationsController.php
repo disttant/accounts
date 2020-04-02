@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthorizationsController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -41,7 +40,7 @@ class AuthorizationsController extends Controller
     public function showAuthorizedClients( )
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
+        Auth::user()->authorizeRoles(['admin', 'business', 'developer', 'user']);
 
         $clients = User::getAuthorizedClients( Auth::id() );
 
@@ -58,7 +57,7 @@ class AuthorizationsController extends Controller
     public function revokeAuthorizedClient( Request $request)
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
+        Auth::user()->authorizeRoles(['admin', 'business', 'developer', 'user']);
 
         # Check recieved id hidden field
         $validator = Validator::make($request->all(),[

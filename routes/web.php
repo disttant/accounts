@@ -144,21 +144,21 @@ Route::prefix('nodes')->middleware(['auth'])->group(function () {
  *  Routes for personal-keys forms and actions
  * 
  */
-Route::prefix('comoditos')->middleware(['auth'])->group(function () {
+Route::prefix('cards')->middleware(['auth'])->group(function () {
 
     Route::get('/', function(){
-        return redirect('comoditos/show');
+        return redirect('cards/show');
     });
 
-    Route::get('/show', 'ComoditosController@GetAllView');
+    Route::get('/show', 'CardsController@GetAllView');
 
-    Route::get('/create', 'ComoditosController@CreateOneView');
+    Route::get('/create', 'CardsController@CreateOneView');
 
-    Route::post('/create', 'ComoditosController@CreateOne');
+    Route::post('/create', 'CardsController@CreateOne');
 
-    //Route::post('/change/key', 'NodesController@ChangeOne');
+    Route::post('/change/current', 'CardsController@ChangeOne');
 
-    Route::post('/remove', 'ComoditosController@RemoveOne');
+    Route::post('/remove', 'CardsController@RemoveOne');
 
 });
 

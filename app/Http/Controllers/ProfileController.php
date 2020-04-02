@@ -28,7 +28,7 @@ class ProfileController extends Controller
     public function show()
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
+        Auth::user()->authorizeRoles(['admin', 'business', 'developer', 'user']);
 
         return view('profile/show');
     }
@@ -43,7 +43,7 @@ class ProfileController extends Controller
     public function showChangeForm($field)
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
+        Auth::user()->authorizeRoles(['admin', 'business', 'developer', 'user']);
 
         return view('profile/change/'.$field, ['field' => $field, 'value' => Auth::user()->$field] );
     }
@@ -58,7 +58,7 @@ class ProfileController extends Controller
     public function updatePassword(Request $request)
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
+        Auth::user()->authorizeRoles(['admin', 'business', 'developer', 'user']);
 
         $profile = Auth::user();
 
@@ -90,7 +90,7 @@ class ProfileController extends Controller
     public function updateName(Request $request)
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
+        Auth::user()->authorizeRoles(['admin', 'business', 'developer', 'user']);
 
         $profile = Auth::user();
 

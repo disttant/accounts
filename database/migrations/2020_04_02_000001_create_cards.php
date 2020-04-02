@@ -15,7 +15,7 @@ class CreateComoditos extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('comoditos', function (Blueprint $table) {
+        Schema::create('cards', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
@@ -24,6 +24,7 @@ class CreateComoditos extends Migration
             $table->string('name', 30);
             $table->unsignedBigInteger('node_id');
             $table->string('key', 64);
+            $table->boolean('current')->default(false);
             $table->timestamps();
 
             $table->unique(['user_id', 'node_id', 'key']);
@@ -45,6 +46,6 @@ class CreateComoditos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comoditos');
+        Schema::dropIfExists('cards');
     }
 }

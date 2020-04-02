@@ -3,36 +3,36 @@
 @section('content')
 
     <div class="mb-5">
-        <h4 class="my-1">{{ __('Comoditos') }}</h4>
-        <small>{{ __('Passes to the paradise, sweetie')}}</small>
+        <h4 class="my-1">{{ __('Cards') }}</h4>
+        <small>{{ __('Passes to the paradise')}}</small>
     </div>
 
     <div class="my-4">
-        <a href="{{ url('comoditos/create') }}" class="btn btn-primary">
-            {{ __('Create a Comodito') }}
+        <a href="{{ url('cards/create') }}" class="btn btn-primary">
+            {{ __('Create a Card') }}
         </a>
     </div>
 
-    @if ( count($comoditoList['comoditos']) === 0 )
+    @if ( count($cardList['cards']) === 0 )
 
         <div class="my-4">
             <div class="alert alert-light" role="alert">
-                {{ __('No Comoditos added yet. Add one to start the magic.') }}
+                {{ __('No cards added yet. Add one to start the magic.') }}
             </div>
         </div>
 
     @else
 
         <ul class="list-group">
-            @foreach ( $comoditoList['comoditos'] as $comodito )
+            @foreach ( $cardList['cards'] as $card )
                 <div class="list-group-item list-group-item-action">
                     <div class="d-flex p-2 align-items-stretch">
                         <div class="d-flex flex-grow-1 justify-content-between align-items-center">
                             <div class="d-flex flex-column mb-3 flex-grow-1 ">
 
                                 <div class="my-2">
-                                    <div class="font-weight-bold">{{ __('An easy-to-remember name for your Comodito') }}</div>
-                                    <div>{{ $comodito['name'] }}</div>
+                                    <div class="font-weight-bold">{{ __('Card name') }}</div>
+                                    <div>{{ $card['name'] }}</div>
                                 </div>
 
                                 <div class="d-flex flex-row mt-3">
@@ -46,12 +46,11 @@
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             
                                             <div class="dropdown-item p-0">
-                                                <form action="{{ url('comoditos/change/default') }}" method="POST">
+                                                <form action="{{ url('cards/change/current') }}" method="POST">
                                                     @csrf
-                                                    <input type="hidden" name="id" value="{{ $comodito['id'] }}">
-                                                    <!--<input type="hidden" name="key" value="true">-->
+                                                    <input type="hidden" name="id" value="{{ $card['id'] }}">
                                                     <button type="submit" class="px-4 py-3 m-0 bg-transparent border-0 w-100 text-left align-middle " onclick="return confirm('{{ __("Sure you want to change the key?") }}');">
-                                                        {{ __('Activate') }}
+                                                        {{ __('Use this card') }}
                                                     </button>
                                                 </form>
                                             </div>
@@ -59,9 +58,9 @@
                                             <div class="dropdown-divider"></div>
 
                                             <div class="dropdown-item p-0">
-                                                <form action="{{ url('comoditos/remove') }}" method="POST">
+                                                <form action="{{ url('cards/remove') }}" method="POST">
                                                     @csrf
-                                                    <input type="hidden" name="id" value="{{ $comodito['id'] }}">
+                                                    <input type="hidden" name="id" value="{{ $card['id'] }}">
                                                     <button type="submit" class="px-4 py-3 m-0 bg-transparent border-0 w-100 text-left align-middle" onclick="return confirm('{{ __("Sure you want to delete this node?") }}');">
                                                         {{ __('Delete') }}
                                                     </button>

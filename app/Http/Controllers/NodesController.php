@@ -212,7 +212,7 @@ class NodesController extends Controller
     public function CreateOneView(){
 
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
+        Auth::user()->authorizeRoles(['admin', 'business', 'developer']);
 
         return view('nodes/create');
     }
@@ -225,7 +225,7 @@ class NodesController extends Controller
     public function GetAllView(){
 
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer', 'user']);
+        Auth::user()->authorizeRoles(['admin', 'business', 'developer']);
 
         # Get nodes from the API
         $nodeList = self::GetAll();

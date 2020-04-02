@@ -20,11 +20,11 @@
     <ul class="list-group">
         <li class="list-group-item py-4">
             <div class="d-flex flex-column mb-3 flex-grow-1">
-                <form action="{{ url('comoditos/create') }}" method="post">
+                <form action="{{ url('cards/create') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <div class="pt-4 pb-4">
-                            <input name="name" type="text" class="form-control" placeholder="{{ __('An easy-to-remember name for this key')}}" required>
+                            <input name="name" type="text" class="form-control" placeholder="{{ __('An easy name to tag this card')}}" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
-                    <small class="mt-4 form-text text-muted">{{ __('For your security the key will be hidden forever from now') }}</small>
+                    <small class="mt-4 form-text text-muted">{{ __('For your security, the key will be hidden forever') }}</small>
                 </form>
             </div>
         </li>
