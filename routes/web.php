@@ -139,6 +139,31 @@ Route::prefix('nodes')->middleware(['auth'])->group(function () {
 
 
 
+/* 
+ *
+ *  Routes for personal-keys forms and actions
+ * 
+ */
+Route::prefix('staypasses')->middleware(['auth'])->group(function () {
+
+    Route::get('/', function(){
+        return redirect('staypasses/show');
+    });
+
+    Route::get('/show', 'StaypassesController@GetAllView');
+
+    Route::get('/create', 'StaypassesController@CreateOneView');
+
+    Route::post('/create', 'StaypassesController@CreateOne');
+
+    //Route::post('/change/key', 'NodesController@ChangeOne');
+
+    Route::post('/remove', 'StaypassesController@RemoveOne');
+
+});
+
+
+
 
 /* 
  *
