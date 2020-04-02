@@ -51,10 +51,11 @@ class ComoditosController extends Controller
         }
 
         # Save into DB
-        $newComodito          = new Comodito;
-        $newComodito->name    = $request->input('name');
-        $newComodito->node_id = $request->input('node_id');
-        $newComodito->key     = $request->input('key');
+        $newComodito           = new Comodito;
+        $newComodito->name     = $request->input('name');
+        $newComodito->user_id  = Auth::id();
+        $newComodito->node_id  = $request->input('node_id');
+        $newComodito->key      = $request->input('key');
 
         # Check for errors saving data
         if ( $newComodito->save() === false ){
