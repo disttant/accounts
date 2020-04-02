@@ -9,7 +9,7 @@
 
     @if ($errors->any())
         <div class="alert alert-danger">
-            <ul>
+            <ul class="list-unstyled">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -29,12 +29,12 @@
                     </div>
                     <div class="form-group">
                         <div class="pt-4 pb-4">
-                            <input name="name" type="text" class="form-control" placeholder="{{ __('Node ID')}}" required>
+                            <input name="node_id" type="text" class="form-control" placeholder="{{ __('Node ID')}}" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="pt-4 pb-4">
-                            <input name="name" type="text" class="form-control" placeholder="{{ __('Node key')}}" required>
+                            <input name="key" type="text" class="form-control" placeholder="{{ __('Node key')}}" required>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
