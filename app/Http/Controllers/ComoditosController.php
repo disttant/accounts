@@ -136,7 +136,7 @@ class ComoditosController extends Controller
     # #########################
 
     /*
-     * Show form to create a new node
+     * Show form to create a new comodito
      */
     public function CreateOneView(){
 
