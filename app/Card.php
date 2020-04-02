@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comodito extends Model
+class Card extends Model
 {
 
     /**
