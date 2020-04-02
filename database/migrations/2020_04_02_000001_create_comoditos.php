@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNodes extends Migration
+class CreateComoditos extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateNodes extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('staypasses', function (Blueprint $table) {
+        Schema::create('comoditos', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
@@ -45,6 +45,6 @@ class CreateNodes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('staypasses');
+        Schema::dropIfExists('comoditos');
     }
 }

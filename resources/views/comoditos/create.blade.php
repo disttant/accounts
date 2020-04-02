@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="mb-5">
-        <h4 class="my-1">{{ __('Create new Staypass') }}</h4>
+        <h4 class="my-1">{{ __('Create new Comodito') }}</h4>
         <small>{{ __('Put here the data that accomodation gave to you') }}</small>
     </div>
 

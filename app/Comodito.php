@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Staypass extends Model
+class Comodito extends Model
 {
 
     /**

@@ -144,21 +144,21 @@ Route::prefix('nodes')->middleware(['auth'])->group(function () {
  *  Routes for personal-keys forms and actions
  * 
  */
-Route::prefix('staypasses')->middleware(['auth'])->group(function () {
+Route::prefix('comoditos')->middleware(['auth'])->group(function () {
 
     Route::get('/', function(){
-        return redirect('staypasses/show');
+        return redirect('comoditos/show');
     });
 
-    Route::get('/show', 'StaypassesController@GetAllView');
+    Route::get('/show', 'ComoditosController@GetAllView');
 
-    Route::get('/create', 'StaypassesController@CreateOneView');
+    Route::get('/create', 'ComoditosController@CreateOneView');
 
-    Route::post('/create', 'StaypassesController@CreateOne');
+    Route::post('/create', 'ComoditosController@CreateOne');
 
     //Route::post('/change/key', 'NodesController@ChangeOne');
 
-    Route::post('/remove', 'StaypassesController@RemoveOne');
+    Route::post('/remove', 'ComoditosController@RemoveOne');
 
 });
 
