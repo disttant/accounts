@@ -81,10 +81,10 @@ class CardsController extends Controller
         # Retrieve card from the db
         $updateCards = Card::where('user_id', Auth::id() )
                             ->update(['current' => false]);
-        if( $updateCards == false ){
+        if( ! $updateCards ){
             return false;
         }
-        return true;             
+        return true;
     }
 
 
@@ -104,6 +104,9 @@ class CardsController extends Controller
                 Rule::exists('cards')->where(function ($query) {
                     return $query->where( 'user_id', Auth::id() );
                 })
+            ],
+            'current' => [
+                'boolean',
             ]
         ]);
 
@@ -128,7 +131,7 @@ class CardsController extends Controller
                         ])
                         ->withInput();
             }
-            $updateCard->current_key = true;
+            $updateCard->current = true;
         }
 
         # Save and check errors
