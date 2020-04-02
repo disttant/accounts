@@ -24,7 +24,7 @@
                     @csrf
                     <div class="form-group">
                         <div class="pt-4 pb-4">
-                            <input name="name" type="text" class="form-control" placeholder="{{ __('A trivial tag for this key')}}" required>
+                            <input name="name" type="text" class="form-control" placeholder="{{ __('An easy-to-remember name for this key')}}" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
-                    <small class="mt-4 form-text text-muted">{{ __('For your security the key will be hidden from now') }}</small>
+                    <small class="mt-4 form-text text-muted">{{ __('For your security the key will be hidden forever from now') }}</small>
                 </form>
             </div>
         </li>

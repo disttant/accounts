@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ComoditosController extends Controller
 {
@@ -44,7 +45,7 @@ class ComoditosController extends Controller
         if ($validator->fails()){
             return redirect('comoditos/create')
                         ->withErrors([
-                            'message' => __('Comodito could not be created')
+                            'message' => __('Some field is malformed. May be the key?')
                         ])
                         ->withInput();
         }
@@ -75,10 +76,18 @@ class ComoditosController extends Controller
      *  Delete a comodito
      *
      * */
-    public static function RemoveOne( int $nodeId )
+    public static function RemoveOne( Request $request )
     {
+        # Check if the body is right
+        $validator = Validator::make($request->all(), [
+            'id' => [
+                'required',
+                'regex:/^[0-9]+$/',
+            ]
+        ]);
+
         # Find and delete the resource
-        $deleteComodito = Comodito::where('node_id', $nodeId)
+        $deleteComodito = Comodito::where('id', $request->input('id'))
             ->where('user_id', Auth::id())
             ->delete();
 
