@@ -98,7 +98,8 @@ class CardsController extends Controller
         $getCard = Card::select('node_id', 'key')
             ->where('user_id', Auth::id() )
             ->where('current', true )
-            ->first();
+            ->limit(1)
+            ->get();
         
         if( $getCard->isEmpty() ){
             return [
@@ -108,8 +109,8 @@ class CardsController extends Controller
 
         return [
             'card' => [
-                'node_id' => $getCard->node_id,
-                'key'     => $getCard->key
+                'node_id' => $getCard[0]->node_id,
+                'key'     => $getCard[0]->key
             ]
         ];
     }
