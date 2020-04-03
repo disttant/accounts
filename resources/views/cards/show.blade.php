@@ -49,7 +49,7 @@
                                                 <form action="{{ url('cards/change/current') }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $card['id'] }}">
-                                                    <input type="hidden" name="current" value="true">
+                                                    <input type="hidden" name="current" value="1">
                                                     <button type="submit" class="px-4 py-3 m-0 bg-transparent border-0 w-100 text-left align-middle " onclick="return confirm('{{ __("Sure you want to change the key?") }}');">
                                                         {{ __('Use this card') }}
                                                     </button>
