@@ -20,17 +20,27 @@ class CustomAccessToken extends PassportAccessToken {
             ->setExpiration($this->getExpiryDateTime()->getTimestamp())
             ->setSubject($this->getUserIdentifier())
             ->set('scopes', $this->getScopes())
-            ->set('card', CardsController::GetCurrentCard()['card']) // my custom claims
+            ->set('data', $this->getData()) // my custom claims
             ->sign(new Sha256(), new Key($privateKey->getKeyPath(), $privateKey->getPassPhrase()))
             ->getToken();
     }
 
     // my custom claims for roles
     // Just an example. 
-    // public function getRoles() {
-    //     return [
-    //         't1',
-    //         't2'
-    //     ];
-    // }
+    public function getData() {
+        # Save the scopes once to avoid continuos execution
+        $scopes = $this->getScopes();
+
+        # Declare the data wrapper
+        $data = [];
+
+        # Put information into the wrapper
+        ## Put current card data if user_card scope authorized
+        if (array_key_exists('user_card', $scopes)) {
+            array_push ($data, CardsController::GetCurrentCard());
+        }
+
+        # Retrieve the wrapper
+        return $data;
+    }
 }

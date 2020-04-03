@@ -29,9 +29,10 @@ class AuthServiceProvider extends ServiceProvider
 
         # Defining the scopes for OAuth
         Passport::tokensCan([
-            'api_r' => __('Read information from service'),
-            'api_w' => __('Publish information to service'),
-            'api_d' => __('Delete information from service'),
+            'api_r'     => __('Read information from service'),
+            'api_w'     => __('Publish information to service'),
+            'api_d'     => __('Delete information from service'),
+            'user_card' => __('Retrieve your active card'),
         ]);
 
         //Passport::ignoreCsrfToken(true);
