@@ -96,8 +96,6 @@ class CardsController extends Controller
      * */
     public static function ChangeOne( Request $request )
     {
-        return response( $request->all() )->send();
-
         # Check if the body is right
         $validator = Validator::make($request->all(), [
             'id' => [
