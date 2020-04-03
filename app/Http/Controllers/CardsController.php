@@ -89,6 +89,33 @@ class CardsController extends Controller
 
 
 
+    /*
+     * Get current card data
+     */
+    public static function GetCurrentCard()
+    {
+        # Retrieve card from the db
+        $getCard = Card::select('node_id', 'key')
+            ->where('user_id', Auth::id() )
+            ->where('current', true )
+            ->first();
+        
+        if( $getCard->isEmpty() ){
+            return [
+                'card' => []
+            ];
+        }
+
+        return [
+            'card' => [
+                'node_id' => $getCard->node_id,
+                'key'     => $getCard->key
+            ]
+        ];
+    }
+
+
+
     /* *
      *
      *  Change some card field
