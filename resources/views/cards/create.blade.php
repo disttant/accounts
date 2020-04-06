@@ -65,7 +65,6 @@
     <script>
         // Draw the image with a square in the middle
         function drawImge(){
-            function drawImge(){
             let video  = qrVideo;
             let canvas = qrVideoCanvas;
             let ctx    = canvas.getContext('2d');
@@ -211,6 +210,5 @@
 
             qrStatus.innerHTML = '';
         };
-
     </script>
 @endpush
