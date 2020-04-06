@@ -39,15 +39,15 @@
                     </div>-->
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-6 border p-0">
+                            <div class="col-lg-6 p-0">
                                 <video  id="qrVideo" class="d-none" autoplay="true" ></video>
                                 <canvas id="qrVideoCanvas" class="w-100 rounded-lg shadow-lg"></canvas>
                                 <canvas id="qrShotCanvas"  class="w-100 rounded-lg shadow-lg" style="display:none;"></canvas>
                             </div>
-                            <div class="col-lg-6 border px-5 align-self-center d-flex justify-content-center">
+                            <div class="col-lg-6 px-5 align-self-center d-flex justify-content-center">
                                 <div class="">
                                     <h4 class="my-1 text-muted">{{ __('QR scanner') }}</h4>
-                                    <div id="qrStatus" class="border border danger p-5"></div>
+                                    <div id="qrStatus" class="border border-danger p-5"></div>
                                 <div>
                             </div>
                         </div>
