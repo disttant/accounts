@@ -164,14 +164,13 @@
 
                 // Post via axios or other transport method
                 fetch('https://api.qrserver.com/v1/read-qr-code/', {
-                method: 'POST',
-                body: formData,
+                    method: 'POST',
+                    body: formData
                 })
                 .then(function(response) {
                     // Request failed
                     if (response.status !== 200) {
-                        console.log('Looks like there was a problem. Status Code: ' +
-                        response.status);
+                        console.log('Looks like there was a problem. Status Code: ' + response.status);
                         return;
                     }
 
