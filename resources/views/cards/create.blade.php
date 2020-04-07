@@ -37,7 +37,7 @@ utofocus>
                                 <canvas id="qrVideoCanvas" class="w-100 rounded-lg shadow-sm"></canvas>
                                 <canvas id="qrShotCanvas"  class="w-100 rounded-lg shadow-sm" style="display:none;"></canvas>
                             </div>
-                            <div class="col-lg-6 p-0 d-flex justify-content-center">
+                            <div class="col-lg-6 p-0 pb-5 d-flex justify-content-center">
                                 <div class="w-100 mx-3">
                                     <h4 class="my-1 px-3 text-muted">{{ __('Instructions') }}</h4>
                                     <ul class="list-group list-group-flush">
