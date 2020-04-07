@@ -81,11 +81,11 @@
 
             <a href="{{ url('authorizations') }}">{{ __('Authorizations') }}</a>
 
-            <a href="{{ url('nodes') }}">{{ __('Nodes') }}</a>
+            <a href="{{ url('cards') }}">{{ __('Cards') }}</a>
 
-            <a href="{{ url('cards') }}">{{ __('cards') }}</a>
-            
-            @if ( Auth::user()->hasAnyRole(['admin', 'developer']) == true )
+            @if ( Auth::user()->hasAnyRole(['admin']) == true )
+                <a href="{{ url('nodes') }}">{{ __('Nodes') }}</a>
+
                 <a href="{{ url('developers') }}">{{ __('Developers') }}</a>
             @endif
 
@@ -112,20 +112,20 @@
                 </div>
 
                 <div class="d-flex flex-column">
-                    <a href="{{ url('nodes') }}" class="pl-5 py-2 text-decoration-none">
-                        <i class="material-icons align-middle mr-2">home_work</i>
-                        <span class="align-middle">{{ __('Nodes') }}</span>
-                    </a>
-                </div>
-
-                <div class="d-flex flex-column">
                     <a href="{{ url('cards') }}" class="pl-5 py-2 text-decoration-none">
                         <i class="material-icons align-middle mr-2">vpn_key</i>
                         <span class="align-middle">{{ __('Cards') }}</span>
                     </a>
                 </div>
                 
-                @if ( Auth::user()->hasAnyRole(['admin', 'developer']) == true )
+                @if ( Auth::user()->hasAnyRole(['admin']) == true )
+                    <div class="d-flex flex-column">
+                        <a href="{{ url('nodes') }}" class="pl-5 py-2 text-decoration-none">
+                            <i class="material-icons align-middle mr-2">home_work</i>
+                            <span class="align-middle">{{ __('Nodes') }}</span>
+                        </a>
+                    </div>
+
                     <div class="d-flex flex-column">
                         <a href="{{ url('developers') }}" class="pl-5 py-2 text-decoration-none">
                             <i class="material-icons align-middle mr-2">build</i>
@@ -133,15 +133,6 @@
                         </a>
                     </div>
                 @endif
-
-                <!--
-                <div class="d-flex flex-column">
-                    <a href="{{ url('contact') }}" class="pl-5 py-2 text-decoration-none">
-                        <i class="material-icons align-middle mr-2">question_answer</i>
-                        <span class="align-middle">{{ __('Contact') }}</span>
-                    </a>
-                </div>
-                -->
 
             </div>
 

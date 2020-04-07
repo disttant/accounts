@@ -152,7 +152,7 @@ utofocus>
                 };
             })
             .catch(function ( error ) {
-                console.log("[Disttant QR] Media error!", error);
+                console.log("[QR] Media device not found", error);
             });
         }
 
@@ -191,9 +191,7 @@ utofocus>
                     qrShotCenterX      = qrShotCanvas.width/2 - fontWidth/2;
                     qrShotCenterY      = qrShotCanvas.height/2;
 
-                    // Request failed
-                    if (response.status !== 200) {
-                        fontIcon = 'error';
+                    drawStatus = function (){
                         material_font.load().then( () => {
                             qrCtx.fillText(
                                 fontIcon,
@@ -201,6 +199,12 @@ utofocus>
                                 qrShotCenterY
                             );
                         });
+                    }
+
+                    // Request failed
+                    if (response.status !== 200) {
+                        fontIcon = 'error';
+                        drawStatus();
                         return;
                     }
 
@@ -210,13 +214,7 @@ utofocus>
                         // Not possible to process the QR
                         if ( data[0].symbol[0].error != null ){
                             fontIcon = 'close';
-                            material_font.load().then( () => {
-                                qrCtx.fillText(
-                                    fontIcon,
-                                    qrShotCenterX,
-                                    qrShotCenterY
-                                );
-                            });
+                            drawStatus();
                             return;
                         }
 
@@ -225,24 +223,14 @@ utofocus>
                         // Not a right QR code
                         if( qrData.match(/[a-z0-9]{64}[@]{1}[0-9]+/) == null ){
                             fontIcon = 'close';
-                            material_font.load().then( () => {
-                                qrCtx.fillText(
-                                    fontIcon,
-                                    qrShotCenterX,
-                                    qrShotCenterY
-                                );
-                            });
+                            drawStatus();
                             return;
                         }
 
                         // Possible valid card
                         fontIcon = 'check';
                         material_font.load().then( () => {
-                            qrCtx.fillText(
-                                fontIcon,
-                                qrShotCenterX,
-                                qrShotCenterY
-                            );
+                            drawStatus();
                         });
                         //.catch( console.error );
 
