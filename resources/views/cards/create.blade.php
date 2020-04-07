@@ -22,38 +22,51 @@
             <div class="d-flex flex-column mb-3 flex-grow-1">
                 <form action="{{ url('cards/create') }}" method="post">
                     @csrf
+                    <input name="node_id" type="hidden" required>
+                    <input name="key" type="hidden" required>
                     <div class="form-group">
                         <div class="pt-4 pb-4">
-                            <input name="name" type="text" class="form-control" placeholder="{{ __('An easy name to tag this card')}}" required>
+                            <input name="name" type="text" class="form-control" placeholder="{{ __('An easy name to tag this card')}}" required a
+utofocus>
                         </div>
                     </div>
-                    <!--<div class="form-group">
-                        <div class="pt-4 pb-4">
-                            <input name="node_id" type="text" class="form-control" placeholder="{{ __('Node ID')}}" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="pt-4 pb-4">
-                            <input name="key" type="text" class="form-control" placeholder="{{ __('Node key')}}" required>
-                        </div>
-                    </div>-->
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-6 p-0">
+                            <div class="col-lg-6 p-0 pb-5">
                                 <video  id="qrVideo" class="d-none" autoplay="true" ></video>
-                                <canvas id="qrVideoCanvas" class="w-100 rounded-lg shadow-lg"></canvas>
-                                <canvas id="qrShotCanvas"  class="w-100 rounded-lg shadow-lg" style="display:none;"></canvas>
+                                <canvas id="qrVideoCanvas" class="w-100 rounded-lg shadow-sm"></canvas>
+                                <canvas id="qrShotCanvas"  class="w-100 rounded-lg shadow-sm" style="display:none;"></canvas>
                             </div>
-                            <div class="col-lg-6 px-5 align-self-center d-flex justify-content-center">
-                                <div class="">
-                                    <h4 class="my-1 text-muted">{{ __('QR scanner') }}</h4>
-                                    <div id="qrStatus" class="border border-danger p-5"></div>
+                            <div class="col-lg-6 p-0 d-flex justify-content-center">
+                                <div class="w-100 mx-3">
+                                    <h4 class="my-1 px-3 text-muted">{{ __('Instructions') }}</h4>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item border-0 py-3">
+                                            <i class="material-icons align-middle mr-2">label</i>
+                                            <p class="d-inline lead align-middle">{{ __('Label this card')  }}</p>
+                                        </li>
+                                        <li class="list-group-item border-0 py-3">
+                                            <i class="material-icons align-middle mr-2">stay_primary_portrait</i>
+                                            <p class="d-inline lead align-middle">{{ __('Direct your device to the QR')  }}</p>
+                                        </li>
+                                        <li class="list-group-item border-0 py-3">
+                                            <i class="material-icons align-middle mr-2">wallpaper</i>
+                                            <p class="d-inline lead align-middle">{{ __('Keep the QR inside the box')  }}</p>
+                                        </li>
+                                        <li class="list-group-item border-0 py-3">
+                                            <i class="material-icons align-middle mr-2">touch_app</i>
+                                            <p class="d-inline lead align-middle">{{ __('Touch the screen')  }}</p>
+                                        </li>
+                                        <li class="list-group-item border-0 py-3">
+                                            <i class="material-icons align-middle mr-2">save</i>
+                                            <p class="d-inline lead align-middle">{{ __('Save and go!')  }}</p>
+                                        </li>
+                                    </ul>
                                 <div>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
-                    <small class="mt-4 form-text text-muted">{{ __('For your security, the key will be hidden forever') }}</small>
+                    <button type="submit" class="btn btn-primary" disabled>{{ __('Create') }}</button>
                 </form>
             </div>
         </li>
@@ -63,6 +76,22 @@
 
 @push('scripts')
     <script>
+        // Select media elements we are transforming
+        var qrVideo           = document.querySelector("#qrVideo");
+        var qrVideoCanvas     = document.querySelector("#qrVideoCanvas");
+        var qrShotCanvas      = document.querySelector('#qrShotCanvas');
+        var formSubmitButton  = document.querySelector('button[type="submit"]');
+        var formNodeidInput   = document.querySelector('input[name="node_id"]');
+        var formKeyInput      = document.querySelector('input[name="key"]');
+        var front             = false;
+        const material_font   = new FontFace(
+            'material-icons',
+            'url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2)'
+        );
+
+        // add it to the document's FontFaceSet
+        document.fonts.add( material_font );
+
         // Draw the image with a square in the middle
         function drawImge(){
             let video  = qrVideo;
@@ -108,23 +137,8 @@
             setTimeout(drawImge , 100);
         }
 
-        // Select media elements we are transforming
-        var qrVideo       = document.querySelector("#qrVideo");
-        var qrVideoCanvas = document.querySelector("#qrVideoCanvas");
-        var qrShotCanvas  = document.querySelector('#qrShotCanvas');
-        var qrStatuss     = document.querySelector('#qrStatus');
-        var front         = false;
-        const material_font = new FontFace(
-            'material-icons',
-            'url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2)'
-        );
-
-        // add it to the document's FontFaceSet
-        document.fonts.add( material_font ); 
-
         // Check for webcam support
         if (navigator.mediaDevices.getUserMedia) {
-
             // Broadcast the video to the element or show error
             navigator.mediaDevices.getUserMedia({
                 video: {
@@ -134,16 +148,15 @@
             .then(function (stream) {
                 qrVideo.srcObject = stream;
                 qrVideo.onplay = function() {
-                    setTimeout(drawImge , 300);
+                    setTimeout(drawImge , 100);
                 };
             })
             .catch(function ( error ) {
-                console.log("Something went wrong!", error);
+                console.log("[Disttant QR] Media error!", error);
             });
         }
 
         qrVideoCanvas.onclick = function() {
-
             // Place the pic placeholder where the video was
             qrVideoCanvas.style.display = 'none';
             qrShotCanvas.style.display  = 'block';
@@ -154,9 +167,7 @@
             qrCtx = qrShotCanvas.getContext('2d');
             qrCtx.drawImage(qrVideoCanvas, 0, 0);
 
-            // Inform the user about the actions
-            qrStatus.innerHTML = 'Sending...';
-
+            // Take it as binary
             qrShotCanvas.toBlob(function(blob) {
                 const formData = new FormData();
                 formData.append('file', blob, 'filename.png');
@@ -167,20 +178,45 @@
                     body: formData
                 })
                 .then(function(response) {
+                    // Write instructions
+                    let fontIcon;
+                    let fontWidth;
+                    let fontHeight;
+
+                    qrCtx.fillStyle    = 'rgba(238, 238, 238, 1)'; //238
+                    qrCtx.font         = '15em material-icons';
+                    qrCtx.textBaseline = 'middle';
+                    fontHeight         = parseInt(qrCtx.font) * 1.2;
+                    fontWidth          = parseInt(qrCtx.font) * 1;  // qrCtx.measureText(fontIcon).width;
+                    qrShotCenterX      = qrShotCanvas.width/2 - fontWidth/2;
+                    qrShotCenterY      = qrShotCanvas.height/2;
+
                     // Request failed
                     if (response.status !== 200) {
-                        console.log('Looks like there was a problem. Status Code: ' + response.status);
+                        fontIcon = 'error';
+                        material_font.load().then( () => {
+                            qrCtx.fillText(
+                                fontIcon,
+                                qrShotCenterX,
+                                qrShotCenterY
+                            );
+                        });
                         return;
                     }
 
                     // Request successful
                     response.json().then(function(data) {
-                        
-                        console.log(data);
 
                         // Not possible to process the QR
                         if ( data[0].symbol[0].error != null ){
-                            qrStatus.innerHTML = 'Not possible to extract the card';
+                            fontIcon = 'close';
+                            material_font.load().then( () => {
+                                qrCtx.fillText(
+                                    fontIcon,
+                                    qrShotCenterX,
+                                    qrShotCenterY
+                                );
+                            });
                             return;
                         }
 
@@ -188,18 +224,38 @@
 
                         // Not a right QR code
                         if( qrData.match(/[a-z0-9]{64}[@]{1}[0-9]+/) == null ){
-                            qrStatus.innerHTML = 'This is not a disttant card';
+                            fontIcon = 'close';
+                            material_font.load().then( () => {
+                                qrCtx.fillText(
+                                    fontIcon,
+                                    qrShotCenterX,
+                                    qrShotCenterY
+                                );
+                            });
                             return;
                         }
 
                         // Possible valid card
-                        qrStatus.innerHTML = 'That is a good card';
-                        console.log('Good QR', qrData);
+                        fontIcon = 'check';
+                        material_font.load().then( () => {
+                            qrCtx.fillText(
+                                fontIcon,
+                                qrShotCenterX,
+                                qrShotCenterY
+                            );
+                        });
+                        //.catch( console.error );
 
+                        // Set the key
+                        qrData = qrData.split("@");
+                        formNodeidInput.value = qrData[1];
+                        formKeyInput.value = qrData[0];
+
+                        // Activate the submit button
+                        formSubmitButton.removeAttribute("disabled");
                     });
-
                 }).catch(function(err) {
-                    console.log('Fetch Error :-S', err);
+                    //console.log('Fetch Error :-S', err);
                 });
             });
         };
@@ -208,7 +264,8 @@
             qrVideoCanvas.style.display = 'block';
             qrShotCanvas.style.display  = 'none';
 
-            qrStatus.innerHTML = '';
+            // Disable the submit button
+            formSubmitButton.setAttribute("disabled", "true");
         };
     </script>
 @endpush
