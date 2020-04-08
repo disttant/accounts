@@ -56,5 +56,18 @@ class OauthClientsTableSeeder extends Seeder
         $client->revoked                      = false;
         $client->save();
 
+
+
+        # Generate a client for the official device: Adaptative Socket One
+        $client                               = new OauthClient();
+        $client->user_id                      = '1';
+        $client->name                         = 'Disttant Thermostat One';
+        $client->secret                       = 'AQnm7V1tJHWzpGF9I8WK5zK610KcJq1KWWWBnXxR';
+        $client->redirect                     = 'https://localhost:9000';
+        $client->personal_access_client       = false;
+        $client->password_client              = true;
+        $client->revoked                      = false;
+        $client->save();
+
     }
 }

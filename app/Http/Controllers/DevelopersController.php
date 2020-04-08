@@ -2,112 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Developer as Developer;
-
 use Route;
+use App\Developer as Developer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
-
-use Notification;
-use App\Notifications\DeveloperApplicacionRequest as DeveloperApplicacionRequest;
-
-//use Illuminate\Support\Facades\Mail;
-//use App\Mail\DevelopersApplicationRequest;
-
-//use \GuzzleHttp\Client;
-
-
+//use Notification;
+//use App\Notifications\DeveloperApplicacionRequest as DeveloperApplicacionRequest;
 
 class DevelopersController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct( Request $request )
-    {
-
-    }
-
-
-
-    /**
-     * Show the list of the clients for the current user
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function showDeveloperApplyForm( Request $request )
-    {
-        # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'user']);
-
-        return view('developers/apply');
-        
-    }
-
-
-
-    /**
-     * Process the form data and creates a new developer in the database
-     *
-     */
-    public function createDeveloper( Request $request )
-    {
-        # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'user']);
-
-        # Validate the form
-        $validatedData = $request->validate([
-            'name'      => ['required', 'string', 'max:100'],
-            'document'  => ['required', 'alpha_num', 'unique:developers,document', 'max:20'],
-            'email'     => ['required', 'email', 'unique:developers,email', 'max:100'],
-            'phone'     => [
-                'required', 
-                'unique:developers,phone', 
-                'max:20', 
-                'regex:/^[\+]?[(]?[0-9]{1,3}[)]?[-\s\.]?[0-9]{2,3}([-\s\.]?[0-9]{2,3})+$/i'
-            ],
-            'summary'   => ['required', 'string', 'max:200'],
-        ]);
-
-        # Save the developer in the database
-        $createDeveloper = Developer::Create(
-            Auth::id(),
-            $request->input('name'), 
-            $request->input('document'),
-            $request->input('email'),
-            $request->input('phone'),
-            $request->input('summary')
-        );
-
-        if ( $createDeveloper == null ){
-            return redirect('developers/apply')
-                    ->withErrors( __('You have already sent a request.') )
-                    ->withInput();
-        }
-
-        if ( $createDeveloper == false ){
-            return redirect('developers/apply')
-                    ->withErrors( __('We could not save the request. Try again later.') )
-                    ->withInput();
-        }
-
-        # Send an email to the administration email
-        Notification::route('mail', config('mail.admin.address') )
-            ->notify(new DeveloperApplicacionRequest($createDeveloper));
-
-        # Inform the user that request has been saved
-        return redirect('developers/apply')
-                    ->with('status', __('Your request has been sent and will be checked by our team.') );
-    }
-
-
-
     /**
      * Show the list of the clients for the current user
      *
@@ -116,7 +22,7 @@ class DevelopersController extends Controller
     public function showClients( Request $request )
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer']);
+        Auth::user()->authorizeRoles(['admin']);
 
         $newRequest = Request::create('/oauth/clients', 'GET');
 
@@ -135,7 +41,7 @@ class DevelopersController extends Controller
     public function showNewClientForm( Request $request )
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer']);
+        Auth::user()->authorizeRoles(['admin']);
 
         return view('developers/clients/create');
     }
@@ -151,7 +57,7 @@ class DevelopersController extends Controller
     {
 
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer']);
+        Auth::user()->authorizeRoles(['admin']);
 
         # Validate the form
         $data = $request->validate([
@@ -182,7 +88,7 @@ class DevelopersController extends Controller
     public function deleteClient( Request $request )
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer']);
+        Auth::user()->authorizeRoles(['admin']);
 
         # Validate the form
         $data = $request->validate([

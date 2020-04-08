@@ -176,14 +176,6 @@ Route::prefix('developers')->middleware(['auth'])->group(function () {
         return redirect('/developers/clients/show');
     });
 
-    Route::get('/apply', function () {
-        return App::call('App\Http\Controllers\DevelopersController@showDeveloperApplyForm');
-    });
-
-    Route::post('/apply', function () {
-        return App::call('App\Http\Controllers\DevelopersController@createDeveloper');
-    });
-
     Route::get('/clients/show', function () {
         return App::call('App\Http\Controllers\DevelopersController@showClients');
     });
@@ -199,10 +191,6 @@ Route::prefix('developers')->middleware(['auth'])->group(function () {
     Route::post('/clients/delete', function () {
         return App::call('App\Http\Controllers\DevelopersController@deleteClient');
     });
-    
-    Route::get('/clients/restore', function () {
-        return App::call('App\Http\Controllers\DevelopersController@showRestoreClientForm');
-    });
 
 });
 
@@ -215,13 +203,6 @@ Route::prefix('developers')->middleware(['auth'])->group(function () {
  */
 Route::prefix('admin')->middleware(['auth'])->group(function () {
 
-    Route::get('/developers/application/{developer_id}', function ($developer_id) {
-        return App::call('App\Http\Controllers\AdminController@showDeveloperApplicationForm', ['developer_id' => $developer_id]);
-    });
-
-    Route::post('/developers/application/{developer_id}', function ($developer_id) {
-        return App::call('App\Http\Controllers\AdminController@ProcessDeveloperApplication', ['developer_id' => $developer_id]);
-    });
 
 });
 
