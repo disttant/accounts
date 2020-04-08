@@ -141,6 +141,30 @@ utofocus>
             setTimeout(drawImge , 100);
         }
 
+        // Draw device not found in the middle
+        function drawNoDevice(){
+            let canvas = qrVideoCanvas;
+            let ctx    = canvas.getContext('2d');
+
+            // Draw the icons
+            let fontIcon = 'videocam_off';
+            let fontWidth;
+            let fontHeight;
+
+            material_font.load().then( () => {
+                ctx.fillStyle = 'rgba(238, 238, 238, 1)';
+                ctx.font   = '6em material-icons';
+                ctx.textBaseline = "top";
+                fontWidth  = ctx.measureText(fontIcon).width;
+                fontHeight = parseInt(ctx.font) * 1.2;
+                ctx.fillText(
+                    fontIcon,
+                    (canvas.width-fontWidth),
+                    (canvas.height-fontHeight)
+                );
+            }).catch( console.error );
+        }
+
         // Check for webcam support
         if (navigator.mediaDevices.getUserMedia) {
             // Broadcast the video to the element or show error
@@ -156,7 +180,8 @@ utofocus>
                 };
             })
             .catch(function ( error ) {
-                console.log('[{{ config("app.vendor") }}] Media device not found', error);
+                console.log('[{{ config("app.vendor") }}] Media device not found');
+                drawNoDevice();
             });
         }
 
