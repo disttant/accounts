@@ -42,8 +42,8 @@ utofocus>
                                     </div>
                                 </div>
                                 <video  id="qrVideo" class="d-none" autoplay="true" ></video>
-                                <canvas id="qrVideoCanvas" class="w-100 rounded-lg shadow-sm" style="display:none;"></canvas>
-                                <canvas id="qrShotCanvas"  class="w-100 rounded-lg shadow-sm" style="display:none;"></canvas>
+                                <canvas id="qrVideoCanvas" class="w-100 rounded-lg shadow-sm d-none"></canvas>
+                                <canvas id="qrShotCanvas"  class="w-100 rounded-lg shadow-sm d-none"></canvas>
                             </div>
                             <div class="col-lg-6 p-0 pb-5 d-flex justify-content-center">
                                 <div class="w-100 mx-3">
@@ -162,8 +162,10 @@ utofocus>
                 qrVideo.srcObject = stream;
                 qrVideo.onplay = function() {
                     setTimeout(drawImge , 100);
-                    qrNoDevice.style.display = 'none';
-                    qrVideoCanvas.style.display = 'block';
+                    qrNoDevice.classList.remove("d-flex");
+                    qrNoDevice.classList.add("d-none");
+                    qrVideoCanvas.classList.remove("d-none");
+                    qrVideoCanvas.classList.add("d-block");
                 };
             })
             .catch(function ( error ) {
@@ -173,8 +175,10 @@ utofocus>
 
         qrVideoCanvas.onclick = function() {
             // Place the pic placeholder where the video was
-            qrVideoCanvas.style.display = 'none';
-            qrShotCanvas.style.display  = 'block';
+            qrVideoCanvas.classList.remove("d-block");
+            qrVideoCanvas.classList.add("d-none");
+            qrShotCanvas.classList.remove("d-none");
+            qrShotCanvas.classList.add("d-block");
 
             // Draw the pic in the placeholder
             qrShotCanvas.width  = qrVideo.videoWidth;
@@ -263,8 +267,11 @@ utofocus>
         };
 
         qrShotCanvas.onclick = function() {
-            qrVideoCanvas.style.display = 'block';
-            qrShotCanvas.style.display  = 'none';
+            qrVideoCanvas.classList.remove("d-none");
+            qrVideoCanvas.classList.add("d-block");
+
+            qrShotCanvas.classList.remove("d-block");
+            qrShotCanvas.classList.add("d-none");
 
             // Disable the submit button
             formSubmitButton.setAttribute("disabled", "true");
