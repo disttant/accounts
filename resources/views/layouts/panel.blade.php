@@ -83,9 +83,11 @@
 
             <a href="{{ url('cards') }}">{{ __('Cards') }}</a>
 
-            @if ( Auth::user()->hasAnyRole(['admin']) == true )
+            @if ( Auth::user()->hasAnyRole(['admin', 'business']) == true )
                 <a href="{{ url('nodes') }}">{{ __('Nodes') }}</a>
+            @endif
 
+            @if ( Auth::user()->hasAnyRole(['admin']) == true )
                 <a href="{{ url('developers') }}">{{ __('Developers') }}</a>
             @endif
 
@@ -118,14 +120,16 @@
                     </a>
                 </div>
                 
-                @if ( Auth::user()->hasAnyRole(['admin']) == true )
+                @if ( Auth::user()->hasAnyRole(['admin', 'business']) == true )
                     <div class="d-flex flex-column">
                         <a href="{{ url('nodes') }}" class="pl-5 py-2 text-decoration-none">
                             <i class="material-icons align-middle mr-2">home_work</i>
                             <span class="align-middle">{{ __('Nodes') }}</span>
                         </a>
                     </div>
+                @endif
 
+                @if ( Auth::user()->hasAnyRole(['admin']) == true )
                     <div class="d-flex flex-column">
                         <a href="{{ url('developers') }}" class="pl-5 py-2 text-decoration-none">
                             <i class="material-icons align-middle mr-2">build</i>
