@@ -47,10 +47,10 @@
     "Revoke"                        : "Revocar",
     "Delete"                        : "Eliminar",
     "Remove"                        : "Eliminar",
-    
-    
+
+
     "and"                           : "y",
-    
+
     "Hello!"                        : "¡Hola!",
     "Regards"                       : "Saludos",
     "Approved"                      : "Aprobada",
@@ -148,7 +148,7 @@
     "Be careful with the apps you allow access your data!"                       : "¡Ten cuidado con las aplicaciones que permites acceder a tus datos!",
     "Sure you want to revoke all permissions for this application?"              : "¿Seguro que quieres revocar todos los permisos para esta aplicación?",
     "There are no authorized applications to access your data yet"               : "Todavía no hay aplicaciones autorizadas para acceder a sus datos.",
-    
+
 
 
     "Some field is malformed. May be the card exists?"                           : "Algún campo está malformado. ¿Es posible que la tarjeta exista?",
