@@ -9,7 +9,7 @@
 
     <div class="my-4">
         <a href="{{ url('cards/create') }}" class="btn btn-primary">
-            {{ __('Create a Card') }}
+            {{ __('Create a card') }}
         </a>
     </div>
 
@@ -17,7 +17,7 @@
 
         <div class="my-4">
             <div class="alert alert-light" role="alert">
-                {{ __('No cards added yet. Add one to start the magic.') }}
+                {{ __('No cards added yet. Add one to unlock the magic.') }}
             </div>
         </div>
 
