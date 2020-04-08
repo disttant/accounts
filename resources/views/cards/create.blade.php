@@ -33,6 +33,9 @@ utofocus>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-6 p-0 pb-5">
+                                <div id="qrNoDevice" class="w-100 h-100 border border-danger">
+                                    Me cago en tu madre
+                                </div>
                                 <video  id="qrVideo" class="d-none" autoplay="true" ></video>
                                 <canvas id="qrVideoCanvas" class="w-100 rounded-lg shadow-sm"></canvas>
                                 <canvas id="qrShotCanvas"  class="w-100 rounded-lg shadow-sm" style="display:none;"></canvas>
@@ -181,7 +184,7 @@ utofocus>
             })
             .catch(function ( error ) {
                 console.log('[{{ config("app.vendor") }}] Media device not found');
-                drawNoDevice();
+                //drawNoDevice();
             });
         }
 
