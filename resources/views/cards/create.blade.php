@@ -4,7 +4,7 @@
 
     <div class="mb-5">
         <h4 class="my-1">{{ __('Create new card') }}</h4>
-        <small>{{ __('Scan the key that accomodation gave to you') }}</small>
+        <small>{{ __('Lower case, numbers, no spaces. Just a label.') }}</small>
     </div>
 
     @if ($errors->any())
@@ -46,12 +46,8 @@ utofocus>
                                             <p class="d-inline lead align-middle">{{ __('Label this card')  }}</p>
                                         </li>
                                         <li class="list-group-item border-0 py-3">
-                                            <i class="material-icons align-middle mr-2">stay_primary_portrait</i>
-                                            <p class="d-inline lead align-middle">{{ __('Direct your device to the QR')  }}</p>
-                                        </li>
-                                        <li class="list-group-item border-0 py-3">
                                             <i class="material-icons align-middle mr-2">wallpaper</i>
-                                            <p class="d-inline lead align-middle">{{ __('Keep the QR inside the box')  }}</p>
+                                            <p class="d-inline lead align-middle">{{ __('Keep QR inside the box')  }}</p>
                                         </li>
                                         <li class="list-group-item border-0 py-3">
                                             <i class="material-icons align-middle mr-2">touch_app</i>
@@ -101,6 +97,10 @@ utofocus>
             canvas.width     = video.videoWidth;
             canvas.height    = video.videoHeight;
 
+            // Mirror the context
+            ctx.translate(canvas.width, 0);
+            ctx.scale(-1, 1);
+
             // Draw the image
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
@@ -109,14 +109,18 @@ utofocus>
             let pY       = canvas.height/2 - qrArea/2;
 
             // Create overlay and erase a square
-            ctx.fillStyle = "rgba(238, 238, 238, 0.5)";
+            ctx.fillStyle = "rgba(51, 51, 51, 0.8)"; //238
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.clearRect(pX, pY, qrArea, qrArea);
 
             // Redraw a square of image
             ctx.drawImage(video, pX, pY, qrArea, qrArea, pX, pY, qrArea, qrArea);
 
-            // Write instructions
+            // Mirror the context again
+            ctx.translate(canvas.width, 0);
+            ctx.scale(-1, 1);
+
+            // Draw the icons
             let fontIcon = 'touch_app';
             let fontWidth;
             let fontHeight;

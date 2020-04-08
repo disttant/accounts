@@ -45,7 +45,7 @@ class CardsController extends Controller
         if ($validator->fails()){
             return redirect('cards/create')
                         ->withErrors([
-                            'message' => __('Some field is malformed. May be the key?')
+                            'message' => __('Some field is malformed. May be the card exists?')
                         ])
                         ->withInput();
         }

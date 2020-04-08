@@ -1,15 +1,7 @@
-{
+﻿{
 
-    "Read information from service"                                   : "Leer información del servicio",
-    "Publish information to service"                                  : "Publicar información al servicio",
-    "Delete information from service"                                 : "Eliminar información del servicio",
+    "Access your active card"       : "Acceder a tu tarjeta activa",
 
-
-
-    "Authorize"                     : "Autorizar",
-    "Login"                         : "Acceder",
-    "Register"                      : "Registrar",
-    "Reset"                         : "Restablecer",
     "Confirm"                       : "Confirmar",
 
     "Create one"                    : "Crear una",
@@ -20,6 +12,7 @@
     "Name"                          : "Nombre",
     "Email"                         : "Correo electrónico",
     "Password"                      : "Contraseña",
+    "Confirm Password"              : "Confirmar Contraseña",
     "Document"                      : "Documento",
     "Phone"                         : "Teléfono",
     "Summary"                       : "Resumen",
