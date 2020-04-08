@@ -37,7 +37,7 @@ utofocus>
                                     Me cago en tu madre
                                 </div>
                                 <video  id="qrVideo" class="d-none" autoplay="true" ></video>
-                                <canvas id="qrVideoCanvas" class="w-100 rounded-lg shadow-sm"></canvas>
+                                <canvas id="qrVideoCanvas" class="w-100 rounded-lg shadow-sm" style="display:none;"></canvas>
                                 <canvas id="qrShotCanvas"  class="w-100 rounded-lg shadow-sm" style="display:none;"></canvas>
                             </div>
                             <div class="col-lg-6 p-0 pb-5 d-flex justify-content-center">
@@ -79,6 +79,7 @@ utofocus>
         var qrVideo           = document.querySelector("#qrVideo");
         var qrVideoCanvas     = document.querySelector("#qrVideoCanvas");
         var qrShotCanvas      = document.querySelector('#qrShotCanvas');
+        var qrNoDevice        = document.querySelector('#qrNoDevice');
         var formSubmitButton  = document.querySelector('button[type="submit"]');
         var formNodeidInput   = document.querySelector('input[name="node_id"]');
         var formKeyInput      = document.querySelector('input[name="key"]');
@@ -144,30 +145,6 @@ utofocus>
             setTimeout(drawImge , 100);
         }
 
-        // Draw device not found in the middle
-        function drawNoDevice(){
-            let canvas = qrVideoCanvas;
-            let ctx    = canvas.getContext('2d');
-
-            // Draw the icons
-            let fontIcon = 'videocam_off';
-            let fontWidth;
-            let fontHeight;
-
-            material_font.load().then( () => {
-                ctx.fillStyle = 'rgba(51, 51, 51, 1)';
-                ctx.font   = '6em material-icons';
-                ctx.textBaseline = "top";
-                //fontWidth  = ctx.measureText(fontIcon).width;
-                //fontHeight = parseInt(ctx.font) * 1.2;
-                ctx.fillText(
-                    fontIcon,
-                    (canvas.width/2),
-                    (canvas.height/2)
-                );
-            }).catch( console.error );
-        }
-
         // Check for webcam support
         if (navigator.mediaDevices.getUserMedia) {
             // Broadcast the video to the element or show error
@@ -180,11 +157,12 @@ utofocus>
                 qrVideo.srcObject = stream;
                 qrVideo.onplay = function() {
                     setTimeout(drawImge , 100);
+                    qrNoDevice.style.display = 'none';
+                    qrVideoCanvas.style.display = 'block';
                 };
             })
             .catch(function ( error ) {
                 console.log('[{{ config("app.vendor") }}] Media device not found');
-                //drawNoDevice();
             });
         }
 
