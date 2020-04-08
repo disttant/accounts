@@ -33,7 +33,7 @@ utofocus>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-6 p-0 pb-5">
-                                <div id="qrNoDevice" class="w-100 h-100 rounded-lg shadow-sm d-flex justify-content-center align-items-center">
+                                <div id="qrNoDevice" class="w-100 h-100 rounded-lg shadow-sm d-flex justify-content-center align-items-center py-5">
                                     <div>
                                         <i class="material-icons align-middle md-48">videocam_off</i>
                                     </div>
