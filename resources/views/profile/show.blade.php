@@ -7,16 +7,6 @@
         <small>{{ __('Tell us a bit about you, sweetie')}}</small>
     </div>
 
-    <div class="my-4">
-
-        @unless ( Auth::user()->hasAnyRole(['developer']) == true )
-            <a href="{{ url('developers/apply') }}" class="btn btn-primary">
-                {{ __('I want to be developer!') }}
-            </a>
-        @endunless
-        
-    </div>
-
     <ul class="list-group">
 
         <a href="{{ url('profile/change/name') }}" class="list-group-item list-group-item-action">
