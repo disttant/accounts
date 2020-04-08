@@ -47,7 +47,7 @@ utofocus>
                                         </li>
                                         <li class="list-group-item border-0 py-3">
                                             <i class="material-icons align-middle mr-2">wallpaper</i>
-                                            <p class="d-inline lead align-middle">{{ __('Keep QR inside the box')  }}</p>
+                                            <p class="d-inline lead align-middle">{{ __('Focus QR')  }}</p>
                                         </li>
                                         <li class="list-group-item border-0 py-3">
                                             <i class="material-icons align-middle mr-2">touch_app</i>
@@ -156,7 +156,7 @@ utofocus>
                 };
             })
             .catch(function ( error ) {
-                console.log("[QR] Media device not found", error);
+                console.log("[Disttant] Media device not found", error);
             });
         }
 
@@ -236,7 +236,6 @@ utofocus>
                         material_font.load().then( () => {
                             drawStatus();
                         });
-                        //.catch( console.error );
 
                         // Set the key
                         qrData = qrData.split("@");
@@ -247,7 +246,7 @@ utofocus>
                         formSubmitButton.removeAttribute("disabled");
                     });
                 }).catch(function(err) {
-                    //console.log('Fetch Error :-S', err);
+                    console.log('[{{ config("app.vendor") }}] Error with QR request', err);
                 });
             });
         };

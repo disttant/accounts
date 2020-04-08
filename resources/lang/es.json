@@ -147,6 +147,21 @@
     "Something went wrong revoking all permissions to that application"          : "Se produjo un error al revocar todos los permisos de esa aplicación.",
     "Be careful with the apps you allow access your data!"                       : "¡Ten cuidado con las aplicaciones que permites acceder a tus datos!",
     "Sure you want to revoke all permissions for this application?"              : "¿Seguro que quieres revocar todos los permisos para esta aplicación?",
-    "There are no authorized applications to access your data yet"               : "Todavía no hay aplicaciones autorizadas para acceder a sus datos."
+    "There are no authorized applications to access your data yet"               : "Todavía no hay aplicaciones autorizadas para acceder a sus datos.",
     
+
+
+    "Some field is malformed. May be the card exists?"                           : "Algún campo está malformado. ¿Es posible que la tarjeta exista?",
+    "Card could not be created"                                                  : "La tarjeta no pudo ser creada",
+    "Oops!, Some active card could not be disabled"                              : "¡Ups!, Alguna tarjeta activa no se pudo desactivar",
+    "Oops!, Card could not be changed"                                           : "¡Ups!, La tarjeta no se pudo cambiar",
+    "Card could not be deleted"                                                  : "La tarjeta no se pudo eliminar",
+    "Create new card"                                                            : "Crear nueva tarjeta",
+    "Lower case, numbers, no spaces. Just a label."                              : "Minúsculas, números, sin espacios. Sólo una etiqueta.",
+    "An easy name to tag this card"                                              : "Un nombre sencillo para etiquetar esta tarjeta",
+    "Instructions"                                                               : "Instrucciones",
+    "Label this card"                                                            : "Etiqueta esta tarjeta",
+    "Focus QR"                                                                   : "Enfoca el QR",
+    "Touch the screen"                                                           : "Toca la pantalla",
+    "Save and go!"                                                               : "Guarda y vete!"
 }

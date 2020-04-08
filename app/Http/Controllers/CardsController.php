@@ -256,7 +256,7 @@ class CardsController extends Controller
     public static function CreateOneView(){
 
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer', 'business', 'user']);
+        Auth::user()->authorizeRoles(['admin', 'business', 'user']);
 
         return view('cards/create');
     }
@@ -271,7 +271,7 @@ class CardsController extends Controller
     public static function GetAllView( )
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'developer', 'business', 'user']);
+        Auth::user()->authorizeRoles(['admin', 'business', 'user']);
 
         # Get nodes from the API
         $cardList = self::GetAll();
