@@ -33,8 +33,9 @@ utofocus>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-6 p-0 pb-5">
-                                <div id="qrNoDevice" class="w-100 h-100 border border-danger">
-                                    Me cago en tu madre
+                                <div id="qrNoDevice" class="w-100 h-100 rounded-lg shadow-sm">
+                                    <i class="material-icons align-middle md-48">videocam_off</i>
+                                    <div class="lead align-middle">{{ __('Camera not found') }}</div>
                                 </div>
                                 <video  id="qrVideo" class="d-none" autoplay="true" ></video>
                                 <canvas id="qrVideoCanvas" class="w-100 rounded-lg shadow-sm" style="display:none;"></canvas>
