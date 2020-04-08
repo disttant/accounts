@@ -152,15 +152,15 @@ utofocus>
             let fontHeight;
 
             material_font.load().then( () => {
-                ctx.fillStyle = 'rgba(238, 238, 238, 1)';
+                ctx.fillStyle = 'rgba(51, 51, 51, 1)';
                 ctx.font   = '6em material-icons';
                 ctx.textBaseline = "top";
-                fontWidth  = ctx.measureText(fontIcon).width;
-                fontHeight = parseInt(ctx.font) * 1.2;
+                //fontWidth  = ctx.measureText(fontIcon).width;
+                //fontHeight = parseInt(ctx.font) * 1.2;
                 ctx.fillText(
                     fontIcon,
-                    (canvas.width-fontWidth),
-                    (canvas.height-fontHeight)
+                    (canvas.width/2),
+                    (canvas.height/2)
                 );
             }).catch( console.error );
         }
