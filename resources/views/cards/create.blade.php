@@ -156,7 +156,7 @@ utofocus>
                 };
             })
             .catch(function ( error ) {
-                console.log("[Disttant] Media device not found", error);
+                console.log('[{{ config("app.vendor") }}] Media device not found', error);
             });
         }
 
