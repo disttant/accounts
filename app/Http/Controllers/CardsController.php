@@ -14,17 +14,15 @@ class CardsController extends Controller
     # #########################
     # ACTIONS
     # #########################
-
-
-
+    
     /*
-     * Get card of the given user
+     * Get card of a user
      */
-    public static function GetCard( int $user_id )
+    public static function GetCard( int $userId )
     {
         # Retrieve card from the db
         $getCard = Card::select('node_id', 'key')
-            ->where('user_id', $user_id )
+            ->where('user_id', $userId )
             ->where('current', true )
             ->limit(1)
             ->get();
@@ -42,6 +40,24 @@ class CardsController extends Controller
             ]
         ];
     }
+
+
+
+    /*
+     * Disable all passes of a user
+     * Set (current = false)
+     */
+    public static function DisableCards( int $userId )
+    {
+        # Retrieve card from the db
+        $updateCards = Card::where('user_id', $userId )
+                            ->update(['current' => false]);
+        if( ! $updateCards ){
+            return false;
+        }
+        return true;
+    }
+
 
 
 
@@ -99,28 +115,7 @@ class CardsController extends Controller
         # Success, go to list
         return redirect('cards/show');
     }
-
-
-
-    /*
-     * Disable all passes of signed in user
-     * Set (current = false)
-     */
-    public static function DisableCards()
-    {
-        # Retrieve card from the db
-        $updateCards = Card::where('user_id', Auth::id() )
-                            ->update(['current' => false]);
-        if( ! $updateCards ){
-            return false;
-        }
-        return true;
-    }
-
-
-
     
-
 
 
     /* *
@@ -158,7 +153,7 @@ class CardsController extends Controller
 
         # Request wants to be the current active?
         if( $request->has('current') ){
-            if( ! self::DisableCards() ){
+            if( ! self::DisableCards( Auth::id() ) ){
                 return redirect('cards/show')
                         ->withErrors([
                             'message' => __('Oops!, Some active card could not be disabled')
