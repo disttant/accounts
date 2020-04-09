@@ -107,8 +107,8 @@ utofocus>
             canvas.height    = video.videoHeight;
 
             // Mirror the context
-            ctx.translate(canvas.width, 0);
-            ctx.scale(-1, 1);
+            // ctx.translate(canvas.width, 0);
+            // ctx.scale(-1, 1);
 
             // Draw the image
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -126,8 +126,8 @@ utofocus>
             ctx.drawImage(video, pX, pY, qrArea, qrArea, pX, pY, qrArea, qrArea);
 
             // Mirror the context again
-            ctx.translate(canvas.width, 0);
-            ctx.scale(-1, 1);
+            // ctx.translate(canvas.width, 0);
+            // ctx.scale(-1, 1);
 
             // Draw the icons
             let fontIcon = 'touch_app';
