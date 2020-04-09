@@ -98,7 +98,7 @@
     "Label this card":"Etiqueta esta tarjeta",
     "Focus QR":"Enfoca el QR",
     "Touch the screen":"Toca la pantalla",
-    "Save and go!":"Guarda y vete!"
+    "Save and go!":"Guarda y vete!",
 
     "Developers":"Desarrolladores",
     "Show you are a god and build an app":"Demuestra que eres un dios y construye una aplicación",
@@ -109,5 +109,5 @@
     "Sure you want to delete this app?":"¿Está seguro de querer eliminar esta aplicación?",
     "Create new app":"Crear nueva aplicación",
     "Be strong and make the world better":"Sé fuerte y haz el mundo mejor",
-    "Valid URL where we will send some sensitive data":"URL válida donde enviaremos datos delicados",
+    "Valid URL where we will send some sensitive data":"URL válida donde enviaremos datos delicados"
 }
