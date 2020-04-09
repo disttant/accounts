@@ -9,90 +9,61 @@
 
 
 @section('app')
-    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm border-0" style="background-color: white !important; ">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('img/512px.png') }}" class="align-middle mr-2" style="width: 2rem; height: 2rem;">
-                <span class="align-middle text-lowercase font-weight-light">{{ config('app.vendor') }}</span>
-                <span class="mx-1 align-middle text-secondary text-lowercase font-weight-light">{{ config('app.name') }}</span>
+    <div class="sticky-top">
 
-                @if ( Auth::user()->hasRole('admin') == true )
-                    <i class="material-icons md-18 align-middle">lock_open</i>
-                @endif
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                     
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
+        {{-- Top bar --}}
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm border-0" style="background-color: white !important; ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{ asset('img/512px.png') }}" class="align-middle mr-2" style="width: 2rem; height: 2rem;">
+                    <span class="align-middle text-lowercase font-weight-light">{{ config('app.vendor') }}</span>
+                    <!--<span class="mx-1 align-middle text-secondary text-lowercase font-weight-light">{{ config('app.name') }}</span>-->
+                </a>
+                <div class="dropdown" style="z-index: 1030 !important;">
+                    <button class="btn btn-link text-decoration-none text-reset p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">account_circle</i>
+                        <i class="material-icons">arrow_drop_down</i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        @if ( Auth::user()->hasRole('admin') == true )
+                            <h6 class="dropdown-header py-3 text-warning">
+                                <i class="material-icons md-18 align-middle">lock_open</i>
+                                <span class="align-middle">Warning!</span>
+                            </h6>
                         @endif
-                    @else
-                        <li class="nav-item dropdown">
-
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ strtolower(Auth::user()->email) }} 
-                                <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                            
-                        </li>
-                    @endguest
-                </ul>
+                        <h6 class="dropdown-header py-3">{{ strtolower(Auth::user()->email) }}</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
             </div>
+        </nav>
+
+        {{-- Top menu --}}
+        <div class="menu scrollmenu sticky-top" style="top:56px;">
+            <a href="{{ url('profile') }}">{{ __('Profile') }}</a>
+            <a href="{{ url('authorizations') }}">{{ __('Authorizations') }}</a>
+            <a href="{{ url('cards') }}">{{ __('Cards') }}</a>
+            @if ( Auth::user()->hasAnyRole(['admin', 'business']) == true )
+                <a href="{{ url('nodes') }}">{{ __('Nodes') }}</a>
+            @endif
+            @if ( Auth::user()->hasAnyRole(['admin']) == true )
+                <a href="{{ url('developers') }}">{{ __('Developers') }}</a>
+            @endif
         </div>
-    </nav>
+
+    </div>
 
 
 
     <main class="p-0">
-        
-        {{-- Top menu --}}
-        <div class="menu scrollmenu">
-
-            <a href="{{ url('profile') }}">{{ __('Profile') }}</a>
-
-            <a href="{{ url('authorizations') }}">{{ __('Authorizations') }}</a>
-
-            <a href="{{ url('cards') }}">{{ __('Cards') }}</a>
-
-            @if ( Auth::user()->hasAnyRole(['admin', 'business']) == true )
-                <a href="{{ url('nodes') }}">{{ __('Nodes') }}</a>
-            @endif
-
-            @if ( Auth::user()->hasAnyRole(['admin']) == true )
-                <a href="{{ url('developers') }}">{{ __('Developers') }}</a>
-            @endif
-
-            <!--<a href="{{ url('contact') }}">{{ __('Contact') }}</a>-->
-        </div>
 
         {{-- Side menu --}}
         <div class="d-flex flex-row justify-content-start align-items-stretch" style="min-height: 100vh !important;">
@@ -151,6 +122,5 @@
         </div>
     </main>
 
-
-
 @endsection
+
