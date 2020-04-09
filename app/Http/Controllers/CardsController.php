@@ -15,6 +15,36 @@ class CardsController extends Controller
     # ACTIONS
     # #########################
 
+
+
+    /*
+     * Get card of the given user
+     */
+    public static function GetCard( int $user_id )
+    {
+        # Retrieve card from the db
+        $getCard = Card::select('node_id', 'key')
+            ->where('user_id', $user_id )
+            ->where('current', true )
+            ->limit(1)
+            ->get();
+        
+        if( $getCard->isEmpty() ){
+            return [
+                'card' => []
+            ];
+        }
+
+        return [
+            'card' => [
+                'node_id' => $getCard[0]->node_id,
+                'key'     => $getCard[0]->key
+            ]
+        ];
+    }
+
+
+
     /* *
      *
      *  Create new card
@@ -89,31 +119,7 @@ class CardsController extends Controller
 
 
 
-    /*
-     * Get current card data
-     */
-    public static function GetCurrentCard()
-    {
-        # Retrieve card from the db
-        $getCard = Card::select('node_id', 'key')
-            ->where('user_id', Auth::id() )
-            ->where('current', true )
-            ->limit(1)
-            ->get();
-        
-        if( $getCard->isEmpty() ){
-            return [
-                'card' => []
-            ];
-        }
-
-        return [
-            'card' => [
-                'node_id' => $getCard[0]->node_id,
-                'key'     => $getCard[0]->key
-            ]
-        ];
-    }
+    
 
 
 

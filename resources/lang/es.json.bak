@@ -1,6 +1,6 @@
 {
     "Access your active card":"Acceder a tu tarjeta activa",
-    "Confirm":"Confirmar",
+    # "Confirm":"Confirmar",
     "Create one":"Crear una",
     "Remember Me":"Recordarme",
     "Reset Password":"Restablecer Contraseña",
@@ -9,19 +9,14 @@
     "Email":"Correo electrónico",
     "Password":"Contraseña",
     "Confirm Password":"Confirmar Contraseña",
-    "Document":"Documento",
-    "Phone":"Teléfono",
-    "Summary":"Resumen",
-    "Created":"Creado",
-    "Sent":"Enviado",
-    "Verified":"Verificado",
-    "Not verified":"No verificado",
-    "Pending":"Pendiente",
-    "Message":"Mensaje",
+
+
+
     "Old password":"Antigua contraseña",
     "New password":"Nueva contraseña",
     "New password (again)":"Nueva contraseña (de nuevo)",
     "Entire name":"Nombre completo",
+    ##
     "Account type":"Tipo de cuenta",
     "Credentials":"Credenciales",
     "Verification":"Verificación",

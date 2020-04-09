@@ -40,7 +40,7 @@ class CustomAccessToken extends PassportAccessToken {
         # Put information into the wrapper
         ## Put current-card data if user_card scope authorized
         if ( $scopes->flip()->has('user_card') ) {
-            $data = $data->merge(CardsController::GetCurrentCard());
+            $data = $data->merge(CardsController::GetCard($this->getUserIdentifier()));
         }
 
         ## Put minimal profile data when profile scope authorized
