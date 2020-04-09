@@ -4,7 +4,7 @@
 
     <div class="mb-5">
         <h4 class="my-1">{{ __('Create new card') }}</h4>
-        <small>{{ __('Lower case, numbers, no spaces. Just a label.') }}</small>
+        <small>{{ __('Passes to the paradise') }}</small>
     </div>
 
     @if ($errors->any())
@@ -28,6 +28,7 @@
                         <div class="pt-4 pb-4">
                             <input name="name" type="text" class="form-control" placeholder="{{ __('An easy name to tag this card')}}" required a
 utofocus>
+                            <small>{{ __('Lower case, numbers, no spaces. Just a label.') }}</small>
                         </div>
                     </div>
                     <div class="container-fluid">
