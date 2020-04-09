@@ -1,6 +1,5 @@
 {
     "Access your active card":"Acceder a tu tarjeta activa",
-    # "Confirm":"Confirmar",
     "Create one":"Crear una",
     "Remember Me":"Recordarme",
     "Reset Password":"Restablecer Contraseña",
@@ -9,22 +8,13 @@
     "Email":"Correo electrónico",
     "Password":"Contraseña",
     "Confirm Password":"Confirmar Contraseña",
-
-
-
     "Old password":"Antigua contraseña",
     "New password":"Nueva contraseña",
     "New password (again)":"Nueva contraseña (de nuevo)",
     "Entire name":"Nombre completo",
-    ##
     "Account type":"Tipo de cuenta",
     "Credentials":"Credenciales",
-    "Verification":"Verificación",
-    "Other things":"Otras cosas",
-    "Contact":"Contacto",
-    "Entity":"Entidad",
     "Accept":"Aceptar",
-    "Decline":"Rechazar",
     "Create":"Crear",
     "Sign in":"Entrar",
     "Sign up":"Registrarse",
@@ -32,12 +22,8 @@
     "Logout":"Desconectarse",
     "Revoke":"Revocar",
     "Delete":"Eliminar",
-    "Remove":"Eliminar",
     "and":"y",
     "Hello!":"¡Hola!",
-    "Regards":"Saludos",
-    "Approved":"Aprobada",
-    "Declined":"Rechazada",
     "Forgot Your Password?":"¿Olvidó su contraseña?",
     "Creating an account means you are accepting our":"Crear una cuenta significa que aceptas nuestros",
     "Terms of Service":"Términos de Servicio",
