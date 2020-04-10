@@ -256,7 +256,7 @@ class CardsController extends Controller
     {
         $cards = Card::select('id', 'name', 'node_id', 'key')
                     ->where( 'user_id', Auth::id() )
-                    ->paginate(15);
+                    ->paginate(2);
 
         # Return the results
         return $cards;
