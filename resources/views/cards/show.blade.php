@@ -13,7 +13,7 @@
         </a>
     </div>
 
-    @if ( count($cardList['cards']) === 0 )
+    @if ( $cardsPaginated->count() === 0 )
 
         <div class="my-4">
             <div class="alert alert-light" role="alert">
@@ -24,7 +24,7 @@
     @else
 
         <ul class="list-group">
-            @foreach ( $cardList['cards'] as $card )
+            @foreach ( $cardsPaginated->items() as $card )
                 <div class="list-group-item list-group-item-action">
                     <div class="d-flex p-2 align-items-stretch">
                         <div class="d-flex flex-grow-1 justify-content-between align-items-center">

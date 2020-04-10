@@ -256,10 +256,10 @@ class CardsController extends Controller
     {
         $cards = Card::select('id', 'name', 'node_id', 'key')
                     ->where( 'user_id', Auth::id() )
-                    ->paginate();
-        
+                    ->paginate(15);
+
         # Return the results
-        return $result;
+        return $cards;
     }
 
 
@@ -286,15 +286,14 @@ class CardsController extends Controller
      *  Show main view with the staypasses list
      *
      * */
-    public static function GetAllView( )
+    public static function GetAllView( $page = 1 )
     {
         # Set authorized roles for this actions
         Auth::user()->authorizeRoles(['admin', 'business', 'user']);
 
-        # Get nodes from the API
-        $cardList = self::GetAll();
-
-        return view('cards/show', ['cardList' => $cardList, 'cardsPaginated' => self::GetAllPaginated( )]);
+        return view('cards/show', [
+            'cardsPaginated' => self::GetAllPaginated( $page )
+        ]);
     }
 
 
