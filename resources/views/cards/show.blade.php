@@ -82,8 +82,10 @@
         </ul>
 
         <!-- Paginator -->
-        {{ $cardsPaginated->links() }}
-        
+        <div class="container-fluid py-4 mx-auto">
+            {{ $cardsPaginated->links() }}
+        </div>
+
     @endif
 
 @endsection
