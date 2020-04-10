@@ -247,6 +247,23 @@ class CardsController extends Controller
 
 
 
+    /* *
+     *
+     *  Get all cards' of the user (paginated by Laravel)
+     *
+     * */
+    public static function GetAllPaginated( $page = 1 )
+    {
+        $cards = Card::select('id', 'name', 'node_id', 'key')
+                    ->where( 'user_id', Auth::id() )
+                    ->paginate();
+        
+        # Return the results
+        return $result;
+    }
+
+
+
     # #########################
     # VIEWS
     # #########################
@@ -277,7 +294,7 @@ class CardsController extends Controller
         # Get nodes from the API
         $cardList = self::GetAll();
 
-        return view('cards/show', ['cardList' => $cardList]);
+        return view('cards/show', ['cardList' => $cardList, 'cardsPaginated' => self::GetAllPaginated( )]);
     }
 
 
