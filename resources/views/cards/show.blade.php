@@ -81,6 +81,9 @@
             @endforeach
         </ul>
 
+        <!-- Paginator -->
+        {{ $cardsPaginated->links() }}
+        
     @endif
 
 @endsection
