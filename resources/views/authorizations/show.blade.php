@@ -19,7 +19,7 @@
 
     <ul class="list-group">
 
-        @forelse ($clients as $client)
+        @forelse ($clientsPaginated->items() as $client)
             <div class="list-group-item list-group-item-action">
                 <div class="d-flex p-2 align-items-stretch">
                     <div class="d-flex flex-grow-1 flex-column">
@@ -50,5 +50,10 @@
         @endforelse
 
     </ul>
+
+    <!-- Paginator -->
+    <div class="container-fluid d-flex justify-content-center py-4">
+        {{ $clientsPaginated->links() }}
+    </div>
 
 @endsection
