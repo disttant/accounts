@@ -272,7 +272,7 @@ class CardsController extends Controller
     {
         $cards = Card::select('id', 'name', 'node_id', 'key')
                     ->where( 'user_id', Auth::id() )
-                    ->paginate(2);
+                    ->paginate(config('internals.results_per_page'));
 
         # Return the results
         return $cards;

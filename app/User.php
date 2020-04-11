@@ -283,7 +283,7 @@ class User extends Authenticatable implements MustVerifyEmail
         # Get all authorized clients as a collection
         $clients = self::getAuthorizedClients( $userId );
 
-        return $clients->paginate(1);
+        return $clients->paginate(config('internals.results_per_page'));
     }
 
 

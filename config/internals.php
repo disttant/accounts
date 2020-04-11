@@ -14,4 +14,16 @@ return [
 
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Results per page
+    |--------------------------------------------------------------------------
+    |
+    | This value determines how much results per page when using a paginator
+    |
+    */
+    'results_per_page' => env('RESULTS_PER_PAGE', 10),
+
+
+
 ];
