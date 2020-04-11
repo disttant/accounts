@@ -278,6 +278,22 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /* *
      *
+     *  Get a list of authorized oauth clients paginated
+     * 
+     *
+     * */
+    public static function getAuthorizedClientsPaginated( int $userId, int $page = 1 )
+    {
+        # Get all authorized clients as a collection
+        $clients = self::getAuthorizedClients( $userId );
+
+        return $clients->paginate(1);
+    }
+
+
+
+    /* *
+     *
      *  Update Oauth Auth Codes table, setting true 
      *  on 'revoked' column for a user and client
      * 

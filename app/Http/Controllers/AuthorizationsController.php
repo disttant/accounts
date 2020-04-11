@@ -42,7 +42,10 @@ class AuthorizationsController extends Controller
         # Set authorized roles for this actions
         Auth::user()->authorizeRoles(['admin', 'business', 'developer', 'user']);
 
-        $clients = User::getAuthorizedClients( Auth::id() );
+        //$clients = User::getAuthorizedClients( Auth::id() );
+
+        $clients = User::getAuthorizedClientsPaginated( Auth::id() );
+        
 
         return view('authorizations/show', [ 'clients' => $clients ]);
     }

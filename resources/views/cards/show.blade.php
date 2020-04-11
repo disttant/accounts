@@ -82,7 +82,7 @@
         </ul>
 
         <!-- Paginator -->
-        <div class="container-fluid py-4 mx-auto">
+        <div class="container-fluid d-flex justify-content-center py-4">
             {{ $cardsPaginated->links() }}
         </div>
 
