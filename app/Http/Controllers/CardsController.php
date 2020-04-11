@@ -15,8 +15,11 @@ class CardsController extends Controller
     # ACTIONS
     # #########################
     
-    /*
-     * Get card of a user
+    /* *
+     *
+     * Get active card of the given user
+     * 
+     * @return array
      */
     public static function GetCard( int $userId )
     {
@@ -43,9 +46,11 @@ class CardsController extends Controller
 
 
 
-    /*
-     * Disable all passes of a user
-     * Set (current = false)
+    /* *
+     *
+     * Disable all cards of the given user
+     * 
+     * @return bool
      */
     public static function DisableCards( int $userId )
     {
@@ -63,7 +68,9 @@ class CardsController extends Controller
 
     /* *
      *
-     *  Create new card
+     * Create new card for the current logged user
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
      *
      * */
     public static function CreateOne( Request $request )
@@ -120,7 +127,9 @@ class CardsController extends Controller
 
     /* *
      *
-     *  Change some card field
+     * Change a card field for the current logged user
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
      *
      * */
     public static function ChangeOne( Request $request )
@@ -180,7 +189,9 @@ class CardsController extends Controller
 
     /* *
      *
-     *  Delete a card
+     * Delete a card for the current logged user
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
      *
      * */
     public static function RemoveOne( Request $request )
@@ -214,7 +225,9 @@ class CardsController extends Controller
 
     /* *
      *
-     *  Get all cards' of the user
+     * Get all cards of the current logged user
+     * 
+     * @return array
      *
      * */
     public static function GetAll( )
@@ -249,7 +262,10 @@ class CardsController extends Controller
 
     /* *
      *
-     *  Get all cards' of the user (paginated by Laravel)
+     * Get all cards of the current logged user 
+     * (Paginated by Laravel)
+     * 
+     * @return Illuminate\Pagination\Paginator
      *
      * */
     public static function GetAllPaginated()
@@ -268,8 +284,12 @@ class CardsController extends Controller
     # VIEWS
     # #########################
 
-    /*
-     * Show form to create a new comodito
+    /* *
+     *
+     * Show form to create a new card
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     * 
      */
     public static function CreateOneView(){
 
@@ -283,7 +303,9 @@ class CardsController extends Controller
 
     /* *
      *
-     *  Show main view with the staypasses list
+     * Show index with the cards list
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
      *
      * */
     public static function GetAllView( $page = 1 )
