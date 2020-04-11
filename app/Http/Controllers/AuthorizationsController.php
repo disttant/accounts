@@ -2,51 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use Route;
 use App\User as User;
 use App\OauthClient as OauthClient;
 use App\OauthAccessToken as OauthAccessToken;
 use App\OauthRefreshToken as OauthRefreshToken;
-
-use Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
-
 //use \GuzzleHttp\Client;
-
-
 
 class AuthorizationsController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct( Request $request )
-    {
-
-    }
-
-
-
-    /**
      * 
-     *
+     * Show authorized clients for the current logged user
+     * (paginated by Laravel)
      * 
      */
     public function showAuthorizedClients( )
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'business', 'developer', 'user']);
-
-        //$clients = User::getAuthorizedClients( Auth::id() );
+        Auth::user()->authorizeRoles(['admin', 'business', 'user']);
 
         $clients = User::getAuthorizedClientsPaginated( Auth::id() );
         
-
         return view('authorizations/show', [ 'clients' => $clients ]);
     }
 
@@ -54,13 +36,13 @@ class AuthorizationsController extends Controller
 
     /**
      * 
-     *
+     * Revoke the client's authorization for the current logged user
      * 
      */
-    public function revokeAuthorizedClient( Request $request)
+    public function revokeAuthorizedClient( Request $request )
     {
         # Set authorized roles for this actions
-        Auth::user()->authorizeRoles(['admin', 'business', 'developer', 'user']);
+        Auth::user()->authorizeRoles(['admin', 'business', 'user']);
 
         # Check recieved id hidden field
         $validator = Validator::make($request->all(),[

@@ -252,7 +252,7 @@ class CardsController extends Controller
      *  Get all cards' of the user (paginated by Laravel)
      *
      * */
-    public static function GetAllPaginated( $page = 1 )
+    public static function GetAllPaginated()
     {
         $cards = Card::select('id', 'name', 'node_id', 'key')
                     ->where( 'user_id', Auth::id() )

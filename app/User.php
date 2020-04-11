@@ -4,22 +4,14 @@ namespace App;
 
 use App\Role as Role;
 use App\RoleUser as RoleUser;
-//use App\OauthClient as OauthClient;
-//use App\OauthAccessToken as OauthAccessToken;
-//use App\OauthRefreshToken as OauthRefreshToken;
-
 use App\Notifications\CustomResetPassword;
 use App\Notifications\CustomVerifyEmail;
 use App\Notifications\DeveloperApplicacionResult;
-
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-
 use Illuminate\Support\Facades\DB;
-
-
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -85,21 +77,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
 
-    /**
-     * Send the notification about the developer applicacion result.
-     *
-     * @return void
-     */
-    public function sendDeveloperApplicacionResultNotification( $result, $message )
-    {
-        $this->notify(new DeveloperApplicacionResult( $result, $message ) );
-    }
-
-
-
     /* *
      *
-     *
+     * Retrieves the roles for the given user
+     * 
+     * @return Illuminate\Support\Collection
      * 
      */     
     public function roles()
@@ -110,8 +92,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
     /* *
-     *
      * 
+     * Set needed roles to pass or abort
+     * 
+     * @return mixed on failure
+     * @return bool
      * 
      */
     public function authorizeRoles( $roles )
@@ -124,7 +109,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /* *
      *
+     * Check if the given user 
+     * has any of the given roles
      * 
+     * @return bool
      * 
      */
     public function hasAnyRole( $roles )
@@ -147,7 +135,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /* *
      *
+     * Check if the user has the given role
      * 
+     * @return bool
      * 
      */
     public function hasRole( $role )
@@ -162,7 +152,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /* *
      *
-     *  Retrieves a user profile
+     * Retrieves the profile for the given user
+     * 
+     * @return 
      *
      * */
     public static function GetProfile( int $id )
@@ -171,14 +163,16 @@ class User extends Authenticatable implements MustVerifyEmail
             return [];
 
         return self::where('id', $id )->first();
-
     }
 
 
 
     /* *
      *
-     *  Set a role for the given user ID
+     * Set a role for the given user
+     * 
+     * @return bool on saving/failure
+     * @return null on existance
      *
      * */
     public static function SetRole( string $role, int $id )
@@ -203,10 +197,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
         # Try to set the role for the user
         $roleUser = RoleUser::firstOrNew([
-            
             'role_id' => $role->id, 
             'user_id' => $user->id
-            
         ]);
 
         if ( $roleUser->exists === true )
@@ -216,14 +208,16 @@ class User extends Authenticatable implements MustVerifyEmail
             return false;
 
         return true;
-
     }
 
 
 
     /* *
      *
-     *  Get a list of authorized oauth clients
+     * Get a list of Oauth authorized clients
+     * for the given user
+     * 
+     * @return Illuminate\Support\Collection
      * 
      * For security reasons we will look for clients permissions in 3 tables
      * and then intersect the results to avoid the failure chance
@@ -278,11 +272,13 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /* *
      *
-     *  Get a list of authorized oauth clients paginated
+     *  Get a list of authorized oauth clients 
+     * (Paginated by Laravel)
      * 
+     * @return Illuminate\Pagination\Paginator
      *
      * */
-    public static function getAuthorizedClientsPaginated( int $userId, int $page = 1 )
+    public static function getAuthorizedClientsPaginated( int $userId )
     {
         # Get all authorized clients as a collection
         $clients = self::getAuthorizedClients( $userId );
@@ -294,8 +290,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /* *
      *
-     *  Update Oauth Auth Codes table, setting true 
-     *  on 'revoked' column for a user and client
+     * Revoke all Oauth auth codes 
+     * for the given user and client
      * 
      * @return bool
      *
@@ -317,8 +313,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /* *
      *
-     *  Update Oauth Access Tokens table, setting true 
-     *  on 'revoked' column for a user and client
+     * Revoke all Oauth access tokens 
+     * for the given user and client
      * 
      * @return bool
      *
@@ -340,8 +336,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /* *
      *
-     *  Update Oauth Refresh Tokens table, setting true 
-     *  on 'revoked' column for a user and client
+     * Revoke an Oauth refresh tokens 
+     * for the given user and client
      * 
      * @return bool
      *
@@ -349,7 +345,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function revokeRefreshTokens( int $userId, int $clientId )
     {
         $revoked = DB::table('oauth_access_tokens')
-                    ->join('oauth_refresh_tokens', 'oauth_access_tokens.id', '=', 'oauth_refresh_tokens.access_token_id')
+                    ->join(
+                        'oauth_refresh_tokens', 
+                        'oauth_access_tokens.id', 
+                        '=', 
+                        'oauth_refresh_tokens.access_token_id'
+                    )
                     ->where('oauth_access_tokens.user_id' , $userId)
                     ->where('oauth_access_tokens.client_id' , $clientId)
                     ->update(['oauth_refresh_tokens.revoked' => true]);

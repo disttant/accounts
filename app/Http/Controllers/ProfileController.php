@@ -9,18 +9,6 @@ use Illuminate\Support\Facades\Hash;
 class ProfileController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-
-    }
-
-
-
-    /**
      * Show the profile of the user.
      *
      * @return \Illuminate\Contracts\Support\Renderable
